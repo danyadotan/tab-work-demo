@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAB@Work · Competitive Landscape</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Syne:wght@500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F2EFE8;--bg2:#E8E4DB;--bg3:#DDD8CE;
+  --surface:#FDFCF9;
+  --ink:#18170F;--ink2:#5C5A50;--ink3:#A8A59C;
+  --gold:#8A6F3A;--gold-soft:#F0E8D5;--gold-mid:#C0A040;
+  --green:#1E4D38;--green-mid:#2A6B4E;--green-soft:#D8EDE4;
+  --rose:#6B2535;--rose-soft:#F0DDE2;
+  --blue:#1A3A5C;--blue-soft:#D4E4F0;
+  --tab:#18170F;
+}
+html,body{background:var(--bg2);font-family:'DM Sans',sans-serif;color:var(--ink);}
+body{padding:24px 16px 48px;display:flex;flex-direction:column;align-items:center;}
+
+.shell{width:100%;max-width:860px;background:var(--bg);border-radius:22px;overflow:hidden;border:0.5px solid rgba(24,23,15,0.12);box-shadow:0 8px 40px rgba(24,23,15,0.07);}
+
+/* HEADER */
+.header{padding:22px 26px 18px;background:var(--surface);border-bottom:0.5px solid rgba(24,23,15,0.08);}
+.h-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:10px;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--ink);}
+.logo span{font-style:italic;color:var(--ink2);}
+.h-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--ink);line-height:1.2;}
+.h-title em{font-style:italic;color:var(--gold);}
+.h-sub{font-size:11px;color:var(--ink2);font-weight:300;line-height:1.6;}
+
+/* REFRAME CARD */
+.reframe{background:var(--ink);border-radius:14px;padding:14px 18px;margin:18px 18px 0;}
+.rf-label{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,239,232,0.35);margin-bottom:6px;}
+.rf-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;font-style:italic;color:#F2EFE8;line-height:1.5;}
+.rf-text strong{font-style:normal;font-weight:400;}
+
+/* RESOLUTION LADDER */
+.ladder{margin:16px 18px 0;background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:14px;padding:15px 17px;}
+.ladder-title{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-mid);margin-bottom:12px;}
+.ladder-steps{display:flex;flex-direction:column;gap:0;}
+.ls{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:0.5px solid rgba(24,23,15,0.05);}
+.ls:last-child{border-bottom:none;}
+.ls-num{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--ink3);min-width:22px;line-height:1;}
+.ls-body{flex:1;}
+.ls-title{font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.ls-desc{font-size:10px;color:var(--ink2);font-weight:300;line-height:1.5;}
+.ls-tag{display:inline-block;font-size:9px;font-weight:500;letter-spacing:0.05em;border-radius:4px;padding:2px 7px;margin-top:4px;}
+.ls-tag.g{background:var(--green-soft);color:var(--green);}
+.ls-tag.go{background:var(--gold-soft);color:var(--gold);}
+.ls-tag.r{background:var(--rose-soft);color:var(--rose);}
+.ls-tag.b{background:var(--blue-soft);color:var(--blue);}
+
+/* SECTION LABEL */
+.section-label{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);padding:16px 18px 8px;}
+
+/* COMPARISON TABLE */
+.table-wrap{overflow-x:auto;padding:0 18px 18px;}
+table{width:100%;border-collapse:collapse;min-width:680px;}
+thead tr{border-bottom:0.5px solid rgba(24,23,15,0.1);}
+th{font-size:10px;font-weight:500;color:var(--ink3);letter-spacing:0.07em;text-transform:uppercase;padding:0 8px 10px;text-align:left;white-space:nowrap;}
+th.tab-col{color:var(--ink);background:var(--bg);border-radius:8px 8px 0 0;}
+th:first-child{padding-left:0;min-width:160px;}
+tbody tr{border-bottom:0.5px solid rgba(24,23,15,0.05);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(24,23,15,0.02);}
+td{font-size:11px;padding:9px 8px;vertical-align:top;color:var(--ink2);font-weight:300;line-height:1.45;}
+td:first-child{font-weight:500;color:var(--ink);padding-left:0;font-size:11px;}
+td.tab-col{background:rgba(24,23,15,0.02);color:var(--ink);}
+td.tab-col .y{color:var(--green-mid);font-weight:500;}
+td.tab-col .n{color:var(--ink3);}
+td.tab-col .u{color:var(--gold);font-weight:500;}
+
+.y{color:var(--green-mid);}
+.n{color:var(--ink3);}
+.p{color:var(--gold);}
+.check::before{content:'✓ ';}
+.cross::before{content:'— ';}
+.unique{display:inline-block;background:var(--gold-soft);color:var(--gold);border-radius:4px;padding:1px 6px;font-size:9px;font-weight:500;letter-spacing:0.04em;}
+.new{display:inline-block;background:var(--green-soft);color:var(--green);border-radius:4px;padding:1px 6px;font-size:9px;font-weight:500;letter-spacing:0.04em;}
+
+/* LEARN FROM */
+.learn{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 18px 18px;}
+.lc{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:11px;padding:12px 13px;}
+.lc-from{font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px;}
+.lc-lesson{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:4px;line-height:1.35;}
+.lc-apply{font-size:10px;color:var(--ink2);font-weight:300;line-height:1.5;}
+
+/* POSITIONING MATRIX */
+.matrix{margin:0 18px 18px;background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:14px;padding:16px 17px;}
+.matrix-title{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;}
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.mq{border-radius:10px;padding:12px 13px;}
+.mq.them{background:var(--bg2);}
+.mq.tab{background:var(--ink);}
+.mq-label{font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;}
+.mq-label.them{color:var(--ink3);}
+.mq-label.tab{color:rgba(242,239,232,0.38);}
+.mq-q{font-size:12px;font-weight:400;line-height:1.5;}
+.mq-q.them{color:var(--ink2);}
+.mq-q.tab{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;font-style:italic;color:#F2EFE8;}
+.mq-q.tab strong{font-style:normal;font-weight:400;}
+
+/* FOOTER QUOTE */
+.fq{text-align:center;padding:16px 24px 22px;}
+.fq-t{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;color:var(--ink2);line-height:1.6;}
+.fq-a{font-size:10px;color:var(--ink3);margin-top:7px;letter-spacing:0.05em;}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="header">
+    <div class="h-top">
+      <div class="logo">TAB<span>@Work</span></div>
+    </div>
+    <div class="h-title">The tools they use.<br><em>The gap they all miss.</em></div>
+    <div class="h-sub" style="margin-top:6px;">Not a competition. A map of what exists, what each does well, and where TAB@Work lives — in the space none of them own.</div>
+  </div>
+
+  <div class="reframe">
+    <div class="rf-label">The reframe</div>
+    <div class="rf-text">"The giants built great tools for what the org needs to know about its people. <strong>TAB is the first tool built for what the person needs to do their job</strong> — and fixes the environment when it fails them, anonymously, without stopping their work."</div>
+  </div>
+
+  <!-- RESOLUTION LADDER -->
+  <div class="ladder">
+    <div class="ladder-title">TAB@Work autonomous resolution hierarchy · what no other tool does</div>
+    <div class="ladder-steps">
+      <div class="ls">
+        <div class="ls-num">1</div>
+        <div class="ls-body">
+          <div class="ls-title">Predict — 2–3 steps ahead</div>
+          <div class="ls-desc">TAB detects friction patterns before they become blocks. Safe-bet inference on what breaks next based on behavioral signals.</div>
+          <span class="ls-tag g">Proactive</span>
+        </div>
+      </div>
+      <div class="ls">
+        <div class="ls-num">2</div>
+        <div class="ls-body">
+          <div class="ls-title">Self-repair — fixes its own issues first</div>
+          <div class="ls-desc">TAB attempts autonomous resolution within its own scope before escalating. Most friction is handled silently.</div>
+          <span class="ls-tag g">Autonomous</span>
+        </div>
+      </div>
+      <div class="ls">
+        <div class="ls-num">3</div>
+        <div class="ls-body">
+          <div class="ls-title">Peer escalation — calls other TABs</div>
+          <div class="ls-desc">When a fix requires higher capability, TAB calls peer agents with different skills. Multi-agent coordination, invisible to the employee.</div>
+          <span class="ls-tag b">Multi-agent</span>
+        </div>
+      </div>
+      <div class="ls">
+        <div class="ls-num">4</div>
+        <div class="ls-body">
+          <div class="ls-title">Escalate to engineering — packaged, not raw</div>
+          <div class="ls-desc">Unfixable issues are passed to management with full context already compiled. Engineers receive a structured report, not a complaint ticket.</div>
+          <span class="ls-tag go">Systemic</span>
+        </div>
+      </div>
+      <div class="ls">
+        <div class="ls-num">5</div>
+        <div class="ls-body">
+          <div class="ls-title">Bypass — employee never stops working</div>
+          <div class="ls-desc">At every stage, TAB finds an alternative path so the employee's workflow continues uninterrupted. The wall never appears.</div>
+          <span class="ls-tag r">Non-blocking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="section-label">Tool-by-tool comparison · honest and specific</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Microsoft Viva</th>
+          <th>Google Workspace AI</th>
+          <th>Salesforce Einstein</th>
+          <th>Cluely</th>
+          <th>Slack AI</th>
+          <th>Notion AI</th>
+          <th class="tab-col">TAB@Work</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Primary beneficiary</td>
+          <td><span class="n">Manager / HR</span></td>
+          <td><span class="n">Org productivity</span></td>
+          <td><span class="n">Sales manager</span></td>
+          <td><span class="p">Individual (covertly)</span></td>
+          <td><span class="n">Team</span></td>
+          <td><span class="p">Individual writer</span></td>
+          <td class="tab-col"><span class="y">Employee first, always</span></td>
+        </tr>
+        <tr>
+          <td>Named individual data</td>
+          <td><span class="n cross">Yes — core model</span></td>
+          <td><span class="n cross">Yes</span></td>
+          <td><span class="n cross">Yes — by design</span></td>
+          <td><span class="n cross">Yes, stored</span></td>
+          <td><span class="n cross">Yes</span></td>
+          <td><span class="n cross">Yes</span></td>
+          <td class="tab-col"><span class="y check">Never. Anonymous only</span></td>
+        </tr>
+        <tr>
+          <td>Detects friction patterns</td>
+          <td><span class="p">Partial — meeting load</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="p">In-call only</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check">Yes — full workflow</span></td>
+        </tr>
+        <tr>
+          <td>Intervenes in real time</td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="p">Suggestions only</span></td>
+          <td><span class="p">Sales calls only</span></td>
+          <td><span class="y check">Yes — meetings</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check">Yes — across all work</span></td>
+        </tr>
+        <tr>
+          <td>Morning briefing / intent</td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="p">Calendar summary</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check">Yes — TAB leads, not user</span></td>
+        </tr>
+        <tr>
+          <td>Overnight automation</td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="p">Partial</span></td>
+          <td><span class="p">CRM only</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check">Yes — full task delegation</span></td>
+        </tr>
+        <tr>
+          <td>Self-repair + peer escalation</td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check unique">Only TAB</span></td>
+        </tr>
+        <tr>
+          <td>Bypass for unblocked workflow</td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check unique">Only TAB</span></td>
+        </tr>
+        <tr>
+          <td>Org infrastructure map (anon)</td>
+          <td><span class="p">Named, not anon</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="p">Sales pipeline only</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check">Yes — system, not people</span></td>
+        </tr>
+        <tr>
+          <td>On-device AI (private)</td>
+          <td><span class="n cross">No — cloud</span></td>
+          <td><span class="n cross">No — cloud</span></td>
+          <td><span class="n cross">No — cloud</span></td>
+          <td><span class="n cross">No — cloud</span></td>
+          <td><span class="n cross">No — cloud</span></td>
+          <td><span class="n cross">No — cloud</span></td>
+          <td class="tab-col"><span class="y check unique">Yes — llama.cpp local</span></td>
+        </tr>
+        <tr>
+          <td>Trust ladder / staged AI autonomy</td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check unique">Only TAB</span></td>
+        </tr>
+        <tr>
+          <td>Works for orgs not people-tracking</td>
+          <td><span class="n cross">No — requires it</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td><span class="n cross">No</span></td>
+          <td class="tab-col"><span class="y check">Yes — system-level only</span></td>
+        </tr>
+        <tr>
+          <td>What we can learn from them</td>
+          <td><span style="color:var(--gold);">Meeting load signals</span></td>
+          <td><span style="color:var(--gold);">Calendar-aware briefing</span></td>
+          <td><span style="color:var(--gold);">Real-time in-session prompts</span></td>
+          <td><span style="color:var(--gold);">Intervention UX pattern</span></td>
+          <td><span style="color:var(--gold);">Async communication speed</span></td>
+          <td><span style="color:var(--gold);">Knowledge org + linking</span></td>
+          <td class="tab-col"><span style="color:var(--green-mid);font-weight:500;">Synthesis of all of them</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LEARN FROM SECTION -->
+  <div class="section-label">What TAB learns from each — honestly</div>
+  <div class="learn">
+    <div class="lc">
+      <div class="lc-from">From Microsoft Viva</div>
+      <div class="lc-lesson">Meeting load signals are real and measurable</div>
+      <div class="lc-apply">They proved meeting density correlates with burnout. TAB uses this signal — anonymously, not individually.</div>
+    </div>
+    <div class="lc">
+      <div class="lc-from">From Cluely</div>
+      <div class="lc-lesson">Real-time intervention UX works — when done right</div>
+      <div class="lc-apply">Cluely proved people accept in-session AI prompts. TAB uses the same pattern transparently, ethically, without the covert angle.</div>
+    </div>
+    <div class="lc">
+      <div class="lc-from">From Salesforce Einstein</div>
+      <div class="lc-lesson">Predictive next-best-action has traction</div>
+      <div class="lc-apply">The "what should I do next" prompt is proven in sales. TAB extends it to every role, not just revenue teams.</div>
+    </div>
+    <div class="lc">
+      <div class="lc-from">From Notion AI</div>
+      <div class="lc-lesson">Knowledge linking reduces cognitive load</div>
+      <div class="lc-apply">Connecting related context without asking the user to search is exactly what TAB's morning briefing does for tasks and workflows.</div>
+    </div>
+    <div class="lc">
+      <div class="lc-from">From Google Workspace</div>
+      <div class="lc-lesson">Calendar context is the best daily anchor</div>
+      <div class="lc-apply">Google proved calendar-aware AI feels natural. TAB uses this as the foundation for the morning brief — then goes further.</div>
+    </div>
+    <div class="lc">
+      <div class="lc-from">From Slack AI</div>
+      <div class="lc-lesson">Async summary cuts communication overhead</div>
+      <div class="lc-apply">Thread summarization reduces re-reading tax. TAB absorbs this into overnight automation — surfaces only what needs the human.</div>
+    </div>
+  </div>
+
+  <!-- POSITIONING MATRIX -->
+  <div class="matrix">
+    <div class="matrix-title">The question everything else answers vs. the question TAB answers</div>
+    <div class="matrix-grid">
+      <div class="mq them">
+        <div class="mq-label them">Every other tool</div>
+        <div class="mq-q them">"How do we give the org better visibility into how its people are performing?"</div>
+      </div>
+      <div class="mq tab">
+        <div class="mq-label tab">TAB@Work</div>
+        <div class="mq-q tab">"How do we <strong>remove what's in the person's way</strong> — before they even know it's there?"</div>
+      </div>
+      <div class="mq them">
+        <div class="mq-label them">Their data flows</div>
+        <div class="mq-q them">Employee → data → manager → insight → action on the employee</div>
+      </div>
+      <div class="mq tab">
+        <div class="mq-label tab">TAB's data flows</div>
+        <div class="mq-q tab">Environment → <strong>anonymous signal</strong> → org fixes the system → employee never knew it was broken</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fq">
+    <div class="fq-t">"The giants built the map. TAB repairs the roads — and makes sure no one has to stop walking while the work gets done."</div>
+    <div class="fq-a">TAB@Work · Execution Infrastructure · Coller TAU Accelerator · March 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAB@Work · Multi-Agent Architecture</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Syne:wght@500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F2EFE8;--bg2:#E8E4DB;--bg3:#DDD8CE;
+  --surface:#FDFCF9;
+  --ink:#18170F;--ink2:#5C5A50;--ink3:#A8A59C;
+  --gold:#8A6F3A;--gold-soft:#F0E8D5;--gold-mid:#C0A040;
+  --green:#1E4D38;--green-mid:#2A6B4E;--green-soft:#D8EDE4;
+  --rose:#6B2535;--rose-soft:#F0DDE2;
+  --blue:#1A3A5C;--blue-soft:#D4E4F0;
+  --purple:#3A1A5C;--purple-soft:#E4D4F0;
+}
+html,body{background:var(--bg2);font-family:'DM Sans',sans-serif;color:var(--ink);}
+body{padding:24px 16px 60px;display:flex;flex-direction:column;align-items:center;}
+.shell{width:100%;max-width:860px;background:var(--bg);border-radius:22px;overflow:hidden;border:0.5px solid rgba(24,23,15,0.12);box-shadow:0 8px 40px rgba(24,23,15,0.07);}
+
+/* HEADER */
+.header{padding:22px 26px 18px;background:var(--surface);border-bottom:0.5px solid rgba(24,23,15,0.08);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--ink);margin-bottom:8px;}
+.logo span{font-style:italic;color:var(--ink2);}
+.h-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:5px;}
+.h-title em{font-style:italic;color:var(--gold);}
+.h-sub{font-size:11px;color:var(--ink2);font-weight:300;line-height:1.6;}
+
+/* LAYER CARDS */
+.layers{padding:18px 20px;display:flex;flex-direction:column;gap:12px;}
+
+.layer{border-radius:16px;overflow:hidden;border:0.5px solid rgba(24,23,15,0.1);}
+
+.layer-head{padding:14px 18px 12px;display:flex;align-items:flex-start;gap:14px;}
+.layer-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;line-height:1;flex-shrink:0;}
+.layer-head-body{flex:1;}
+.layer-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;margin-bottom:3px;}
+.layer-sub{font-size:11px;font-weight:300;line-height:1.5;opacity:0.75;}
+.layer-tag{display:inline-block;font-size:9px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;border-radius:4px;padding:3px 8px;margin-top:5px;}
+
+.layer-body{padding:0 18px 15px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.layer-body.three{grid-template-columns:1fr 1fr 1fr;}
+.layer-body.full{grid-template-columns:1fr;}
+
+.lb-card{border-radius:10px;padding:11px 12px;}
+.lb-label{font-size:9px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px;}
+.lb-text{font-size:11px;font-weight:300;line-height:1.6;}
+.lb-text strong{font-weight:500;}
+
+/* PERSONAL TAB — cream/dark */
+.l1{background:var(--ink);}
+.l1 .layer-num{color:rgba(242,239,232,0.25);}
+.l1 .layer-title{color:#F2EFE8;}
+.l1 .layer-sub{color:rgba(242,239,232,0.6);}
+.l1 .layer-tag{background:rgba(242,239,232,0.1);color:rgba(242,239,232,0.7);}
+.l1 .lb-card{background:rgba(242,239,232,0.06);border:0.5px solid rgba(242,239,232,0.1);}
+.l1 .lb-label{color:rgba(242,239,232,0.35);}
+.l1 .lb-text{color:rgba(242,239,232,0.7);}
+.l1 .lb-text strong{color:#F2EFE8;}
+
+/* OBSERVATIONAL TAB — green */
+.l2{background:var(--green-soft);}
+.l2 .layer-num{color:rgba(42,107,78,0.25);}
+.l2 .layer-title{color:var(--green);}
+.l2 .layer-sub{color:var(--green-mid);}
+.l2 .layer-tag{background:rgba(42,107,78,0.12);color:var(--green);}
+.l2 .lb-card{background:rgba(255,255,255,0.5);border:0.5px solid rgba(42,107,78,0.15);}
+.l2 .lb-label{color:var(--green);}
+.l2 .lb-text{color:var(--green-mid);}
+.l2 .lb-text strong{color:var(--green);}
+
+/* MANAGEMENT TAB — gold */
+.l3{background:var(--gold-soft);}
+.l3 .layer-num{color:rgba(138,111,58,0.2);}
+.l3 .layer-title{color:var(--gold);}
+.l3 .layer-sub{color:#7A5A20;}
+.l3 .layer-tag{background:rgba(138,111,58,0.12);color:var(--gold);}
+.l3 .lb-card{background:rgba(255,255,255,0.55);border:0.5px solid rgba(138,111,58,0.15);}
+.l3 .lb-label{color:var(--gold);}
+.l3 .lb-text{color:#7A5A20;}
+.l3 .lb-text strong{color:var(--gold);}
+
+/* FLOW CONNECTOR */
+.flow-connector{display:flex;flex-direction:column;align-items:center;padding:6px 0;gap:3px;}
+.fc-line{width:1px;height:18px;background:var(--bg3);}
+.fc-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--bg3);background:var(--bg);}
+.fc-label{font-size:9px;color:var(--ink3);font-weight:500;letter-spacing:0.07em;text-transform:uppercase;text-align:center;}
+
+/* TRANSLATION SECTION */
+.translation{margin:0 20px 16px;background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:14px;padding:16px 18px;}
+.tr-title{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;}
+.tr-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:start;}
+.tr-col{border-radius:10px;padding:12px 13px;}
+.tr-col.emp{background:var(--ink);color:#F2EFE8;}
+.tr-col.mgmt{background:var(--gold-soft);color:var(--gold);}
+.tr-col-label{font-size:9px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:8px;opacity:0.5;}
+.tr-item{font-size:10px;font-weight:300;line-height:1.65;padding:2px 0;}
+.tr-item.emp{color:rgba(242,239,232,0.75);}
+.tr-item.mgmt{color:#7A5A20;}
+.tr-arrow-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding-top:28px;}
+.tr-arrow{font-size:16px;color:var(--green-mid);}
+.tr-obs-label{font-size:9px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--green);text-align:center;line-height:1.3;}
+
+/* FULL LOOP */
+.loop-section{margin:0 20px 16px;}
+.loop-title{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;}
+.loop-steps{display:flex;flex-direction:column;gap:0;}
+.ls{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:0.5px solid rgba(24,23,15,0.05);}
+.ls:last-child{border-bottom:none;}
+.ls-n{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--ink3);min-width:22px;line-height:1;}
+.ls-b{flex:1;}
+.ls-t{font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.ls-d{font-size:10px;color:var(--ink2);font-weight:300;line-height:1.5;}
+.ls-tag{display:inline-block;font-size:9px;font-weight:500;letter-spacing:0.05em;border-radius:4px;padding:2px 7px;margin-top:4px;}
+.ls-tag.dark{background:rgba(24,23,15,0.08);color:var(--ink);}
+.ls-tag.g{background:var(--green-soft);color:var(--green);}
+.ls-tag.go{background:var(--gold-soft);color:var(--gold);}
+.ls-tag.b{background:var(--blue-soft);color:var(--blue);}
+
+/* CORRECTION BOX */
+.correction{margin:0 20px 16px;background:var(--blue-soft);border:0.5px solid rgba(26,58,92,0.15);border-radius:14px;padding:14px 17px;}
+.corr-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.corr-body{font-size:11px;color:var(--blue);font-weight:300;line-height:1.65;}
+.corr-body strong{font-weight:500;}
+
+/* IMMUNE SYSTEM */
+.immune{margin:0 20px 16px;background:var(--ink);border-radius:14px;padding:15px 18px;}
+.imm-label{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,239,232,0.35);margin-bottom:7px;}
+.imm-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:#F2EFE8;line-height:1.5;}
+.imm-text strong{font-style:normal;font-weight:400;}
+
+/* FOOTER */
+.footer-quote{text-align:center;padding:16px 24px 22px;}
+.fq-t{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;color:var(--ink2);line-height:1.6;}
+.fq-a{font-size:10px;color:var(--ink3);margin-top:7px;letter-spacing:0.05em;}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="header">
+    <div class="logo">TAB<span>@Work</span></div>
+    <div class="h-title">Three layers.<br><em>One unbroken loop.</em></div>
+    <div class="h-sub">A multi-agent architecture where every layer has exactly one job, one loyalty, and one language — and none of them overlap.</div>
+  </div>
+
+  <div class="layers">
+
+    <!-- LAYER 1: PERSONAL TAB -->
+    <div class="layer l1">
+      <div class="layer-head">
+        <div class="layer-num">1</div>
+        <div class="layer-head-body">
+          <div class="layer-title">Personal TAB</div>
+          <div class="layer-sub">One per employee. Unconditional loyalty. Hard domain boundaries. Destroys itself before it gives the employee away.</div>
+          <div class="layer-tag">Employee layer</div>
+        </div>
+      </div>
+      <div class="layer-body three">
+        <div class="lb-card">
+          <div class="lb-label">Core loyalty</div>
+          <div class="lb-text">The employee, always, first. <strong>Not negotiable.</strong> Not configurable by the org. The employee's TAB is theirs — not a company asset with employee access.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Domain boundary</div>
+          <div class="lb-text">Sees 2–3 steps ahead within the employee's <strong>specific framework, specialties, and tools.</strong> Not the org's strategy. Not another department. Its own lane only.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Resolution hierarchy</div>
+          <div class="lb-text"><strong>Predict → Self-repair → Peer TABs → Escalate → Bypass.</strong> Employee workflow never stops. The wall never appears.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Trust architecture</div>
+          <div class="lb-text">Encrypted on-device. Keys never leave. <strong>The org cannot decrypt what the employee's TAB holds.</strong> Not policy — architecture.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">What it sends up</div>
+          <div class="lb-text">Anonymous friction signals only. No names, no content, no identity. <strong>Pattern, not person.</strong> Observational TAB receives — not management.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">The relationship</div>
+          <div class="lb-text">More consistent than a manager. More available than a colleague. More honest than a friend. <strong>No competing agenda. Ever.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTOR -->
+    <div class="flow-connector">
+      <div class="fc-line"></div>
+      <div class="fc-dot"></div>
+      <div class="fc-label">Anonymous signals only · no identity passes this line</div>
+      <div class="fc-dot"></div>
+      <div class="fc-line"></div>
+    </div>
+
+    <!-- LAYER 2: OBSERVATIONAL TAB -->
+    <div class="layer l2">
+      <div class="layer-head">
+        <div class="layer-num">2</div>
+        <div class="layer-head-body">
+          <div class="layer-title">Observational TAB</div>
+          <div class="layer-sub">One per department. No narrative memory. No relationships. One job: collect, translate, and pass clean signal in both directions.</div>
+          <div class="layer-tag">Translation layer</div>
+        </div>
+      </div>
+      <div class="layer-body three">
+        <div class="lb-card">
+          <div class="lb-label">No narrative memory</div>
+          <div class="lb-text">Does not remember last Tuesday. Does not accumulate stories. <strong>Each report is generated fresh</strong> from today's data — no bias from history.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Statistical memory only</div>
+          <div class="lb-text">Holds baselines and thresholds — <strong>what normal looks like</strong> for this department. Detects anomalies without remembering individuals. A thermostat, not a diary.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Hallucination guard</div>
+          <div class="lb-text">Cross-checks working TAB outputs before they reach the report layer. <strong>No single TAB can corrupt the daily report</strong> — Observer is structurally independent.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">The translation job</div>
+          <div class="lb-text">Receives employee-language signals. Outputs management-language reports. <strong>Nothing lost. Nothing added.</strong> No interpretation. No judgment. No narrative.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Daily upward report</div>
+          <div class="lb-text">What broke. Where. Pattern not person. What was fixed. What needs engineering. <strong>System Coroner Report</strong> — written by an agent with no stake in the outcome.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Daily downward relay</div>
+          <div class="lb-text">Receives management directives. Converts to department-level next steps. Passes to each Personal TAB. <strong>Loop closes without anyone being told what to do</strong> — priorities update naturally.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTOR -->
+    <div class="flow-connector">
+      <div class="fc-line"></div>
+      <div class="fc-dot"></div>
+      <div class="fc-label">Clean anonymous aggregate · verified by Observer · no individual data</div>
+      <div class="fc-dot"></div>
+      <div class="fc-line"></div>
+    </div>
+
+    <!-- LAYER 3: MANAGEMENT TAB -->
+    <div class="layer l3">
+      <div class="layer-head">
+        <div class="layer-num">3</div>
+        <div class="layer-head-body">
+          <div class="layer-title">Management TAB</div>
+          <div class="layer-sub">One per org. Walks the board through what the infrastructure is telling them. Facilitates decisions. Sends directives back. Never names a person.</div>
+          <div class="layer-tag">Board layer</div>
+        </div>
+      </div>
+      <div class="layer-body three">
+        <div class="lb-card">
+          <div class="lb-label">Input</div>
+          <div class="lb-text">Receives verified anonymous reports from all department Observational TABs. <strong>Not self-reported by the agents that acted</strong> — independently verified.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Boardroom function</div>
+          <div class="lb-text">Translates system signals into strategic language. <strong>Suggests solutions at the infrastructure level.</strong> Not people problems — system problems with system fixes.</div>
+        </div>
+        <div class="lb-card">
+          <div class="lb-label">Output</div>
+          <div class="lb-text">Clean directives back to each Observational TAB. <strong>What to prioritize. What to fix. What to investigate.</strong> No blame assigned at any point in the chain.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRANSLATION SECTION -->
+  <div class="translation">
+    <div class="tr-title">The translation function · why Observational TAB exists</div>
+    <div class="tr-grid">
+      <div class="tr-col emp">
+        <div class="tr-col-label">Employee language</div>
+        <div class="tr-item emp">"I keep getting stuck at step 3 of this approval form"</div>
+        <div class="tr-item emp">"The tool times out every time I try to submit"</div>
+        <div class="tr-item emp">"I spend 40 minutes finding the right template every Monday"</div>
+        <div class="tr-item emp">"Back-to-back meetings leave me unable to think"</div>
+        <div class="tr-item emp">"I don't know if my work matters"</div>
+      </div>
+      <div class="tr-arrow-wrap">
+        <div class="tr-arrow">↑</div>
+        <div class="tr-obs-label">Observer<br>TAB</div>
+        <div class="tr-arrow">↓</div>
+      </div>
+      <div class="tr-col mgmt">
+        <div class="tr-col-label">Management language</div>
+        <div class="tr-item mgmt">"67% abandonment at approval form step 3 — template redesign needed"</div>
+        <div class="tr-item mgmt">"Submission tool timeout rate: 34% · Engineering queue item"</div>
+        <div class="tr-item mgmt">"Template discovery friction costs 2.8 hrs/week across Ops"</div>
+        <div class="tr-item mgmt">"Meeting density exceeds recovery threshold in Engineering Tues/Thu"</div>
+        <div class="tr-item mgmt">"Task completion visibility gap — attribution system needs work"</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding-top:12px;border-top:0.5px solid rgba(24,23,15,0.07);font-size:10px;color:var(--ink3);font-weight:300;line-height:1.6;font-style:italic;">No distortion. No politics. No power dynamic. The same reality — spoken in two languages that can finally hear each other.</div>
+  </div>
+
+  <!-- CORRECTION BOX -->
+  <div class="correction">
+    <div class="corr-label">Architectural precision · memory model for Observational TAB</div>
+    <div class="corr-body">No <strong>narrative memory</strong> — correct. Observer does not remember incidents, people, or stories. Each report is fresh.<br><br>But it needs <strong>statistical memory</strong> — baselines, patterns, thresholds. Without knowing what normal looks like for this department, it cannot detect anomalies. It would flag Engineering's Tuesday load spike as a crisis every single week.<br><br>The precise constraint: <strong>Observer learns about the system, never about individuals.</strong> It knows Tuesday afternoons are high-friction in Engineering. It does not know — and cannot know — who was working then.</div>
+  </div>
+
+  <!-- FULL LOOP -->
+  <div class="loop-section">
+    <div class="loop-title">The full loop · one complete cycle</div>
+    <div class="loop-steps">
+      <div class="ls"><div class="ls-n">1</div><div class="ls-b"><div class="ls-t">Employee opens laptop · Personal TAB activates</div><div class="ls-d">Morning brief already prepared. 3 tasks surfaced. Overnight work done. No decisions required from the employee.</div><span class="ls-tag dark">Personal TAB</span></div></div>
+      <div class="ls"><div class="ls-n">2</div><div class="ls-b"><div class="ls-t">Friction detected during the day · TAB resolves or routes</div><div class="ls-d">Self-repair first. Peer escalation if needed. Bypass always available. Employee workflow never stops.</div><span class="ls-tag dark">Personal TAB</span></div></div>
+      <div class="ls"><div class="ls-n">3</div><div class="ls-b"><div class="ls-t">End of day · Observational TAB collects from all department TABs</div><div class="ls-d">Failures, successes, friction patterns, bypass events, resolution outcomes. Anonymous. Aggregated. Verified.</div><span class="ls-tag g">Observational TAB</span></div></div>
+      <div class="ls"><div class="ls-n">4</div><div class="ls-b"><div class="ls-t">System Coroner Report generated · sent to Management TAB</div><div class="ls-d">What broke. Where. What was fixed. What needs engineering. Pattern not person. No blame in the language.</div><span class="ls-tag g">Observational TAB</span></div></div>
+      <div class="ls"><div class="ls-n">5</div><div class="ls-b"><div class="ls-t">Management TAB walks the board · decisions made</div><div class="ls-d">Infrastructure fixes prioritized. Directives issued. Board acts on systems, not people.</div><span class="ls-tag go">Management TAB</span></div></div>
+      <div class="ls"><div class="ls-n">6</div><div class="ls-b"><div class="ls-t">Directives return · Observational TAB converts to dept next steps</div><div class="ls-d">Management decisions translated back into department-level priorities.</div><span class="ls-tag g">Observational TAB</span></div></div>
+      <div class="ls"><div class="ls-n">7</div><div class="ls-b"><div class="ls-t">Personal TABs update · employee sees it as tomorrow's brief</div><div class="ls-d">No memo. No policy update. No all-hands. Just a slightly different morning — priorities naturally adjusted. The loop closes.</div><span class="ls-tag dark">Personal TAB</span></div></div>
+    </div>
+  </div>
+
+  <!-- IMMUNE SYSTEM -->
+  <div class="immune">
+    <div class="imm-label">What this architecture is</div>
+    <div class="imm-text">"TAB@Work gets <strong>more trustworthy over time</strong> — not less. Observer builds a verified baseline of normal system behavior. Anomalies become detectable not because someone set a rule, but because the independent observer has enough history to recognize when something is off. That's not a feature. <strong>That's an immune system.</strong>"</div>
+  </div>
+
+  <div class="footer-quote">
+    <div class="fq-t">"The employee never feels managed. Management never feels blind. The system gets better every day. Nobody gets blamed."</div>
+    <div class="fq-a">TAB@Work · Multi-Agent Architecture · Coller TAU Accelerator · March 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

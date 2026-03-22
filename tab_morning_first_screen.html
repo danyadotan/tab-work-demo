@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAB@Work — Morning First Screen</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Syne:wght@500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F2EFE8;--bg2:#E8E4DB;--bg3:#DDD8CE;
+  --surface:#FDFCF9;--surface2:#F7F5F0;
+  --ink:#18170F;--ink2:#5C5A50;--ink3:#A8A59C;
+  --gold:#8A6F3A;--gold-soft:#F0E8D5;--gold-mid:#C0A040;
+  --green:#1E4D38;--green-mid:#2A6B4E;--green-soft:#D8EDE4;
+  --rose:#6B2535;--rose-soft:#F0DDE2;
+  --tab:#18170F;--tab-ink:#F2EFE8;
+}
+body{background:#E8E4DB;font-family:'DM Sans',sans-serif;color:var(--ink);display:flex;align-items:flex-start;justify-content:center;min-height:100vh;padding:24px;}
+.shell{background:var(--bg);border-radius:22px;overflow:hidden;border:0.5px solid rgba(24,23,15,0.12);min-height:580px;position:relative;width:100%;max-width:680px;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:13px 20px 12px;background:var(--surface);border-bottom:0.5px solid rgba(24,23,15,0.08);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--ink);}
+.logo span{font-style:italic;color:var(--ink2);}
+.view-toggle{display:flex;gap:1px;background:var(--bg2);border-radius:20px;padding:3px;}
+.vt{font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:4px 11px;border-radius:16px;border:none;cursor:pointer;color:var(--ink3);background:transparent;transition:all 0.18s;}
+.vt.on{background:var(--surface);color:var(--ink);box-shadow:0 0 0 0.5px rgba(24,23,15,0.1);}
+.topbar-right{display:flex;align-items:center;gap:10px;}
+.clk{font-size:10px;color:var(--ink3);font-variant-numeric:tabular-nums;}
+.view{display:none;animation:fu 0.25s ease;}
+.view.on{display:block;}
+@keyframes fu{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.scrollable{max-height:520px;overflow-y:auto;padding:18px 20px 90px;scrollbar-width:thin;scrollbar-color:var(--bg2) transparent;}
+.briefing-header{margin-bottom:16px;}
+.bh-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.bh-eyebrow{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;}
+.bh-headline{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1.2;}
+.bh-headline em{font-style:italic;color:var(--gold);}
+.bh-sub{font-size:11px;color:var(--ink2);font-weight:300;line-height:1.55;margin-top:5px;}
+.bh-date{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink3);font-style:italic;white-space:nowrap;margin-top:4px;}
+.briefing-card{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:13px;padding:15px 17px;margin-bottom:11px;}
+.bc-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:9px;display:flex;align-items:center;gap:6px;}
+.bc-label-dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
+.bc-label-dot.green{background:var(--green-mid);}
+.bc-label-dot.gold{background:var(--gold-mid);}
+.bc-label-dot.rose{background:var(--rose);}
+.tab-says{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--ink);line-height:1.5;margin-bottom:10px;}
+.tab-says strong{font-style:normal;font-weight:400;}
+.context-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.cpill{background:var(--bg2);border:0.5px solid rgba(24,23,15,0.1);border-radius:5px;padding:4px 9px;font-size:10px;color:var(--ink2);display:flex;align-items:center;gap:5px;}
+.cpill svg{width:10px;height:10px;flex-shrink:0;}
+.cpill.green{background:var(--green-soft);border-color:rgba(42,107,78,0.15);color:var(--green);}
+.cpill.gold{background:var(--gold-soft);border-color:rgba(138,111,58,0.15);color:var(--gold);}
+.cpill.rose{background:var(--rose-soft);border-color:rgba(107,37,53,0.12);color:var(--rose);}
+.three-tasks{display:flex;flex-direction:column;gap:7px;margin-bottom:11px;}
+.task{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:11px;padding:12px 14px;display:flex;align-items:flex-start;gap:11px;transition:border-color 0.15s;cursor:pointer;}
+.task:hover{border-color:rgba(24,23,15,0.2);}
+.task-n{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--ink3);line-height:1;min-width:18px;}
+.task-b{flex:1;}
+.task-title{font-size:12px;font-weight:500;color:var(--ink);margin-bottom:2px;line-height:1.35;}
+.task-meta{font-size:10px;color:var(--ink3);font-weight:300;}
+.task-pip{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.task-pip.ready{background:var(--green-mid);}
+.task-pip.waiting{background:var(--gold-mid);}
+.delegated{background:var(--gold-soft);border:0.5px solid rgba(138,111,58,0.18);border-radius:11px;padding:12px 15px;margin-bottom:11px;}
+.d-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.d-items{display:flex;flex-wrap:wrap;gap:5px;}
+.d-item{background:rgba(255,255,255,0.65);border:0.5px solid rgba(138,111,58,0.12);border-radius:5px;padding:4px 9px;font-size:10px;color:var(--ink2);}
+.minddump{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:13px;padding:14px 16px;margin-bottom:11px;}
+.md-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
+.md-textarea{width:100%;background:transparent;border:none;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;font-style:italic;color:var(--ink);outline:none;resize:none;line-height:1.6;min-height:52px;}
+.md-textarea::placeholder{color:var(--ink3);}
+.md-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:0.5px solid rgba(24,23,15,0.07);}
+.md-hint{font-size:10px;color:var(--ink3);font-style:italic;}
+.md-btn{background:var(--ink);color:var(--bg);border:none;border-radius:6px;padding:6px 14px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;cursor:pointer;transition:opacity 0.15s;}
+.md-btn:hover{opacity:0.82;}
+.tools-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;}
+.tool-chip{display:flex;align-items:center;gap:5px;background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:6px;padding:5px 10px;font-size:10px;color:var(--ink2);}
+.tool-chip.connected{border-color:rgba(42,107,78,0.2);background:var(--green-soft);color:var(--green);}
+.tool-dot{width:4px;height:4px;border-radius:50%;background:var(--green-mid);}
+.tool-dot.off{background:var(--ink3);}
+.eod-header{margin-bottom:14px;}
+.eod-headline{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:4px;}
+.eod-headline em{font-style:italic;color:var(--gold);}
+.eod-sub{font-size:11px;color:var(--ink2);font-weight:300;}
+.eod-stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:11px;}
+.eod-stat{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:10px;padding:12px 13px;}
+.eod-num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;}
+.eod-num.gold{color:var(--gold-mid);}
+.eod-num.green{color:var(--green-mid);}
+.eod-unit{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:0.07em;margin-top:3px;}
+.eod-accomplished{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:13px;padding:14px 16px;margin-bottom:11px;}
+.eod-section-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:9px;}
+.eod-item{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:0.5px solid rgba(24,23,15,0.06);}
+.eod-item:last-child{border-bottom:none;}
+.eod-check{width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.eod-check.done{background:var(--green-soft);}
+.eod-check.auto{background:var(--gold-soft);}
+.eod-check svg{width:7px;height:7px;}
+.eod-item-text{font-size:11px;color:var(--ink);font-weight:400;flex:1;line-height:1.4;}
+.eod-item-meta{font-size:10px;color:var(--ink3);font-weight:300;}
+.loop-card{background:var(--ink);border-radius:12px;padding:14px 16px;margin-bottom:11px;}
+.loop-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,239,232,0.38);margin-bottom:6px;}
+.loop-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;font-style:italic;color:#F2EFE8;line-height:1.5;}
+.loop-text strong{font-style:normal;font-weight:400;}
+.cost-hero{background:var(--ink);border-radius:14px;padding:16px 18px;margin-bottom:11px;}
+.ch-label{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,239,232,0.35);margin-bottom:10px;}
+.ch-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.ch-num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#F2EFE8;line-height:1;}
+.ch-num.gold{color:#D4A84B;}
+.ch-unit{font-size:9px;color:rgba(242,239,232,0.38);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;}
+.ch-desc{font-size:10px;color:rgba(242,239,232,0.5);font-weight:300;margin-top:4px;line-height:1.4;}
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px;}
+.ic{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:11px;padding:13px 14px;}
+.ic-ey{font-size:9px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:5px;}
+.ic-ey.green{color:var(--green-mid);}
+.ic-ey.rose{color:var(--rose);}
+.ic-ey.gold{color:var(--gold);}
+.ic-ey.neutral{color:var(--ink3);}
+.ic-stat{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);line-height:1;margin-bottom:3px;}
+.ic-label{font-size:10px;color:var(--ink2);font-weight:300;line-height:1.45;}
+.anon-strip{background:var(--green-soft);border:0.5px solid rgba(42,107,78,0.18);border-radius:11px;padding:12px 14px;margin-bottom:11px;}
+.as-title{font-size:11px;font-weight:500;color:var(--green);margin-bottom:3px;}
+.as-desc{font-size:10px;color:var(--green-mid);line-height:1.5;font-weight:300;}
+.bs-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:0.5px solid rgba(24,23,15,0.06);}
+.bs-row:last-child{border-bottom:none;}
+.bs-name{font-size:10px;color:var(--ink2);min-width:140px;font-weight:300;}
+.bs-bar-wrap{flex:1;height:3px;background:var(--bg2);border-radius:2px;overflow:hidden;}
+.bs-bar{height:100%;border-radius:2px;}
+.bs-bar.rose{background:var(--rose);}
+.bs-bar.gold{background:var(--gold-mid);}
+.bs-bar.green{background:var(--green-mid);}
+.bs-val{font-size:10px;font-weight:500;color:var(--ink);min-width:36px;text-align:right;}
+.enterprise-card{background:var(--rose-soft);border:0.5px solid rgba(107,37,53,0.15);border-radius:12px;padding:14px 16px;margin-bottom:11px;}
+.ec-title{font-size:11px;font-weight:500;color:var(--rose);margin-bottom:5px;}
+.ec-body{font-size:10px;color:#6B2535;font-weight:300;line-height:1.6;}
+.ec-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.ec-tag{background:rgba(107,37,53,0.08);border:0.5px solid rgba(107,37,53,0.12);border-radius:4px;padding:3px 8px;font-size:9px;color:var(--rose);font-weight:500;letter-spacing:0.04em;}
+.tab-corner{position:absolute;bottom:0;right:22px;}
+.tab-handle{display:flex;align-items:center;gap:6px;background:var(--tab);color:var(--tab-ink);padding:6px 12px 8px;border-radius:8px 8px 0 0;cursor:pointer;transition:opacity 0.15s;}
+.tab-handle:hover{opacity:0.85;}
+.tab-pulse{width:4px;height:4px;border-radius:50%;background:var(--tab-ink);opacity:0.4;animation:tp 3s ease-in-out infinite;}
+@keyframes tp{0%,100%{opacity:0.18;}50%{opacity:0.65;}}
+.tab-lbl{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+.tab-panel{position:absolute;bottom:34px;right:0;width:244px;background:var(--surface);border-radius:12px 0 0 12px;border:0.5px solid rgba(24,23,15,0.1);border-right:none;display:none;flex-direction:column;}
+.tab-panel.open{display:flex;}
+.tp-head{padding:13px 15px 10px;border-bottom:0.5px solid rgba(24,23,15,0.07);}
+.tp-from{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px;}
+.tp-offer{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;color:var(--ink);line-height:1.4;}
+.tp-lib{padding:6px 8px 10px;}
+.tl-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;transition:background 0.1s;}
+.tl-item:hover{background:rgba(24,23,15,0.05);}
+.tl-icon{width:18px;height:18px;border-radius:4px;background:var(--bg2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tl-icon svg{width:9px;height:9px;}
+.tl-name{font-size:11px;font-weight:500;color:var(--ink);}
+.tl-desc{font-size:9px;color:var(--ink3);}
+.tl-locked{opacity:0.35;cursor:default;}
+.tl-locked:hover{background:transparent;}
+.tl-lock{width:10px;height:10px;opacity:0.25;margin-left:auto;}
+.lib-div{height:0.5px;background:rgba(24,23,15,0.07);margin:3px 8px;}
+.tp-trust{padding:8px 15px 12px;border-top:0.5px solid rgba(24,23,15,0.07);}
+.tp-trust-label{display:flex;justify-content:space-between;font-size:9px;color:var(--ink3);font-weight:500;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:4px;}
+.tp-trust-bg{height:2px;background:var(--bg2);border-radius:2px;overflow:hidden;}
+.tp-trust-fill{height:100%;width:0;background:var(--ink);border-radius:2px;transition:width 1s cubic-bezier(.4,0,.2,1);}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="logo">TAB<span>@Work</span></div>
+    <div class="view-toggle">
+      <button class="vt on" onclick="sw('morning')">Morning</button>
+      <button class="vt" onclick="sw('eod')">End of day</button>
+      <button class="vt" onclick="sw('board')">Board</button>
+    </div>
+    <div class="topbar-right">
+      <div class="clk" id="clk">—</div>
+    </div>
+  </div>
+
+  <!-- MORNING -->
+  <div class="view on scrollable" id="view-morning">
+    <div class="briefing-header">
+      <div class="bh-row">
+        <div class="bh-left">
+          <div class="bh-eyebrow">TAB prepared your morning</div>
+          <div class="bh-headline">Good morning, Danya.<br>Here's what <em>matters today.</em></div>
+          <div class="bh-sub">No decisions needed. TAB read your calendar, open loops, and yesterday's close — and made the call.</div>
+        </div>
+        <div class="bh-date">Friday,<br>20 March</div>
+      </div>
+    </div>
+    <div class="briefing-card">
+      <div class="bc-label"><div class="bc-label-dot gold"></div>TAB's read of this morning</div>
+      <div class="tab-says">"You have a pitch Monday. The Q2 doc is 80% done and has been open since Tuesday. <strong>Today is the day to close it.</strong> I've already blocked 10–12 for deep work, moved two low-priority threads to tomorrow, and drafted your standup update."</div>
+      <div class="context-pills">
+        <div class="cpill green"><svg viewBox="0 0 10 10" fill="none"><path d="M1 5.5L3.5 8L9 2" stroke="#2A6B4E" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Calendar blocked 10–12</div>
+        <div class="cpill green"><svg viewBox="0 0 10 10" fill="none"><path d="M1 5.5L3.5 8L9 2" stroke="#2A6B4E" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/></svg>2 threads deferred</div>
+        <div class="cpill gold"><svg viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3.5" stroke="#8A6F3A" stroke-width="0.9"/><path d="M5 3v2l1 1" stroke="#8A6F3A" stroke-width="0.8" stroke-linecap="round"/></svg>Standup drafted — review before 9:30</div>
+        <div class="cpill rose"><svg viewBox="0 0 10 10" fill="none"><path d="M5 1v4M5 7.5v.5" stroke="#6B2535" stroke-width="0.9" stroke-linecap="round"/></svg>1 approval pending since Mon</div>
+      </div>
+    </div>
+    <div class="three-tasks">
+      <div class="briefing-card" style="padding-bottom:4px;">
+        <div class="bc-label"><div class="bc-label-dot green"></div>Your 3 tasks — only what needs you</div>
+      </div>
+      <div class="task">
+        <div class="task-n">1</div>
+        <div class="task-b">
+          <div class="task-title">Write the executive summary for the Q2 proposal — 3 paragraphs</div>
+          <div class="task-meta">Est. 25 min · Notion doc open · TAB can't write this one for you</div>
+        </div>
+        <div class="task-pip ready"></div>
+      </div>
+      <div class="task">
+        <div class="task-n">2</div>
+        <div class="task-b">
+          <div class="task-title">Review and approve the standup draft TAB prepared</div>
+          <div class="task-meta">Est. 3 min · Slack · your voice, your call</div>
+        </div>
+        <div class="task-pip ready"></div>
+      </div>
+      <div class="task">
+        <div class="task-n">3</div>
+        <div class="task-b">
+          <div class="task-title">Sign off on the Monday pitch deck — one decision: send or revise</div>
+          <div class="task-meta">Est. 10 min · needs your judgment, not more edits</div>
+        </div>
+        <div class="task-pip waiting"></div>
+      </div>
+    </div>
+    <div class="delegated">
+      <div class="d-label">Already handled — no action needed</div>
+      <div class="d-items">
+        <div class="d-item">Policy renewal — filed</div>
+        <div class="d-item">Expense report — pre-filled</div>
+        <div class="d-item">3 low-priority emails — drafted</div>
+        <div class="d-item">Weekly report — compiled overnight</div>
+        <div class="d-item">Calendar conflicts — resolved</div>
+        <div class="d-item">Approval request — routed to Maya</div>
+      </div>
+    </div>
+    <div class="minddump">
+      <div class="md-label">Mind dump — clear it, TAB sorts it</div>
+      <textarea class="md-textarea" placeholder="Anything on your mind — worries, ideas, loose ends, things you don't want to forget…" rows="3"></textarea>
+      <div class="md-footer">
+        <div class="md-hint">The more you write now, the less you carry through the day</div>
+        <button class="md-btn">Clear + sort →</button>
+      </div>
+    </div>
+    <div>
+      <div class="bc-label" style="margin-bottom:8px;"><span class="bc-label-dot green"></span> Connected tools</div>
+      <div class="tools-row">
+        <div class="tool-chip connected"><div class="tool-dot"></div>Notion</div>
+        <div class="tool-chip connected"><div class="tool-dot"></div>Slack</div>
+        <div class="tool-chip connected"><div class="tool-dot"></div>Google Calendar</div>
+        <div class="tool-chip connected"><div class="tool-dot"></div>Gmail</div>
+        <div class="tool-chip connected"><div class="tool-dot"></div>Drive</div>
+        <div class="tool-chip"><div class="tool-dot off"></div>Jira</div>
+        <div class="tool-chip"><div class="tool-dot off"></div>Linear</div>
+        <div class="tool-chip"><div class="tool-dot off"></div>+ Add tool</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EOD -->
+  <div class="view scrollable" id="view-eod">
+    <div class="eod-header">
+      <div class="bh-eyebrow">End of day · Friday 20 March</div>
+      <div class="eod-headline">Here's what you <em>actually did.</em></div>
+      <div class="eod-sub">Not what you planned. What happened. TAB was there for all of it.</div>
+    </div>
+    <div class="eod-stat-row">
+      <div class="eod-stat"><div class="eod-num green">3 / 3</div><div class="eod-unit">Tasks done</div></div>
+      <div class="eod-stat"><div class="eod-num gold">38 min</div><div class="eod-unit">Recovered</div></div>
+      <div class="eod-stat"><div class="eod-num">6</div><div class="eod-unit">Auto-handled</div></div>
+    </div>
+    <div class="eod-accomplished">
+      <div class="eod-section-label">What got done — by you and TAB</div>
+      <div class="eod-item">
+        <div class="eod-check done"><svg viewBox="0 0 7 7" fill="none"><path d="M1 3.5L2.8 5.5L6 1.5" stroke="#2A6B4E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="eod-item-text">Executive summary — written, reviewed, sent to Maya</div><div class="eod-item-meta">You · 22 min · Notion</div></div>
+      </div>
+      <div class="eod-item">
+        <div class="eod-check done"><svg viewBox="0 0 7 7" fill="none"><path d="M1 3.5L2.8 5.5L6 1.5" stroke="#2A6B4E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="eod-item-text">Standup approved and posted to Slack</div><div class="eod-item-meta">You · 3 min · TAB drafted</div></div>
+      </div>
+      <div class="eod-item">
+        <div class="eod-check done"><svg viewBox="0 0 7 7" fill="none"><path d="M1 3.5L2.8 5.5L6 1.5" stroke="#2A6B4E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="eod-item-text">Pitch deck — approved, sent to Coller contact</div><div class="eod-item-meta">You · 8 min · the right call</div></div>
+      </div>
+      <div class="eod-item">
+        <div class="eod-check auto"><svg viewBox="0 0 7 7" fill="none"><path d="M1 4L3.5 1.5L6 4" stroke="#8A6F3A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="eod-item-text">Policy renewal filed, expense pre-filled, 3 emails sent</div><div class="eod-item-meta">TAB · automated · no action needed from you</div></div>
+      </div>
+      <div class="eod-item">
+        <div class="eod-check auto"><svg viewBox="0 0 7 7" fill="none"><path d="M1 4L3.5 1.5L6 4" stroke="#8A6F3A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="eod-item-text">Monday prep — calendar set, materials organized, reminder queued</div><div class="eod-item-meta">TAB · overnight · you'll wake up ready</div></div>
+      </div>
+    </div>
+    <div class="loop-card">
+      <div class="loop-label">Tomorrow's opening move</div>
+      <div class="loop-text">"Walk in, open your laptop. <strong>The pitch brief is on screen.</strong> Nothing to find, nothing to remember. TAB has it."</div>
+    </div>
+  </div>
+
+  <!-- BOARD -->
+  <div class="view scrollable" id="view-board">
+    <div class="briefing-header" style="margin-bottom:14px;">
+      <div class="bh-eyebrow">Anonymous · System-level · Real cost</div>
+      <div class="bh-headline" style="font-size:24px;">The tax your org pays every day.<br><em>Now visible. Now stoppable.</em></div>
+    </div>
+    <div class="cost-hero">
+      <div class="ch-label">This month · 240 seats · anonymous</div>
+      <div class="ch-grid">
+        <div><div class="ch-num gold">€184k</div><div class="ch-unit">Friction cost</div><div class="ch-desc">Lost to initiation delay, tool switching, incomplete handoffs</div></div>
+        <div><div class="ch-num">67%</div><div class="ch-unit">Tickets reduced</div><div class="ch-desc">Since TAB closed the last-5-minute completion gap</div></div>
+        <div><div class="ch-num gold">4.2×</div><div class="ch-unit">ROI · 90 days</div><div class="ch-desc">Per seat cost vs. recovered execution time</div></div>
+      </div>
+    </div>
+    <div class="insight-grid">
+      <div class="ic"><div class="ic-ey rose">Talent cost</div><div class="ic-stat">6 mo.</div><div class="ic-label">Average burnout timeline for high performers in high-friction roles</div></div>
+      <div class="ic"><div class="ic-ey green">Time recovered</div><div class="ic-stat">38 min</div><div class="ic-label">Per employee per day. Intention → done, without the drift</div></div>
+      <div class="ic"><div class="ic-ey gold">Hiring tax</div><div class="ic-stat">1.5–2×</div><div class="ic-label">Salary cost to replace one burned-out employee. TAB makes retention measurable</div></div>
+      <div class="ic"><div class="ic-ey neutral">Noise reduction</div><div class="ic-stat">↓ 80%</div><div class="ic-label">Operational noise when workflows close properly. New capacity for growth</div></div>
+    </div>
+    <div class="enterprise-card">
+      <div class="ec-title">Why TAB@Work — not ChatGPT at work</div>
+      <div class="ec-body">Every org wants AI. Then they discover their employees are uploading contracts, client data, and internal strategy to personal accounts with no guardrails, no audit trail, no data residency. TAB is private AI infrastructure — one TAB per employee, governed by the org, scoped to the role.</div>
+      <div class="ec-tags">
+        <div class="ec-tag">Org-level guardrails</div>
+        <div class="ec-tag">Department API scoping</div>
+        <div class="ec-tag">No personal data leakage</div>
+        <div class="ec-tag">Audit trail</div>
+        <div class="ec-tag">Data residency</div>
+        <div class="ec-tag">Contract-grade privacy</div>
+      </div>
+    </div>
+    <div class="anon-strip">
+      <div class="as-title">Anonymous by architecture — not by policy</div>
+      <div class="as-desc">No employee is named in any insight. TAB identifies where the system fails, not who failed. When people stop feeling watched, engagement rises and the data becomes real.</div>
+    </div>
+    <div class="briefing-card">
+      <div class="bc-label"><div class="bc-label-dot rose"></div>System blind spots this week</div>
+      <div class="bs-row"><div class="bs-name">Document approval loop</div><div class="bs-bar-wrap"><div class="bs-bar rose" style="width:82%"></div></div><div class="bs-val">82% drop</div></div>
+      <div class="bs-row"><div class="bs-name">Morning task initiation</div><div class="bs-bar-wrap"><div class="bs-bar gold" style="width:64%"></div></div><div class="bs-val">64% delay</div></div>
+      <div class="bs-row"><div class="bs-name">Cross-dept handoff</div><div class="bs-bar-wrap"><div class="bs-bar rose" style="width:71%"></div></div><div class="bs-val">71% stall</div></div>
+      <div class="bs-row"><div class="bs-name">End-of-task completion</div><div class="bs-bar-wrap"><div class="bs-bar gold" style="width:55%"></div></div><div class="bs-val">55% incomplete</div></div>
+      <div class="bs-row"><div class="bs-name">Policy acknowledgement</div><div class="bs-bar-wrap"><div class="bs-bar green" style="width:28%"></div></div><div class="bs-val">28% gap</div></div>
+    </div>
+  </div>
+
+  <!-- TAB -->
+  <div class="tab-corner">
+    <div class="tab-panel" id="tabPanel">
+      <div class="tp-head">
+        <div class="tp-from">TAB</div>
+        <div class="tp-offer" id="tpOffer">First 5 seconds. Last 5 minutes. I've got both.</div>
+      </div>
+      <div class="tp-lib">
+        <div class="tl-item" onclick="sw('morning');closeTab()">
+          <div class="tl-icon"><svg viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="3" stroke="#18170F" stroke-width="0.8"/><path d="M4.5 3v1.5l1 1" stroke="#18170F" stroke-width="0.7" stroke-linecap="round"/></svg></div>
+          <div><div class="tl-name">Morning briefing</div><div class="tl-desc">TAB already prepared it</div></div>
+        </div>
+        <div class="tl-item" onclick="sw('eod');closeTab()">
+          <div class="tl-icon"><svg viewBox="0 0 9 9" fill="none"><path d="M1 7L3.5 4.5l2 1.5L8 2" stroke="#18170F" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><div class="tl-name">End of day</div><div class="tl-desc">Walk through what got done</div></div>
+        </div>
+        <div class="tl-item" onclick="sw('board');closeTab()">
+          <div class="tl-icon"><svg viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.2" stroke="#18170F" stroke-width="0.8"/><path d="M3 6V4M5 6V3M7 6V5" stroke="#18170F" stroke-width="0.7" stroke-linecap="round"/></svg></div>
+          <div><div class="tl-name">Board view</div><div class="tl-desc">Numbers that matter</div></div>
+        </div>
+        <div class="lib-div"></div>
+        <div class="tl-item tl-locked">
+          <div class="tl-icon"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 8L4.5 2L7.5 8" stroke="#18170F" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 6.5h4" stroke="#18170F" stroke-width="0.7" stroke-linecap="round"/></svg></div>
+          <div><div class="tl-name">Weekly patterns</div><div class="tl-desc">Unlocks · stage 2</div></div>
+          <svg class="tl-lock" viewBox="0 0 10 10" fill="none"><path d="M3 4V3a2 2 0 014 0v1" stroke="#18170F" stroke-width="0.85" stroke-linecap="round"/><rect x="2" y="4" width="6" height="4.5" rx="1" stroke="#18170F" stroke-width="0.85"/></svg>
+        </div>
+        <div class="tl-item tl-locked">
+          <div class="tl-icon"><svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5C4.5 1.5 2 3.5 2 5.5a2.5 2.5 0 005 0c0-2-2.5-4-2.5-4z" stroke="#18170F" stroke-width="0.8"/></svg></div>
+          <div><div class="tl-name">Proactive nudges</div><div class="tl-desc">Unlocks · stage 3</div></div>
+          <svg class="tl-lock" viewBox="0 0 10 10" fill="none"><path d="M3 4V3a2 2 0 014 0v1" stroke="#18170F" stroke-width="0.85" stroke-linecap="round"/><rect x="2" y="4" width="6" height="4.5" rx="1" stroke="#18170F" stroke-width="0.85"/></svg>
+        </div>
+      </div>
+      <div class="tp-trust">
+        <div class="tp-trust-label"><span>stage 1</span><span>grows over time</span></div>
+        <div class="tp-trust-bg"><div class="tp-trust-fill" id="tFill"></div></div>
+      </div>
+    </div>
+    <div class="tab-handle" onclick="toggleTab()">
+      <div class="tab-pulse"></div>
+      <div class="tab-lbl">TAB</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const offers=['First 5 seconds. Last 5 minutes. I\'ve got both.','Here when you want to cut through the noise.','The briefing is ready. You don\'t have to decide anything yet.','Here when you want to work together.','Got a question? I\'m ready.'];
+let oi=0,tabOpen=false;
+function sw(v){document.querySelectorAll('.view').forEach(el=>el.classList.remove('on'));document.querySelectorAll('.vt').forEach(el=>el.classList.remove('on'));document.getElementById('view-'+v).classList.add('on');const idx=['morning','eod','board'].indexOf(v);document.querySelectorAll('.vt')[idx].classList.add('on');}
+function toggleTab(){tabOpen?closeTab():openTab();}
+function openTab(){tabOpen=true;document.getElementById('tabPanel').classList.add('open');setTimeout(()=>{document.getElementById('tFill').style.width='28%';},400);}
+function closeTab(){tabOpen=false;document.getElementById('tabPanel').classList.remove('open');document.getElementById('tFill').style.width='0';oi=(oi+1)%offers.length;document.getElementById('tpOffer').textContent=offers[oi];}
+function updateClock(){const n=new Date();document.getElementById('clk').textContent=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');}
+updateClock();setInterval(updateClock,30000);setTimeout(openTab,1000);
+</script>
+</body>
+</html>
