@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
 html,body{background:var(--bg2);font-family:'DM Sans',sans-serif;color:var(--ink);}
 body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60px;}
 
-.shell{width:100%;max-width:740px;background:var(--bg);border-radius:24px;overflow:hidden;border:0.5px solid rgba(24,23,15,0.12);position:relative;box-shadow:0 8px 40px rgba(24,23,15,0.08);}
+.shell{width:100%;max-width:740px;background:var(--bg);border-radius:24px;overflow-y:auto;overflow-x:hidden;border:0.5px solid rgba(24,23,15,0.12);position:relative;box-shadow:0 8px 40px rgba(24,23,15,0.08);max-height:90vh;}
 
 /* TOPBAR */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px 11px;background:var(--surface);border-bottom:0.5px solid rgba(24,23,15,0.08);position:sticky;top:0;z-index:20;flex-wrap:wrap;gap:8px;}
@@ -39,7 +40,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 /* VIEWS */
 .view{display:none;}
 .view.on{display:block;}
-.scroll{max-height:calc(100vh - 130px);overflow-y:auto;padding:18px 20px 90px;scrollbar-width:thin;scrollbar-color:var(--bg2) transparent;}
+.scroll{overflow-y:auto;padding:18px 20px 120px;scrollbar-width:thin;scrollbar-color:var(--bg2) transparent;}
 @keyframes fu{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
 .anim{animation:fu 0.3s ease;}
 
@@ -87,11 +88,71 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .btn-decline{width:100%;background:transparent;color:var(--ink3);border:none;font-family:'DM Sans',sans-serif;font-size:10px;cursor:pointer;padding:4px;}
 
 /* MORNING WALKTHROUGH */
-.step-prog{display:flex;align-items:center;gap:5px;margin-bottom:16px;}
-.sp-d{width:6px;height:6px;border-radius:50%;background:var(--bg3);transition:all 0.3s;}
-.sp-d.done{background:var(--green-mid);}
-.sp-d.cur{background:var(--ink);transform:scale(1.35);}
-.sp-lbl{font-size:9px;color:var(--ink3);font-weight:500;letter-spacing:0.07em;text-transform:uppercase;margin-left:4px;}
+.step-prog{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.sp-track{width:80px;height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;flex-shrink:0;}
+.sp-fill{height:100%;width:0%;background:var(--green-mid);border-radius:2px;transition:width 0.4s cubic-bezier(.4,0,.2,1);}
+.sp-lbl{font-size:9px;color:var(--ink3);font-weight:500;letter-spacing:0.07em;text-transform:uppercase;flex:1;}
+.sp-scroll-hint{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--green-mid);font-weight:500;animation:bobDown 1.2s ease-in-out infinite;transition:opacity 0.4s;}
+@keyframes bobDown{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
+
+/* TASK WORKSPACE — post-brief clean screen */
+.task-workspace{display:none;padding:16px 0 0;}
+.task-workspace.visible{display:block;animation:fu 0.4s ease;}
+.tw-header{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;}
+.tw-cards{display:flex;flex-direction:column;gap:8px;}
+.tw-card{border-radius:13px;padding:16px 17px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
+.tw-card.t1{background:var(--ink);color:#F2EFE8;}
+.tw-card.t2{background:var(--surface);border:0.5px solid rgba(24,23,15,0.1);}
+.tw-card.t3{background:var(--surface);border:0.5px solid rgba(24,23,15,0.1);opacity:0.7;}
+.tw-card:hover{transform:translateY(-1px);}
+.tw-card.done-card{opacity:0.35;}
+.tw-card.done-card .tw-title{text-decoration:line-through;}
+.tw-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;line-height:1;margin-bottom:4px;}
+.tw-card.t1 .tw-num{color:rgba(242,239,232,0.25);}
+.tw-card.t2 .tw-num,.tw-card.t3 .tw-num{color:var(--ink3);}
+.tw-title{font-size:13px;font-weight:500;line-height:1.35;margin-bottom:3px;}
+.tw-card.t1 .tw-title{color:#F2EFE8;}
+.tw-card.t2 .tw-title,.tw-card.t3 .tw-title{color:var(--ink);}
+.tw-meta{font-size:10px;font-weight:300;}
+.tw-card.t1 .tw-meta{color:rgba(242,239,232,0.5);}
+.tw-card.t2 .tw-meta,.tw-card.t3 .tw-meta{color:var(--ink3);}
+.tw-done-btn{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.2);border-radius:5px;padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;color:rgba(242,239,232,0.8);cursor:pointer;transition:all 0.15s;}
+.tw-done-btn:hover{background:rgba(255,255,255,0.25);}
+.tw-done-btn.dark{background:rgba(24,23,15,0.06);border-color:rgba(24,23,15,0.12);color:var(--ink2);}
+
+/* AUTONOMY CHOICE */
+.tw-choice{margin-top:14px;padding:13px 15px;background:var(--green-soft);border:0.5px solid rgba(42,107,78,0.18);border-radius:12px;}
+.twc-label{font-size:10px;color:var(--green);font-weight:500;margin-bottom:10px;line-height:1.4;}
+.twc-options{display:flex;gap:8px;}
+.twc-opt{flex:1;background:var(--surface);border:0.5px solid rgba(24,23,15,0.1);border-radius:9px;padding:10px 12px;cursor:pointer;text-align:left;transition:all 0.15s;font-family:'DM Sans',sans-serif;}
+.twc-opt:hover{border-color:var(--green-mid);background:white;}
+.twc-opt-num{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--ink3);line-height:1;margin-bottom:3px;}
+.twc-opt-text{font-size:11px;font-weight:500;color:var(--ink);display:flex;flex-direction:column;gap:2px;}
+.twc-opt-text span{font-size:9px;font-weight:300;color:var(--ink3);}
+
+/* TRANSPARENCY STRIP */
+.tw-transparency{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:9px 13px;background:var(--surface);border:0.5px solid rgba(24,23,15,0.07);border-radius:9px;}
+.twt-left{display:flex;align-items:center;gap:7px;}
+.twt-dot{width:5px;height:5px;border-radius:50%;background:var(--green-mid);animation:blink 2s ease-in-out infinite;}
+.twt-text{font-size:11px;color:var(--ink2);font-weight:300;}
+.twt-see{font-size:10px;color:var(--green-mid);font-weight:500;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;transition:opacity 0.15s;}
+.twt-see:hover{opacity:0.7;}
+.tw-handled{margin-top:8px;padding:12px 14px;background:var(--gold-soft);border:0.5px solid rgba(138,111,58,0.15);border-radius:9px;}
+.twh-item{font-size:11px;color:var(--ink2);font-weight:300;padding:4px 0;border-bottom:0.5px solid rgba(24,23,15,0.05);}
+.twh-item:last-of-type{border-bottom:none;}
+
+/* TAB CHAT MODE — after brief */
+.tab-chat-mode .tp-head{display:none;}
+.tab-chat-input-wrap{padding:10px 14px 12px;border-top:0.5px solid rgba(24,23,15,0.07);}
+.tab-chat-history{padding:8px 14px;max-height:160px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;}
+.tc-msg{font-size:11px;line-height:1.5;padding:8px 10px;border-radius:9px;}
+.tc-msg.tab{background:var(--ink);color:#F2EFE8;align-self:flex-start;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;border-radius:9px 9px 9px 3px;}
+.tc-msg.user{background:var(--bg2);color:var(--ink);align-self:flex-end;border-radius:9px 9px 3px 9px;}
+.tab-chat-input{display:flex;gap:6px;align-items:center;}
+.tci-field{flex:1;background:var(--bg);border:0.5px solid rgba(24,23,15,0.12);border-radius:6px;padding:6px 10px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--ink);outline:none;}
+.tci-field::placeholder{color:var(--ink3);}
+.tci-send{background:var(--ink);color:var(--bg);border:none;border-radius:6px;padding:6px 10px;font-size:11px;cursor:pointer;transition:opacity 0.15s;}
+.tci-send:hover{opacity:0.82;}
 
 .tab-bubble{background:var(--ink);border-radius:14px 14px 14px 4px;padding:13px 16px;margin-bottom:10px;}
 .tbb-from{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,239,232,0.38);margin-bottom:5px;display:flex;align-items:center;gap:5px;}
@@ -295,6 +356,161 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .pq{text-align:center;padding:16px 16px 0;margin-bottom:16px;}
 .pq-t{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;color:var(--ink2);line-height:1.6;}
 .pq-a{font-size:10px;color:var(--ink3);margin-top:7px;letter-spacing:0.05em;}
+
+/* ── LIBRARY DRAWER ── */
+.lib-drawer{position:fixed;top:0;left:-360px;width:340px;height:100vh;background:var(--surface);border-right:0.5px solid rgba(24,23,15,0.1);z-index:95;overflow:hidden;display:flex;flex-direction:column;transition:left 0.3s cubic-bezier(.4,0,.2,1);box-shadow:8px 0 32px rgba(24,23,15,0.08);}
+.lib-drawer.open{left:0;}
+.lib-overlay{position:fixed;inset:0;background:rgba(24,23,15,0.2);z-index:90;display:none;}
+.lib-overlay.open{display:block;}
+
+.lib-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:0.5px solid rgba(24,23,15,0.07);flex-shrink:0;}
+.lib-tabs{display:flex;gap:4px;background:var(--bg2);border-radius:8px;padding:2px;}
+.lib-tab{background:none;border:none;padding:5px 10px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;color:var(--ink3);cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.lib-tab.on{background:var(--surface);color:var(--ink);box-shadow:0 0 0 0.5px rgba(24,23,15,0.1);}
+
+.lib-pane{flex:1;overflow-y:auto;padding:12px 16px 24px;}
+.lib-pane.hidden{display:none;}
+
+.lib-growing-badge{font-size:8px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);background:var(--green-soft);border-radius:4px;padding:3px 8px;display:inline-block;margin-bottom:12px;}
+
+.lib-terms{display:flex;flex-direction:column;gap:1px;}
+.lib-term{padding:10px 12px;border-radius:8px;background:var(--bg);margin-bottom:4px;position:relative;}
+.lib-term.new::before{content:'new';position:absolute;top:8px;right:10px;font-size:7px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);border-radius:3px;padding:2px 5px;}
+.lib-term-key{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:4px;}
+.lib-term-val{font-size:10px;color:var(--ink2);font-weight:300;line-height:1.55;}
+
+.lib-search-wrap{margin-bottom:12px;}
+.lib-search{width:100%;background:var(--bg);border:0.5px solid rgba(24,23,15,0.12);border-radius:7px;padding:7px 11px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--ink);outline:none;}
+.lib-search::placeholder{color:var(--ink3);}
+.lib-search:focus{border-color:rgba(24,23,15,0.25);}
+
+.lib-int-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px;}
+.lib-int{border-radius:9px;padding:10px 8px;text-align:center;cursor:pointer;transition:all 0.15s;border:0.5px solid rgba(24,23,15,0.08);}
+.lib-int.connected{background:var(--green-soft);border-color:rgba(42,107,78,0.2);}
+.lib-int.available{background:var(--surface);}
+.lib-int.available:hover{border-color:rgba(24,23,15,0.2);transform:translateY(-1px);}
+.lib-int.soon{background:var(--bg);opacity:0.5;}
+.lib-int.hidden-int{display:none;}
+
+.li-icon{width:28px;height:28px;border-radius:7px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--ink);margin:0 auto 5px;font-family:'DM Sans',sans-serif;}
+.li-slack{background:#4A154B;color:white;}
+.li-gcal{background:#4285F4;color:white;}
+.li-gmail{background:#EA4335;color:white;}
+.li-drive{background:#34A853;color:white;}
+.li-jira{background:#0052CC;color:white;}
+.li-linear{background:#5E6AD2;color:white;}
+.li-gh{background:#24292E;color:white;font-size:7px;}
+.li-zoom{background:#2D8CFF;color:white;}
+.li-teams{background:#6264A7;color:white;}
+.li-sf{background:#00A1E0;color:white;font-size:7px;}
+.li-hs{background:#FF7A59;color:white;font-size:7px;}
+.li-asana{background:#F06A6A;color:white;}
+.li-figma{background:#F24E1E;color:white;}
+.li-soon{background:var(--bg3);color:var(--ink3);font-size:7px;}
+
+.li-name{font-size:10px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.li-status{font-size:8px;font-weight:500;}
+.li-status.connected{color:var(--green);}
+.li-status.available{color:var(--blue);}
+.li-status.soon{color:var(--ink3);}
+.lib-int-note{font-size:10px;color:var(--ink3);font-style:italic;text-align:center;line-height:1.5;padding:4px 8px;}
+
+.env-btn{display:flex;align-items:center;gap:4px;background:none;border:0.5px solid rgba(24,23,15,0.15);border-radius:6px;padding:4px 8px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink2);cursor:pointer;transition:all 0.15s;}
+.env-btn:hover{border-color:rgba(24,23,15,0.3);color:var(--ink);}
+
+.env-overlay{position:fixed;inset:0;background:rgba(24,23,15,0.2);z-index:90;display:none;}
+.env-overlay.open{display:block;}
+
+.env-drawer{position:fixed;top:0;right:-340px;width:320px;height:100vh;background:var(--surface);border-left:0.5px solid rgba(24,23,15,0.1);z-index:95;padding:0;overflow-y:auto;transition:right 0.3s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 32px rgba(24,23,15,0.08);}
+.env-drawer.open{right:0;}
+
+.env-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px;border-bottom:0.5px solid rgba(24,23,15,0.07);}
+.env-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);}
+.env-close{background:none;border:none;font-size:14px;color:var(--ink3);cursor:pointer;padding:2px 4px;transition:color 0.12s;}
+.env-close:hover{color:var(--ink);}
+.env-subtitle{font-size:10px;color:var(--ink3);font-weight:300;line-height:1.55;padding:10px 18px;font-style:italic;border-bottom:0.5px solid rgba(24,23,15,0.05);}
+
+.env-section-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);padding:12px 18px 8px;}
+
+.env-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 18px 4px;}
+
+.env-mode{border:0.5px solid rgba(24,23,15,0.1);border-radius:10px;padding:10px;cursor:pointer;transition:all 0.18s;position:relative;background:var(--bg);}
+.env-mode:hover:not(.studio){border-color:rgba(24,23,15,0.25);background:var(--surface);}
+.env-mode.on{border-color:var(--green-mid);border-width:1.5px;background:var(--green-soft);}
+.env-mode.studio{opacity:0.6;cursor:default;}
+
+.env-mode-preview{height:44px;border-radius:6px;margin-bottom:8px;padding:6px;display:flex;flex-direction:column;gap:3px;overflow:hidden;}
+.serenity-prev{background:#F2EFE8;}
+.notion-prev{background:#FFFFFF;border:0.5px solid #E8E8E8;}
+.future-prev{background:#0D1117;}
+.pop-prev{background:#FFE135;}
+
+.prev-bar{height:4px;border-radius:2px;width:70%;}
+.serenity-prev .prev-bar{background:#C0A040;}
+.notion-prev .prev-bar{background:#18170F;}
+.future-prev .prev-bar{background:#00FF9C;}
+.pop-prev .prev-bar{background:#E8003D;}
+
+.prev-card{height:8px;border-radius:3px;width:100%;}
+.prev-card.sm{width:70%;}
+.serenity-prev .prev-card{background:#EDE9E0;}
+.notion-prev .prev-card{background:#F1F1F0;}
+.future-prev .prev-card{background:#161B22;}
+.pop-prev .prev-card{background:#FF6B35;}
+.pop-prev .prev-card.sm{background:#4ECDC4;}
+
+.env-mode-name{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.env-mode-desc{font-size:9px;color:var(--ink3);line-height:1.4;}
+.env-active-badge{font-size:8px;font-weight:500;color:var(--green);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;}
+.env-studio-badge{font-size:8px;color:var(--gold);font-weight:500;margin-bottom:3px;}
+
+.env-divider{height:0.5px;background:rgba(24,23,15,0.07);margin:12px 18px;}
+
+.env-toggle-row{display:flex;align-items:center;gap:12px;padding:10px 18px;cursor:pointer;transition:background 0.1s;border-radius:8px;margin:0 10px;}
+.env-toggle-row:hover{background:var(--bg);}
+.env-toggle-body{flex:1;}
+.env-toggle-name{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.env-toggle-desc{font-size:10px;color:var(--ink3);font-weight:300;}
+.env-toggle-wrap{position:relative;width:36px;height:20px;flex-shrink:0;}
+.env-toggle-wrap input{opacity:0;width:0;height:0;position:absolute;}
+.env-slider{position:absolute;inset:0;background:var(--bg2);border-radius:10px;transition:0.2s;border:0.5px solid rgba(24,23,15,0.15);}
+.env-toggle-wrap input:checked+.env-slider{background:var(--green-mid);border-color:var(--green-mid);}
+.env-slider:before{content:'';position:absolute;width:14px;height:14px;left:2px;top:2px;background:white;border-radius:50%;transition:0.2s;}
+.env-toggle-wrap input:checked+.env-slider:before{transform:translateX(16px);}
+
+.env-studio-note{font-size:9px;color:var(--ink3);font-style:italic;padding:10px 18px 20px;line-height:1.5;}
+
+/* ── NOTION THEME OVERRIDES ── */
+.theme-notion{
+  --bg:#FFFFFF;--bg2:#F1F1F0;--bg3:#E9E9E8;
+  --surface:#FFFFFF;--surface2:#F7F7F6;
+  --ink:#191919;--ink2:#555555;--ink3:#9B9A97;
+  --gold:#D4A017;--gold-soft:#FFF8E6;--gold-mid:#D4A017;
+  --green:#0F7B6C;--green-mid:#0F7B6C;--green-soft:#DFFAF4;
+  --rose:#E03E3E;--rose-soft:#FDECEA;
+  --blue:#0B6E99;--blue-soft:#E3F4FD;
+  --tab:#191919;--tab-ink:#FFFFFF;
+  font-family:'DM Sans',sans-serif!important;
+}
+.theme-notion .shell{border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.theme-notion .topbar{padding:10px 16px;}
+.theme-notion .logo{font-family:'DM Sans',sans-serif!important;font-weight:500;font-size:15px;}
+.theme-notion .scroll{padding:14px 16px 80px;}
+.theme-notion .card,.theme-notion .card-green,.theme-notion .card-gold,.theme-notion .card-rose,.theme-notion .card-blue{border-radius:6px;padding:12px 14px;}
+.theme-notion .tab-bubble{border-radius:6px 6px 6px 2px;}
+.theme-notion .tbb-text{font-family:'DM Sans',sans-serif!important;font-size:13px;font-style:normal;font-weight:400;}
+.theme-notion .intervention{border-radius:6px;}
+.theme-notion .task-item{border-radius:6px;}
+.theme-notion .hq-q{font-family:'DM Sans',sans-serif!important;font-size:13px;font-weight:500;}
+.theme-notion .kpi-n{font-family:'DM Sans',sans-serif!important;}
+.theme-notion .ic-n{font-family:'DM Sans',sans-serif!important;}
+.theme-notion .ch-n{font-family:'DM Sans',sans-serif!important;}
+
+/* ── DYSLEXIA FONT ── */
+@font-face{font-family:'OpenDyslexic';src:url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.otf') format('opentype');}
+.font-dyslexia,.font-dyslexia *{font-family:'OpenDyslexic',sans-serif!important;}
+.font-dyslexia .logo,.font-dyslexia .tab-bubble .tbb-text,.font-dyslexia .hq-q{font-family:'OpenDyslexic',sans-serif!important;}
+
 </style>
 </head>
 <body>
@@ -342,21 +558,195 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
     <button class="nb hot" onclick="sw('hardq')">Hard Q's</button>
   </div>
   <div class="topbar-r">
+    <button class="env-btn" onclick="toggleLib()" title="Library">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="2" width="3" height="9" rx="0.5" stroke="currentColor" stroke-width="1"/><rect x="5" y="2" width="3" height="9" rx="0.5" stroke="currentColor" stroke-width="1"/><rect x="9" y="2" width="3" height="9" rx="0.5" stroke="currentColor" stroke-width="1"/></svg>
+      <span>LIB</span>
+    </button>
+    <button class="env-btn" onclick="toggleEnv()" title="Environmental Settings">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="2" stroke="currentColor" stroke-width="1"/><path d="M6.5 1v1.5M6.5 10.5V12M12 6.5h-1.5M2.5 6.5H1M10.3 2.7l-1.1 1.1M3.8 9.2l-1.1 1.1M10.3 10.3l-1.1-1.1M3.8 3.8L2.7 2.7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+      <span>ENV</span>
+    </button>
     <div class="live-dot"></div>
     <div class="live-txt">Live</div>
     <div class="clk" id="clk">—</div>
   </div>
 </div>
 
+<!-- ENV DRAWER -->
+<div class="env-drawer" id="envDrawer">
+  <div class="env-header">
+    <div class="env-title">Environmental Settings</div>
+    <button class="env-close" onclick="toggleEnv()">✕</button>
+  </div>
+  <div class="env-subtitle">"אסתטיקה זה מידת ההצלחה של מוצר" — TAB@Work adapts to your cognitive environment.</div>
+
+  <div class="env-section-label">Interface mode</div>
+  <div class="env-modes">
+
+    <div class="env-mode on" id="mode-serenity" onclick="setMode('serenity')">
+      <div class="env-mode-preview serenity-prev">
+        <div class="prev-bar"></div>
+        <div class="prev-card"></div>
+        <div class="prev-card sm"></div>
+      </div>
+      <div class="env-mode-name">Serenity Now</div>
+      <div class="env-mode-desc">Warm cream · Calm serif · Generous space</div>
+      <div class="env-active-badge">Active</div>
+    </div>
+
+    <div class="env-mode" id="mode-notion" onclick="setMode('notion')">
+      <div class="env-mode-preview notion-prev">
+        <div class="prev-bar"></div>
+        <div class="prev-card"></div>
+        <div class="prev-card sm"></div>
+      </div>
+      <div class="env-mode-name">Notion-like</div>
+      <div class="env-mode-desc">Clean white · Dense · Functional</div>
+    </div>
+
+    <div class="env-mode studio" id="mode-future" onclick="studioClick()">
+      <div class="env-mode-preview future-prev">
+        <div class="prev-bar"></div>
+        <div class="prev-card"></div>
+        <div class="prev-card sm"></div>
+      </div>
+      <div class="env-studio-badge">🛠 In the studio</div>
+      <div class="env-mode-name">Futuristic</div>
+      <div class="env-mode-desc">Dark · Mono · Terminal energy</div>
+    </div>
+
+    <div class="env-mode studio" id="mode-pop" onclick="studioClick()">
+      <div class="env-mode-preview pop-prev">
+        <div class="prev-bar"></div>
+        <div class="prev-card"></div>
+        <div class="prev-card sm"></div>
+      </div>
+      <div class="env-studio-badge">🛠 In the studio</div>
+      <div class="env-mode-name">Pop-art</div>
+      <div class="env-mode-desc">Bold · Electric · High stimulation</div>
+    </div>
+
+  </div>
+
+  <div class="env-divider"></div>
+  <div class="env-section-label">Accessibility</div>
+
+  <div class="env-toggle-row" onclick="toggleDyslexia()">
+    <div class="env-toggle-body">
+      <div class="env-toggle-name">OpenDyslexic font</div>
+      <div class="env-toggle-desc">Works across all interface modes</div>
+    </div>
+    <div class="env-toggle-wrap">
+      <input type="checkbox" id="dyslexiaToggle" onchange="toggleDyslexia()">
+      <div class="env-slider"></div>
+    </div>
+  </div>
+
+  <div class="env-studio-note">More accessibility options coming — high contrast, motion reduction, font size.</div>
+</div>
+<div class="env-overlay" id="envOverlay" onclick="toggleEnv()"></div>
+
+<!-- LIB DRAWER -->
+<div class="lib-drawer" id="libDrawer">
+  <div class="lib-header">
+    <div class="lib-tabs">
+      <button class="lib-tab on" id="ltab-dict" onclick="switchLibTab('dict')">📖 Glossary</button>
+      <button class="lib-tab" id="ltab-int" onclick="switchLibTab('int')">🔌 Integrations</button>
+    </div>
+    <button class="env-close" onclick="toggleLib()">✕</button>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="lib-pane" id="lpane-dict">
+    <div class="lib-growing-badge">growing · updated with every build</div>
+    <div class="lib-terms">
+      <div class="lib-term new">
+        <div class="lib-term-key">Execution infrastructure</div>
+        <div class="lib-term-val">Not an app, not a tool. The layer an organization runs on — like plumbing. You don't notice it until it fails.</div>
+      </div>
+      <div class="lib-term new">
+        <div class="lib-term-key">Ambient AI</div>
+        <div class="lib-term-val">Present without demanding attention. Like WiFi — you don't onboard to it. It's just there, working.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">Autonomy-supportive design</div>
+        <div class="lib-term-val">Free choice within guardrails TAB prepared. Research shows people persist more when they chose — even between pre-set options.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">Anonymous by architecture</div>
+        <div class="lib-term-val">Not by policy. The technical structure prevents identification — the server never had the data to reveal.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">Intention-to-done latency</div>
+        <div class="lib-term-val">TAB's unique metric. Time from "I sat down to work" to "I finished something." No one else measures this.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">JITAI</div>
+        <div class="lib-term-val">Just-In-Time Adaptive Intervention. Support delivered exactly when the behavioral signal says it's needed — not before, not after.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">Byzantine fault tolerance</div>
+        <div class="lib-term-val">No single agent can corrupt the system output. Observer TAB cross-checks all working TABs before the report reaches management.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">Statistical memory</div>
+        <div class="lib-term-val">Observer TAB knows what normal looks like for this department — not who was there. Like a thermostat, not a diary.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">Silent bridge</div>
+        <div class="lib-term-val">Before escalating to management, TAB tries to fix the problem from within. Default is protection, not reporting.</div>
+      </div>
+      <div class="lib-term">
+        <div class="lib-term-key">System Coroner Report</div>
+        <div class="lib-term-val">Daily anonymous log of what broke, where, what was fixed, what needs engineering. Written by an agent with no stake in the outcome.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTEGRATIONS -->
+  <div class="lib-pane hidden" id="lpane-int">
+    <div class="lib-search-wrap">
+      <input class="lib-search" id="libSearch" placeholder="Search tools…" oninput="filterIntegrations()">
+    </div>
+    <div class="lib-int-grid" id="intGrid">
+      <!-- Connected -->
+      <div class="lib-int connected" data-name="notion"><div class="li-icon">N</div><div class="li-name">Notion</div><div class="li-status connected">Connected</div></div>
+      <div class="lib-int connected" data-name="slack"><div class="li-icon li-slack">S</div><div class="li-name">Slack</div><div class="li-status connected">Connected</div></div>
+      <div class="lib-int connected" data-name="google calendar"><div class="li-icon li-gcal">G</div><div class="li-name">Calendar</div><div class="li-status connected">Connected</div></div>
+      <div class="lib-int connected" data-name="gmail"><div class="li-icon li-gmail">M</div><div class="li-name">Gmail</div><div class="li-status connected">Connected</div></div>
+      <div class="lib-int connected" data-name="google drive"><div class="li-icon li-drive">D</div><div class="li-name">Drive</div><div class="li-status connected">Connected</div></div>
+      <!-- Available -->
+      <div class="lib-int available" data-name="jira"><div class="li-icon li-jira">J</div><div class="li-name">Jira</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="linear"><div class="li-icon li-linear">L</div><div class="li-name">Linear</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="github"><div class="li-icon li-gh">GH</div><div class="li-name">GitHub</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="zoom"><div class="li-icon li-zoom">Z</div><div class="li-name">Zoom</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="microsoft teams"><div class="li-icon li-teams">T</div><div class="li-name">Teams</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="salesforce"><div class="li-icon li-sf">SF</div><div class="li-name">Salesforce</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="hubspot"><div class="li-icon li-hs">HS</div><div class="li-name">HubSpot</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="asana"><div class="li-icon li-asana">A</div><div class="li-name">Asana</div><div class="li-status available">+ Connect</div></div>
+      <div class="lib-int available" data-name="figma"><div class="li-icon li-figma">F</div><div class="li-name">Figma</div><div class="li-status available">+ Connect</div></div>
+      <!-- Coming soon -->
+      <div class="lib-int soon" data-name="sap"><div class="li-icon li-soon">SAP</div><div class="li-name">SAP</div><div class="li-status soon">Soon</div></div>
+      <div class="lib-int soon" data-name="oracle"><div class="li-icon li-soon">OR</div><div class="li-name">Oracle</div><div class="li-status soon">Soon</div></div>
+      <div class="lib-int soon" data-name="monday"><div class="li-icon li-soon">Mo</div><div class="li-name">Monday</div><div class="li-status soon">Soon</div></div>
+      <div class="lib-int soon" data-name="microsoft 365 office"><div class="li-icon li-soon">365</div><div class="li-name">MS 365</div><div class="li-status soon">Soon</div></div>
+    </div>
+    <div class="lib-int-note">TAB connects in one click. Scoped to what each task needs — nothing more.</div>
+  </div>
+</div>
+<div class="lib-overlay" id="libOverlay" onclick="toggleLib()"></div>
+
 <!-- ══ MORNING ══ -->
 <div class="view on scroll" id="view-morning">
   <div class="step-prog" id="stp">
-    <div class="sp-d cur" id="sp0"></div>
-    <div class="sp-d" id="sp1"></div>
-    <div class="sp-d" id="sp2"></div>
-    <div class="sp-d" id="sp3"></div>
-    <div class="sp-d" id="sp4"></div>
+    <div class="sp-track">
+      <div class="sp-fill" id="spFill"></div>
+    </div>
     <div class="sp-lbl" id="splbl">Week 1 · Day 1</div>
+    <div class="sp-scroll-hint" id="scrollHint">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      scroll down
+    </div>
   </div>
 
   <!-- Step 0 -->
@@ -366,7 +756,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="tbb-from"><div class="tbb-pulse"></div>TAB · first morning</div>
       <div class="tbb-text">"Good morning. I'm TAB — I work here too, quietly. I've already looked at your calendar, open loops, and what's urgent. <strong>You don't have to tell me anything yet.</strong> Let me show you what I found."</div>
     </div>
-    <button class="next-btn hidden" id="nx0" onclick="gs(1)">See what TAB found <span>→</span></button>
+    <button class="next-btn hidden" id="nx0" onclick="gs(1);scrollToBtn('nx0')">See what TAB found <span>→</span></button>
   </div>
 
   <!-- Step 1 -->
@@ -387,7 +777,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
         <div style="background:rgba(255,255,255,0.65);border:0.5px solid rgba(138,111,58,0.12);border-radius:5px;padding:4px 9px;font-size:10px;color:var(--ink2);">Approval — routed to Maya</div>
       </div>
     </div>
-    <button class="next-btn hidden" id="nx1" onclick="gs(2)">What needs me today <span>→</span></button>
+    <button class="next-btn hidden" id="nx1" onclick="gs(2);scrollToBtn('nx1')">What needs me today <span>→</span></button>
   </div>
 
   <!-- Step 2 -->
@@ -409,7 +799,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="cpill go"><svg viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="3" stroke="#8A6F3A" stroke-width="0.9"/><path d="M4.5 3v1.5l.8.8" stroke="#8A6F3A" stroke-width="0.8" stroke-linecap="round"/></svg>Standup ready — review before 9:30</div>
       <div class="cpill r"><svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5v3M4.5 6.5v.5" stroke="#6B2535" stroke-width="0.9" stroke-linecap="round"/></svg>1 approval pending since Mon</div>
     </div>
-    <button class="next-btn hidden" id="nx2" onclick="gs(3)">Clear the noise <span>→</span></button>
+    <button class="next-btn hidden" id="nx2" onclick="gs(3);scrollToBtn('nx2')">Clear the noise <span>→</span></button>
   </div>
 
   <!-- Step 3: Mind dump -->
@@ -435,7 +825,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
         <div class="so-section"><div class="so-lbl g">TAB handles</div><div id="so3"></div></div>
       </div>
     </div>
-    <button class="next-btn hidden" id="nx3" onclick="gs(4)">Tools + trust <span>→</span></button>
+    <button class="next-btn hidden" id="nx3" onclick="gs(4);scrollToBtn('nx3')">Tools + trust <span>→</span></button>
   </div>
 
   <!-- Step 4: Tools -->
@@ -461,6 +851,65 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
         <div class="eyebrow" style="margin-bottom:5px;">Week 1 · trust stage 1 of 4</div>
         <div class="body-sm">TAB is in listening mode. It suggests, confirms, explains every action. <em>Nothing happens without your go-ahead.</em> Trust builds at your pace.</div>
       </div>
+    </div>
+    <button class="next-btn hidden" id="nx4" onclick="startWorkday()" style="margin-top:10px;">Brief complete — start my day <span>→</span></button>
+  </div>
+
+  <!-- CLEAN WORKSPACE — post brief -->
+  <div class="task-workspace" id="taskWorkspace">
+    <div class="tw-header">Today's 3 tasks · you choose what's next</div>
+    <div class="tw-cards">
+      <div class="tw-card t1" id="twc1">
+        <div class="tw-num">1</div>
+        <div class="tw-title">Write executive summary — 3 paragraphs</div>
+        <div class="tw-meta">25 min · Notion open · needs your thinking</div>
+        <button class="tw-done-btn" onclick="doneWorkTask(1,event)">Done ✓</button>
+      </div>
+      <div class="tw-card t2" id="twc2">
+        <div class="tw-num">2</div>
+        <div class="tw-title">Review and approve standup draft</div>
+        <div class="tw-meta">3 min · Slack · your voice, your call</div>
+        <button class="tw-done-btn dark" onclick="doneWorkTask(2,event)">Done ✓</button>
+      </div>
+      <div class="tw-card t3" id="twc3">
+        <div class="tw-num">3</div>
+        <div class="tw-title">Sign off on pitch deck — send or revise</div>
+        <div class="tw-meta">10 min · your judgment</div>
+        <button class="tw-done-btn dark" onclick="doneWorkTask(3,event)">Done ✓</button>
+      </div>
+    </div>
+
+    <!-- AUTONOMY CHOICE — appears after task 1 done -->
+    <div class="tw-choice hidden" id="twChoice">
+      <div class="twc-label">TAB handled the background. You pick what's next:</div>
+      <div class="twc-options">
+        <button class="twc-opt" onclick="chooseTask(2)">
+          <div class="twc-opt-num">2</div>
+          <div class="twc-opt-text">Approve standup draft<span>3 min · Slack</span></div>
+        </button>
+        <button class="twc-opt" onclick="chooseTask(3)">
+          <div class="twc-opt-num">3</div>
+          <div class="twc-opt-text">Sign off on pitch deck<span>10 min · your call</span></div>
+        </button>
+      </div>
+    </div>
+
+    <!-- TRANSPARENCY STRIP -->
+    <div class="tw-transparency" id="twTransparency">
+      <div class="twt-left">
+        <div class="twt-dot"></div>
+        <div class="twt-text">TAB handled 6 things while you focused</div>
+      </div>
+      <button class="twt-see" onclick="toggleHandled()">see what →</button>
+    </div>
+    <div class="tw-handled hidden" id="twHandled">
+      <div class="twh-item">Policy renewal — filed</div>
+      <div class="twh-item">Expense report — pre-filled</div>
+      <div class="twh-item">3 low-priority emails — drafted for review</div>
+      <div class="twh-item">Calendar conflict — resolved</div>
+      <div class="twh-item">Weekly report — compiled overnight</div>
+      <div class="twh-item">Approval request — routed to Maya</div>
+      <div style="font-size:10px;color:var(--ink3);margin-top:8px;font-style:italic;">All of this happened in the background. You didn't have to ask.</div>
     </div>
   </div>
 </div>
@@ -822,13 +1271,23 @@ function startMorning(){
   setTimeout(()=>gs(0),300);
 }
 
-function gs(n){
-  // update dots
-  for(let i=0;i<5;i++){
-    const d=document.getElementById('sp'+i);
-    if(d)d.className='sp-d'+(i<n?' done':i===n?' cur':'');
+function scrollToBtn(id){
+  const el=document.getElementById(id);
+  const shell=document.querySelector('.shell');
+  if(el&&shell){
+    setTimeout(()=>{
+      el.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },150);
   }
+}
+
+function gs(n){
+  // update progress bar
+  const fill=document.getElementById('spFill');
+  if(fill)fill.style.width=((n/4)*100)+'%';
   document.getElementById('splbl').textContent=stepLabels[n]||'';
+  // hide scroll hint after first step
+  if(n>0){const hint=document.getElementById('scrollHint');if(hint)hint.style.opacity='0';}
   curStep=n;
   sh('ws'+n);
   const ty=document.getElementById('ty'+n);
@@ -841,10 +1300,10 @@ function gs(n){
     if(bb){
       bb.classList.remove('hidden');
       setTimeout(()=>{
-        if(n===1){sh('cd1');sh('nx1');}
-        if(n===2){sh('cd2');sh('pl2');sh('nx2');}
-        if(n===3){sh('cd3');sh('nx3');}
-        if(n===4){sh('cd4');}
+        if(n===1){sh('cd1');sh('nx1');scrollToBtn('nx1');}
+        if(n===2){sh('cd2');sh('pl2');sh('nx2');scrollToBtn('nx2');}
+        if(n===3){sh('cd3');sh('nx3');scrollToBtn('nx3');}
+        if(n===4){sh('cd4');setTimeout(()=>{sh('nx4');scrollToBtn('nx4');},800);}
       },400);
     }
   },delay);
@@ -855,6 +1314,115 @@ function doneTask(id){
   if(!el||el.classList.contains('done'))return;
   el.classList.add('done');
   sessionLog.tasksCompleted++;
+}
+
+// WORKDAY MODE
+let workTasksDone=0,chatModeActive=false;
+function startWorkday(){
+  document.querySelectorAll('.wt-step').forEach(el=>el.style.display='none');
+  document.getElementById('stp').style.display='none';
+  const ws=document.getElementById('taskWorkspace');
+  if(ws)ws.classList.add('visible');
+  // scroll to top of morning view
+  const mv=document.getElementById('view-morning');
+  if(mv)mv.scrollTop=0;
+  switchTabToChat();
+}
+
+function doneWorkTask(n,e){
+  if(e)e.stopPropagation();
+  const card=document.getElementById('twc'+n);
+  if(!card||card.classList.contains('done-card'))return;
+  card.classList.add('done-card');
+  const btn=card.querySelector('.tw-done-btn');
+  if(btn)btn.style.display='none';
+  workTasksDone++;
+
+  if(workTasksDone===1){
+    // Show autonomy choice — TAB asks, human decides
+    addTabChatMsg('Great. Two left — which one feels right to tackle next?');
+    setTimeout(()=>{
+      const choice=document.getElementById('twChoice');
+      if(choice)choice.classList.remove('hidden');
+    },600);
+  } else if(workTasksDone===2){
+    addTabChatMsg('Loop closed. One more — and then the day is yours.');
+  } else if(workTasksDone===3){
+    const choice=document.getElementById('twChoice');
+    if(choice)choice.classList.add('hidden');
+    setTimeout(()=>addTabChatMsg("All 3 done. That's the day. Want me to start the EOD summary?"),900);
+  }
+}
+
+function chooseTask(n){
+  // Hide choice, highlight selected task
+  const choice=document.getElementById('twChoice');
+  if(choice)choice.classList.add('hidden');
+  // Highlight the chosen card
+  const card=document.getElementById('twc'+n);
+  if(card){
+    card.style.borderWidth='1.5px';
+    card.style.borderColor='var(--green-mid)';
+  }
+  addTabChatMsg('Good choice. I\'ve got everything ready — just open it when you\'re set.');
+}
+
+function toggleHandled(){
+  const h=document.getElementById('twHandled');
+  const btn=document.querySelector('.twt-see');
+  if(!h)return;
+  const isHidden=h.classList.contains('hidden');
+  h.classList.toggle('hidden',!isHidden);
+  if(btn)btn.textContent=isHidden?'hide ↑':'see what →';
+}
+
+function switchTabToChat(){
+  if(chatModeActive)return;
+  chatModeActive=true;
+  const panel=document.getElementById('tabPanel');
+  if(!panel)return;
+  if(!tabOpen)ot();
+  panel.innerHTML=`
+    <div style="padding:11px 14px 9px;border-bottom:0.5px solid rgba(24,23,15,0.07);">
+      <div style="font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;">TAB · standing by</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--ink);line-height:1.4;">Brief done. Your 3 tasks are set.<br>I'm here when you need me.</div>
+    </div>
+    <div class="tab-chat-history" id="chatHistory"></div>
+    <div class="tab-chat-input-wrap">
+      <div class="tab-chat-input">
+        <input class="tci-field" id="chatInput" placeholder="Ask TAB anything…" onkeydown="if(event.key==='Enter')sendChat()">
+        <button class="tci-send" onclick="sendChat()">→</button>
+      </div>
+    </div>
+  `;
+}
+
+function addTabChatMsg(text,isUser=false){
+  const h=document.getElementById('chatHistory');
+  if(!h)return;
+  const m=document.createElement('div');
+  m.className='tc-msg '+(isUser?'user':'tab');
+  m.textContent=text;
+  h.appendChild(m);
+  h.scrollTop=h.scrollHeight;
+}
+
+const tabReplies=[
+  "On it. I'll flag you if anything needs your attention.",
+  "Noted — added to tomorrow's brief.",
+  "Already handled. Focus on task 1.",
+  "Good question. Checking now.",
+  "Done. Loop closed.",
+  "That's below your value ceiling — I'll take it.",
+  "Blocked? I can find a bypass.",
+];
+let replyIdx=0;
+function sendChat(){
+  const inp=document.getElementById('chatInput');
+  if(!inp||!inp.value.trim())return;
+  addTabChatMsg(inp.value.trim(),true);
+  inp.value='';
+  setTimeout(()=>{addTabChatMsg(tabReplies[replyIdx%tabReplies.length]);replyIdx++;},600);
 }
 
 // ── MIND DUMP ──
@@ -961,7 +1529,74 @@ function ct(){tabOpen=false;document.getElementById('tabPanel').classList.remove
 // ── CLOCK ──
 function updateClock(){const n=new Date();document.getElementById('clk').textContent=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');}
 updateClock();setInterval(updateClock,30000);
-setTimeout(ot,800);
+// ── STARTUP — Morning first, TAB open, no consent gate ──
+window.addEventListener('DOMContentLoaded', ()=>{
+  const o = document.getElementById('consentOverlay');
+  if(o) o.style.display = 'none';
+  setTimeout(startMorning, 600);
+  setTimeout(ot, 1000);
+});
+
+// ── LIBRARY ──
+let libOpen=false,activeLibTab='dict';
+
+function toggleLib(){
+  libOpen=!libOpen;
+  document.getElementById('libDrawer').classList.toggle('open',libOpen);
+  document.getElementById('libOverlay').classList.toggle('open',libOpen);
+}
+
+function switchLibTab(tab){
+  activeLibTab=tab;
+  document.querySelectorAll('.lib-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.lib-pane').forEach(p=>p.classList.add('hidden'));
+  document.getElementById('ltab-'+tab).classList.add('on');
+  document.getElementById('lpane-'+tab).classList.remove('hidden');
+}
+
+function filterIntegrations(){
+  const q=document.getElementById('libSearch').value.toLowerCase();
+  document.querySelectorAll('.lib-int').forEach(el=>{
+    const name=el.dataset.name||'';
+    el.classList.toggle('hidden-int',q.length>0&&!name.includes(q));
+  });
+}
+
+// ── ENVIRONMENTAL SETTINGS ──
+let envOpen=false,currentMode='serenity',dyslexiaOn=false;
+
+function toggleEnv(){
+  envOpen=!envOpen;
+  document.getElementById('envDrawer').classList.toggle('open',envOpen);
+  document.getElementById('envOverlay').classList.toggle('open',envOpen);
+}
+
+function setMode(mode){
+  if(mode===currentMode)return;
+  currentMode=mode;
+  document.body.classList.remove('theme-notion');
+  if(mode==='notion')document.body.classList.add('theme-notion');
+  document.querySelectorAll('.env-mode').forEach(m=>m.classList.remove('on'));
+  document.getElementById('mode-'+mode).classList.add('on');
+  document.querySelectorAll('.env-active-badge').forEach(b=>b.remove());
+  const nameEl=document.querySelector('#mode-'+mode+' .env-mode-name');
+  if(nameEl){const b=document.createElement('div');b.className='env-active-badge';b.textContent='Active';nameEl.after(b);}
+}
+
+function studioClick(){
+  const note=document.querySelector('.env-studio-note');
+  const orig=note.textContent;
+  note.textContent='✦ Futuristic & Pop-art are being crafted. Art or death — these deserve to be built right.';
+  note.style.color='var(--gold)';
+  setTimeout(()=>{note.textContent=orig;note.style.color='';},3200);
+}
+
+function toggleDyslexia(){
+  dyslexiaOn=!dyslexiaOn;
+  document.getElementById('dyslexiaToggle').checked=dyslexiaOn;
+  document.body.classList.toggle('font-dyslexia',dyslexiaOn);
+}
+
 </script>
 </body>
 </html>
