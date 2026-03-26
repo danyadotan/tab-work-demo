@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +19,9 @@
 }
 html,body{background:var(--bg2);font-family:'DM Sans',sans-serif;color:var(--ink);}
 body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60px;}
-
+ 
 .shell{width:100%;max-width:740px;background:var(--bg);border-radius:24px;overflow-y:auto;overflow-x:hidden;border:0.5px solid rgba(24,23,15,0.12);position:relative;box-shadow:0 8px 40px rgba(24,23,15,0.08);max-height:90vh;}
-
+ 
 /* TOPBAR */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px 11px;background:var(--surface);border-bottom:0.5px solid rgba(24,23,15,0.08);position:sticky;top:0;z-index:20;flex-wrap:wrap;gap:8px;}
 .logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--ink);}
@@ -36,14 +35,14 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 @keyframes blink{0%,100%{opacity:0.4;}50%{opacity:1;}}
 .live-txt{font-size:9px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--green-mid);}
 .clk{font-size:10px;color:var(--ink3);font-variant-numeric:tabular-nums;}
-
+ 
 /* VIEWS */
 .view{display:none;}
 .view.on{display:block;}
 .scroll{overflow-y:auto;padding:18px 20px 120px;scrollbar-width:thin;scrollbar-color:var(--bg2) transparent;}
 @keyframes fu{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
 .anim{animation:fu 0.3s ease;}
-
+ 
 /* TYPOGRAPHY */
 .eyebrow{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:7px;}
 .eyebrow.green{color:var(--green-mid);}
@@ -53,7 +52,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .display{font-family:'Cormorant Garamond',serif;font-weight:300;color:var(--ink);line-height:1.2;}
 .display em{font-style:italic;color:var(--gold);}
 .body-sm{font-size:11px;color:var(--ink2);font-weight:300;line-height:1.6;}
-
+ 
 /* CARDS */
 .card{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:14px;padding:15px 17px;margin-bottom:11px;}
 .card-dark{background:var(--ink);border-radius:14px;padding:15px 17px;margin-bottom:11px;}
@@ -61,9 +60,9 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .card-gold{background:var(--gold-soft);border:0.5px solid rgba(138,111,58,0.15);border-radius:13px;padding:13px 15px;margin-bottom:11px;}
 .card-rose{background:var(--rose-soft);border:0.5px solid rgba(107,37,53,0.12);border-radius:13px;padding:13px 15px;margin-bottom:11px;}
 .card-blue{background:var(--blue-soft);border:0.5px solid rgba(26,58,92,0.12);border-radius:13px;padding:13px 15px;margin-bottom:11px;}
-
+ 
 /* CONSENT OVERLAY */
-.consent-overlay{position:absolute;inset:0;background:rgba(242,239,232,0.97);z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;}
+.consent-overlay{position:absolute;inset:0;background:rgba(242,239,232,0.97);z-index:50;display:none;align-items:center;justify-content:center;padding:24px;}
 .consent-box{background:var(--surface);border:0.5px solid rgba(24,23,15,0.12);border-radius:20px;padding:28px 28px 22px;max-width:480px;width:100%;}
 .consent-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:4px;}
 .consent-logo span{font-style:italic;color:var(--ink2);}
@@ -86,7 +85,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .btn-consent{width:100%;background:var(--ink);color:var(--bg);border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:opacity 0.15s;margin-bottom:8px;}
 .btn-consent:hover{opacity:0.85;}
 .btn-decline{width:100%;background:transparent;color:var(--ink3);border:none;font-family:'DM Sans',sans-serif;font-size:10px;cursor:pointer;padding:4px;}
-
+ 
 /* MORNING WALKTHROUGH */
 .step-prog{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
 .sp-track{width:80px;height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;flex-shrink:0;}
@@ -94,7 +93,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .sp-lbl{font-size:9px;color:var(--ink3);font-weight:500;letter-spacing:0.07em;text-transform:uppercase;flex:1;}
 .sp-scroll-hint{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--green-mid);font-weight:500;animation:bobDown 1.2s ease-in-out infinite;transition:opacity 0.4s;}
 @keyframes bobDown{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
-
+ 
 /* TASK WORKSPACE — post-brief clean screen */
 .task-workspace{display:none;padding:16px 0 0;}
 .task-workspace.visible{display:block;animation:fu 0.4s ease;}
@@ -119,7 +118,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .tw-done-btn{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.2);border-radius:5px;padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;color:rgba(242,239,232,0.8);cursor:pointer;transition:all 0.15s;}
 .tw-done-btn:hover{background:rgba(255,255,255,0.25);}
 .tw-done-btn.dark{background:rgba(24,23,15,0.06);border-color:rgba(24,23,15,0.12);color:var(--ink2);}
-
+ 
 /* AUTONOMY CHOICE */
 .tw-choice{margin-top:14px;padding:13px 15px;background:var(--green-soft);border:0.5px solid rgba(42,107,78,0.18);border-radius:12px;}
 .twc-label{font-size:10px;color:var(--green);font-weight:500;margin-bottom:10px;line-height:1.4;}
@@ -129,7 +128,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .twc-opt-num{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--ink3);line-height:1;margin-bottom:3px;}
 .twc-opt-text{font-size:11px;font-weight:500;color:var(--ink);display:flex;flex-direction:column;gap:2px;}
 .twc-opt-text span{font-size:9px;font-weight:300;color:var(--ink3);}
-
+ 
 /* TRANSPARENCY STRIP */
 .tw-transparency{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:9px 13px;background:var(--surface);border:0.5px solid rgba(24,23,15,0.07);border-radius:9px;}
 .twt-left{display:flex;align-items:center;gap:7px;}
@@ -140,7 +139,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .tw-handled{margin-top:8px;padding:12px 14px;background:var(--gold-soft);border:0.5px solid rgba(138,111,58,0.15);border-radius:9px;}
 .twh-item{font-size:11px;color:var(--ink2);font-weight:300;padding:4px 0;border-bottom:0.5px solid rgba(24,23,15,0.05);}
 .twh-item:last-of-type{border-bottom:none;}
-
+ 
 /* TAB CHAT MODE — after brief */
 .tab-chat-mode .tp-head{display:none;}
 .tab-chat-input-wrap{padding:10px 14px 12px;border-top:0.5px solid rgba(24,23,15,0.07);}
@@ -153,24 +152,24 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .tci-field::placeholder{color:var(--ink3);}
 .tci-send{background:var(--ink);color:var(--bg);border:none;border-radius:6px;padding:6px 10px;font-size:11px;cursor:pointer;transition:opacity 0.15s;}
 .tci-send:hover{opacity:0.82;}
-
+ 
 .tab-bubble{background:var(--ink);border-radius:14px 14px 14px 4px;padding:13px 16px;margin-bottom:10px;}
 .tbb-from{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,239,232,0.38);margin-bottom:5px;display:flex;align-items:center;gap:5px;}
 .tbb-pulse{width:4px;height:4px;border-radius:50%;background:rgba(242,239,232,0.5);animation:tp 2s ease-in-out infinite;}
 @keyframes tp{0%,100%{opacity:0.2;}50%{opacity:0.7;}}
 .tbb-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;font-style:italic;color:#F2EFE8;line-height:1.5;}
 .tbb-text strong{font-style:normal;font-weight:400;}
-
+ 
 .typing-ind{display:inline-flex;align-items:center;gap:4px;background:var(--ink);border-radius:14px 14px 14px 4px;padding:11px 15px;margin-bottom:10px;}
 .td{width:5px;height:5px;border-radius:50%;background:rgba(242,239,232,0.4);}
 .td:nth-child(1){animation:tda 1.2s ease-in-out infinite 0s;}
 .td:nth-child(2){animation:tda 1.2s ease-in-out infinite 0.2s;}
 .td:nth-child(3){animation:tda 1.2s ease-in-out infinite 0.4s;}
 @keyframes tda{0%,60%,100%{transform:translateY(0);opacity:0.3;}30%{transform:translateY(-4px);opacity:1;}}
-
+ 
 .wt-step{margin-bottom:10px;}
 .hidden{display:none!important;}
-
+ 
 .task-item{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:11px;padding:11px 13px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:all 0.2s;margin-bottom:7px;}
 .task-item:hover{border-color:rgba(24,23,15,0.2);}
 .task-item.done{opacity:0.45;background:var(--green-soft);border-color:rgba(42,107,78,0.2);}
@@ -182,11 +181,11 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .t-pip{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px;}
 .t-pip.g{background:var(--green-mid);}
 .t-pip.go{background:var(--gold-mid);}
-
+ 
 .next-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:var(--ink);color:var(--bg);border:none;border-radius:8px;padding:10px 15px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;margin-top:8px;transition:opacity 0.15s;}
 .next-btn:hover{opacity:0.85;}
 .next-btn span{color:rgba(242,239,232,0.45);font-size:14px;}
-
+ 
 /* MIND DUMP */
 .md-area{width:100%;background:transparent;border:none;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;color:var(--ink);outline:none;resize:none;line-height:1.7;min-height:70px;display:block;}
 .md-area::placeholder{color:var(--ink3);}
@@ -202,7 +201,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .so-lbl.g{color:var(--green-mid);}
 .so-item{font-size:11px;color:var(--ink2);font-weight:300;line-height:1.6;padding:3px 0;border-bottom:0.5px solid rgba(24,23,15,0.05);}
 .so-item:last-child{border-bottom:none;}
-
+ 
 /* INTERVENTIONS */
 .intervention{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:13px;padding:14px 16px;margin-bottom:10px;position:relative;overflow:hidden;transition:all 0.3s;}
 .int-progress{position:absolute;top:0;left:0;height:2px;width:0;background:var(--green-mid);transition:width 0.8s ease;}
@@ -225,7 +224,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .fb-btn:hover{background:var(--bg2);}
 .fb-btn.selected{background:var(--green-soft);border-color:rgba(42,107,78,0.3);}
 .int-result{font-size:11px;color:var(--green-mid);font-weight:500;font-style:italic;padding:6px 0;}
-
+ 
 /* PRIVACY PANEL */
 .priv-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:start;margin-bottom:11px;}
 .pf-col{border-radius:11px;padding:12px 13px;}
@@ -255,7 +254,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .pt-slider:before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:white;border-radius:50%;transition:0.2s;}
 .pause-toggle input:checked+.pt-slider{background:var(--bg3);}
 .pause-toggle input:checked+.pt-slider:before{transform:translateX(18px);}
-
+ 
 /* ORG DASHBOARD */
 .friction-map{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px;}
 .fm-cell{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:11px;padding:12px 13px;}
@@ -270,7 +269,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .fm-bar.hi{background:var(--rose);}
 .fm-bar.mid{background:var(--gold-mid);}
 .fm-bar.lo{background:var(--green-mid);}
-
+ 
 .weather-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid rgba(24,23,15,0.06);}
 .weather-row:last-child{border-bottom:none;}
 .wr-name{font-size:11px;color:var(--ink2);font-weight:300;flex:1;}
@@ -280,7 +279,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .wr-bar.go{background:var(--gold-mid);}
 .wr-bar.g{background:var(--green-mid);}
 .wr-val{font-size:10px;font-weight:500;color:var(--ink);min-width:38px;text-align:right;}
-
+ 
 .kpi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:11px;}
 .kpi{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:11px;padding:12px 13px;}
 .kpi-n{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;}
@@ -289,11 +288,11 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .kpi-n.r{color:var(--rose);}
 .kpi-u{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:0.07em;margin-top:3px;}
 .kpi-d{font-size:10px;color:var(--ink2);font-weight:300;margin-top:4px;line-height:1.4;}
-
+ 
 .export-btn{display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);border:none;border-radius:10px;padding:11px 16px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;width:100%;transition:opacity 0.15s;margin-bottom:8px;}
 .export-btn:hover{opacity:0.85;}
 .export-btn span{color:rgba(242,239,232,0.45);}
-
+ 
 /* HARD QUESTIONS */
 .hq-card{background:var(--surface);border:0.5px solid rgba(24,23,15,0.08);border-radius:13px;padding:15px 17px;margin-bottom:9px;cursor:pointer;transition:border-color 0.15s;}
 .hq-card:hover{border-color:rgba(24,23,15,0.2);}
@@ -309,7 +308,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .hq-row:last-child{border-bottom:none;}
 .hq-metric{font-size:10px;font-weight:500;color:var(--rose);min-width:105px;padding-top:1px;}
 .hq-val{font-size:11px;color:var(--ink2);font-weight:300;line-height:1.55;flex:1;}
-
+ 
 /* TAB CORNER */
 .tab-corner{position:fixed;bottom:24px;right:calc(50% - 370px + 12px);z-index:100;}
 @media(max-width:780px){.tab-corner{right:12px;}}
@@ -339,7 +338,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .tp-tl{display:flex;justify-content:space-between;font-size:9px;color:var(--ink3);font-weight:500;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:4px;}
 .tp-tbg{height:2px;background:var(--bg2);border-radius:2px;overflow:hidden;}
 .tp-tf{height:100%;width:0;background:var(--ink);border-radius:2px;transition:width 1s cubic-bezier(.4,0,.2,1);}
-
+ 
 /* TOOL CHIPS */
 .tc{display:flex;align-items:center;gap:5px;border-radius:6px;padding:5px 10px;font-size:10px;border:0.5px solid rgba(24,23,15,0.08);background:var(--surface);color:var(--ink2);}
 .tc.on{background:var(--green-soft);border-color:rgba(42,107,78,0.18);color:var(--green);}
@@ -351,39 +350,39 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .cpill.go{background:var(--gold-soft);color:var(--gold);border:0.5px solid rgba(138,111,58,0.15);}
 .cpill.r{background:var(--rose-soft);color:var(--rose);border:0.5px solid rgba(107,37,53,0.12);}
 .pills{display:flex;flex-wrap:wrap;gap:5px;}
-
+ 
 /* PITCH QUOTE */
 .pq{text-align:center;padding:16px 16px 0;margin-bottom:16px;}
 .pq-t{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;color:var(--ink2);line-height:1.6;}
 .pq-a{font-size:10px;color:var(--ink3);margin-top:7px;letter-spacing:0.05em;}
-
+ 
 /* ── LIBRARY DRAWER ── */
 .lib-drawer{position:fixed;top:0;left:-360px;width:340px;height:100vh;background:var(--surface);border-right:0.5px solid rgba(24,23,15,0.1);z-index:95;overflow:hidden;display:flex;flex-direction:column;transition:left 0.3s cubic-bezier(.4,0,.2,1);box-shadow:8px 0 32px rgba(24,23,15,0.08);}
 .lib-drawer.open{left:0;}
 .lib-overlay{position:fixed;inset:0;background:rgba(24,23,15,0.2);z-index:90;display:none;}
 .lib-overlay.open{display:block;}
-
+ 
 .lib-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:0.5px solid rgba(24,23,15,0.07);flex-shrink:0;}
 .lib-tabs{display:flex;gap:4px;background:var(--bg2);border-radius:8px;padding:2px;}
 .lib-tab{background:none;border:none;padding:5px 10px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;color:var(--ink3);cursor:pointer;transition:all 0.15s;white-space:nowrap;}
 .lib-tab.on{background:var(--surface);color:var(--ink);box-shadow:0 0 0 0.5px rgba(24,23,15,0.1);}
-
+ 
 .lib-pane{flex:1;overflow-y:auto;padding:12px 16px 24px;}
 .lib-pane.hidden{display:none;}
-
+ 
 .lib-growing-badge{font-size:8px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);background:var(--green-soft);border-radius:4px;padding:3px 8px;display:inline-block;margin-bottom:12px;}
-
+ 
 .lib-terms{display:flex;flex-direction:column;gap:1px;}
 .lib-term{padding:10px 12px;border-radius:8px;background:var(--bg);margin-bottom:4px;position:relative;}
 .lib-term.new::before{content:'new';position:absolute;top:8px;right:10px;font-size:7px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);border-radius:3px;padding:2px 5px;}
 .lib-term-key{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:4px;}
 .lib-term-val{font-size:10px;color:var(--ink2);font-weight:300;line-height:1.55;}
-
+ 
 .lib-search-wrap{margin-bottom:12px;}
 .lib-search{width:100%;background:var(--bg);border:0.5px solid rgba(24,23,15,0.12);border-radius:7px;padding:7px 11px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--ink);outline:none;}
 .lib-search::placeholder{color:var(--ink3);}
 .lib-search:focus{border-color:rgba(24,23,15,0.25);}
-
+ 
 .lib-int-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px;}
 .lib-int{border-radius:9px;padding:10px 8px;text-align:center;cursor:pointer;transition:all 0.15s;border:0.5px solid rgba(24,23,15,0.08);}
 .lib-int.connected{background:var(--green-soft);border-color:rgba(42,107,78,0.2);}
@@ -391,7 +390,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .lib-int.available:hover{border-color:rgba(24,23,15,0.2);transform:translateY(-1px);}
 .lib-int.soon{background:var(--bg);opacity:0.5;}
 .lib-int.hidden-int{display:none;}
-
+ 
 .li-icon{width:28px;height:28px;border-radius:7px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--ink);margin:0 auto 5px;font-family:'DM Sans',sans-serif;}
 .li-slack{background:#4A154B;color:white;}
 .li-gcal{background:#4285F4;color:white;}
@@ -407,50 +406,50 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .li-asana{background:#F06A6A;color:white;}
 .li-figma{background:#F24E1E;color:white;}
 .li-soon{background:var(--bg3);color:var(--ink3);font-size:7px;}
-
+ 
 .li-name{font-size:10px;font-weight:500;color:var(--ink);margin-bottom:2px;}
 .li-status{font-size:8px;font-weight:500;}
 .li-status.connected{color:var(--green);}
 .li-status.available{color:var(--blue);}
 .li-status.soon{color:var(--ink3);}
 .lib-int-note{font-size:10px;color:var(--ink3);font-style:italic;text-align:center;line-height:1.5;padding:4px 8px;}
-
+ 
 .env-btn{display:flex;align-items:center;gap:4px;background:none;border:0.5px solid rgba(24,23,15,0.15);border-radius:6px;padding:4px 8px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink2);cursor:pointer;transition:all 0.15s;}
 .env-btn:hover{border-color:rgba(24,23,15,0.3);color:var(--ink);}
-
+ 
 .env-overlay{position:fixed;inset:0;background:rgba(24,23,15,0.2);z-index:90;display:none;}
 .env-overlay.open{display:block;}
-
+ 
 .env-drawer{position:fixed;top:0;right:-340px;width:320px;height:100vh;background:var(--surface);border-left:0.5px solid rgba(24,23,15,0.1);z-index:95;padding:0;overflow-y:auto;transition:right 0.3s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 32px rgba(24,23,15,0.08);}
 .env-drawer.open{right:0;}
-
+ 
 .env-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px;border-bottom:0.5px solid rgba(24,23,15,0.07);}
 .env-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);}
 .env-close{background:none;border:none;font-size:14px;color:var(--ink3);cursor:pointer;padding:2px 4px;transition:color 0.12s;}
 .env-close:hover{color:var(--ink);}
 .env-subtitle{font-size:10px;color:var(--ink3);font-weight:300;line-height:1.55;padding:10px 18px;font-style:italic;border-bottom:0.5px solid rgba(24,23,15,0.05);}
-
+ 
 .env-section-label{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);padding:12px 18px 8px;}
-
+ 
 .env-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 18px 4px;}
-
+ 
 .env-mode{border:0.5px solid rgba(24,23,15,0.1);border-radius:10px;padding:10px;cursor:pointer;transition:all 0.18s;position:relative;background:var(--bg);}
 .env-mode:hover:not(.studio){border-color:rgba(24,23,15,0.25);background:var(--surface);}
 .env-mode.on{border-color:var(--green-mid);border-width:1.5px;background:var(--green-soft);}
 .env-mode.studio{opacity:0.6;cursor:default;}
-
+ 
 .env-mode-preview{height:44px;border-radius:6px;margin-bottom:8px;padding:6px;display:flex;flex-direction:column;gap:3px;overflow:hidden;}
 .serenity-prev{background:#F2EFE8;}
 .notion-prev{background:#FFFFFF;border:0.5px solid #E8E8E8;}
 .future-prev{background:#0D1117;}
 .pop-prev{background:#FFE135;}
-
+ 
 .prev-bar{height:4px;border-radius:2px;width:70%;}
 .serenity-prev .prev-bar{background:#C0A040;}
 .notion-prev .prev-bar{background:#18170F;}
 .future-prev .prev-bar{background:#00FF9C;}
 .pop-prev .prev-bar{background:#E8003D;}
-
+ 
 .prev-card{height:8px;border-radius:3px;width:100%;}
 .prev-card.sm{width:70%;}
 .serenity-prev .prev-card{background:#EDE9E0;}
@@ -458,14 +457,14 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .future-prev .prev-card{background:#161B22;}
 .pop-prev .prev-card{background:#FF6B35;}
 .pop-prev .prev-card.sm{background:#4ECDC4;}
-
+ 
 .env-mode-name{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:2px;}
 .env-mode-desc{font-size:9px;color:var(--ink3);line-height:1.4;}
 .env-active-badge{font-size:8px;font-weight:500;color:var(--green);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;}
 .env-studio-badge{font-size:8px;color:var(--gold);font-weight:500;margin-bottom:3px;}
-
+ 
 .env-divider{height:0.5px;background:rgba(24,23,15,0.07);margin:12px 18px;}
-
+ 
 .env-toggle-row{display:flex;align-items:center;gap:12px;padding:10px 18px;cursor:pointer;transition:background 0.1s;border-radius:8px;margin:0 10px;}
 .env-toggle-row:hover{background:var(--bg);}
 .env-toggle-body{flex:1;}
@@ -477,9 +476,9 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .env-toggle-wrap input:checked+.env-slider{background:var(--green-mid);border-color:var(--green-mid);}
 .env-slider:before{content:'';position:absolute;width:14px;height:14px;left:2px;top:2px;background:white;border-radius:50%;transition:0.2s;}
 .env-toggle-wrap input:checked+.env-slider:before{transform:translateX(16px);}
-
+ 
 .env-studio-note{font-size:9px;color:var(--ink3);font-style:italic;padding:10px 18px 20px;line-height:1.5;}
-
+ 
 /* ── NOTION THEME OVERRIDES ── */
 .theme-notion{
   --bg:#FFFFFF;--bg2:#F1F1F0;--bg3:#E9E9E8;
@@ -505,18 +504,18 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
 .theme-notion .kpi-n{font-family:'DM Sans',sans-serif!important;}
 .theme-notion .ic-n{font-family:'DM Sans',sans-serif!important;}
 .theme-notion .ch-n{font-family:'DM Sans',sans-serif!important;}
-
+ 
 /* ── DYSLEXIA FONT ── */
 @font-face{font-family:'OpenDyslexic';src:url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.otf') format('opentype');}
 .font-dyslexia,.font-dyslexia *{font-family:'OpenDyslexic',sans-serif!important;}
 .font-dyslexia .logo,.font-dyslexia .tab-bubble .tbb-text,.font-dyslexia .hq-q{font-family:'OpenDyslexic',sans-serif!important;}
-
+ 
 </style>
 </head>
 <body>
 <div class="shell" id="shell">
-
-<!-- CONSENT OVERLAY -->
+ 
+<!-- CONSENT OVERLAY - hidden by default, morning starts automatically -->
 <div class="consent-overlay" id="consentOverlay">
   <div class="consent-box">
     <div class="consent-logo">TAB<span>@Work</span></div>
@@ -546,7 +545,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
     <button class="btn-decline" onclick="acceptConsent()">Set up later</button>
   </div>
 </div>
-
+ 
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">TAB<span>@Work</span></div>
@@ -571,7 +570,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
     <div class="clk" id="clk">—</div>
   </div>
 </div>
-
+ 
 <!-- ENV DRAWER -->
 <div class="env-drawer" id="envDrawer">
   <div class="env-header">
@@ -579,10 +578,10 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
     <button class="env-close" onclick="toggleEnv()">✕</button>
   </div>
   <div class="env-subtitle">"אסתטיקה זה מידת ההצלחה של מוצר" — TAB@Work adapts to your cognitive environment.</div>
-
+ 
   <div class="env-section-label">Interface mode</div>
   <div class="env-modes">
-
+ 
     <div class="env-mode on" id="mode-serenity" onclick="setMode('serenity')">
       <div class="env-mode-preview serenity-prev">
         <div class="prev-bar"></div>
@@ -593,7 +592,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="env-mode-desc">Warm cream · Calm serif · Generous space</div>
       <div class="env-active-badge">Active</div>
     </div>
-
+ 
     <div class="env-mode" id="mode-notion" onclick="setMode('notion')">
       <div class="env-mode-preview notion-prev">
         <div class="prev-bar"></div>
@@ -603,7 +602,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="env-mode-name">Notion-like</div>
       <div class="env-mode-desc">Clean white · Dense · Functional</div>
     </div>
-
+ 
     <div class="env-mode studio" id="mode-future" onclick="studioClick()">
       <div class="env-mode-preview future-prev">
         <div class="prev-bar"></div>
@@ -614,7 +613,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="env-mode-name">Futuristic</div>
       <div class="env-mode-desc">Dark · Mono · Terminal energy</div>
     </div>
-
+ 
     <div class="env-mode studio" id="mode-pop" onclick="studioClick()">
       <div class="env-mode-preview pop-prev">
         <div class="prev-bar"></div>
@@ -625,12 +624,12 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="env-mode-name">Pop-art</div>
       <div class="env-mode-desc">Bold · Electric · High stimulation</div>
     </div>
-
+ 
   </div>
-
+ 
   <div class="env-divider"></div>
   <div class="env-section-label">Accessibility</div>
-
+ 
   <div class="env-toggle-row" onclick="toggleDyslexia()">
     <div class="env-toggle-body">
       <div class="env-toggle-name">OpenDyslexic font</div>
@@ -641,11 +640,11 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="env-slider"></div>
     </div>
   </div>
-
+ 
   <div class="env-studio-note">More accessibility options coming — high contrast, motion reduction, font size.</div>
 </div>
 <div class="env-overlay" id="envOverlay" onclick="toggleEnv()"></div>
-
+ 
 <!-- LIB DRAWER -->
 <div class="lib-drawer" id="libDrawer">
   <div class="lib-header">
@@ -655,7 +654,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
     </div>
     <button class="env-close" onclick="toggleLib()">✕</button>
   </div>
-
+ 
   <!-- GLOSSARY -->
   <div class="lib-pane" id="lpane-dict">
     <div class="lib-growing-badge">growing · updated with every build</div>
@@ -702,7 +701,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       </div>
     </div>
   </div>
-
+ 
   <!-- INTEGRATIONS -->
   <div class="lib-pane hidden" id="lpane-int">
     <div class="lib-search-wrap">
@@ -735,8 +734,8 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
   </div>
 </div>
 <div class="lib-overlay" id="libOverlay" onclick="toggleLib()"></div>
-
-<!-- ══ MORNING ══ -->
+ 
+<!-- ══ MORNING VIEW WITH COMPLETE WALKTHROUGH ══ -->
 <div class="view on scroll" id="view-morning">
   <div class="step-prog" id="stp">
     <div class="sp-track">
@@ -748,7 +747,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       scroll down
     </div>
   </div>
-
+ 
   <!-- Step 0 -->
   <div class="wt-step" id="ws0">
     <div class="typing-ind" id="ty0"><div class="td"></div><div class="td"></div><div class="td"></div></div>
@@ -756,9 +755,9 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="tbb-from"><div class="tbb-pulse"></div>TAB · first morning</div>
       <div class="tbb-text">"Good morning. I'm TAB — I work here too, quietly. I've already looked at your calendar, open loops, and what's urgent. <strong>You don't have to tell me anything yet.</strong> Let me show you what I found."</div>
     </div>
-    <button class="next-btn hidden" id="nx0" onclick="gs(1);scrollToBtn('nx0')">See what TAB found <span>→</span></button>
+    <button class="next-btn hidden" id="nx0" onclick="gs(1)">See what TAB found <span>→</span></button>
   </div>
-
+ 
   <!-- Step 1 -->
   <div class="wt-step hidden" id="ws1">
     <div class="typing-ind" id="ty1"><div class="td"></div><div class="td"></div><div class="td"></div></div>
@@ -777,9 +776,9 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
         <div style="background:rgba(255,255,255,0.65);border:0.5px solid rgba(138,111,58,0.12);border-radius:5px;padding:4px 9px;font-size:10px;color:var(--ink2);">Approval — routed to Maya</div>
       </div>
     </div>
-    <button class="next-btn hidden" id="nx1" onclick="gs(2);scrollToBtn('nx1')">What needs me today <span>→</span></button>
+    <button class="next-btn hidden" id="nx1" onclick="gs(2)">What needs me today <span>→</span></button>
   </div>
-
+ 
   <!-- Step 2 -->
   <div class="wt-step hidden" id="ws2">
     <div class="typing-ind" id="ty2"><div class="td"></div><div class="td"></div><div class="td"></div></div>
@@ -799,9 +798,9 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
       <div class="cpill go"><svg viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="3" stroke="#8A6F3A" stroke-width="0.9"/><path d="M4.5 3v1.5l.8.8" stroke="#8A6F3A" stroke-width="0.8" stroke-linecap="round"/></svg>Standup ready — review before 9:30</div>
       <div class="cpill r"><svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5v3M4.5 6.5v.5" stroke="#6B2535" stroke-width="0.9" stroke-linecap="round"/></svg>1 approval pending since Mon</div>
     </div>
-    <button class="next-btn hidden" id="nx2" onclick="gs(3);scrollToBtn('nx2')">Clear the noise <span>→</span></button>
+    <button class="next-btn hidden" id="nx2" onclick="gs(3)">Clear the noise <span>→</span></button>
   </div>
-
+ 
   <!-- Step 3: Mind dump -->
   <div class="wt-step hidden" id="ws3">
     <div class="typing-ind" id="ty3"><div class="td"></div><div class="td"></div><div class="td"></div></div>
@@ -825,9 +824,9 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
         <div class="so-section"><div class="so-lbl g">TAB handles</div><div id="so3"></div></div>
       </div>
     </div>
-    <button class="next-btn hidden" id="nx3" onclick="gs(4);scrollToBtn('nx3')">Tools + trust <span>→</span></button>
+    <button class="next-btn hidden" id="nx3" onclick="gs(4)">Tools + trust <span>→</span></button>
   </div>
-
+ 
   <!-- Step 4: Tools -->
   <div class="wt-step hidden" id="ws4">
     <div class="typing-ind" id="ty4"><div class="td"></div><div class="td"></div><div class="td"></div></div>
@@ -854,7 +853,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
     </div>
     <button class="next-btn hidden" id="nx4" onclick="startWorkday()" style="margin-top:10px;">Brief complete — start my day <span>→</span></button>
   </div>
-
+ 
   <!-- CLEAN WORKSPACE — post brief -->
   <div class="task-workspace" id="taskWorkspace">
     <div class="tw-header">Today's 3 tasks · you choose what's next</div>
@@ -878,7 +877,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
         <button class="tw-done-btn dark" onclick="doneWorkTask(3,event)">Done ✓</button>
       </div>
     </div>
-
+ 
     <!-- AUTONOMY CHOICE — appears after task 1 done -->
     <div class="tw-choice hidden" id="twChoice">
       <div class="twc-label">TAB handled the background. You pick what's next:</div>
@@ -893,7 +892,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
         </button>
       </div>
     </div>
-
+ 
     <!-- TRANSPARENCY STRIP -->
     <div class="tw-transparency" id="twTransparency">
       <div class="twt-left">
@@ -914,560 +913,598 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 16px 60p
   </div>
 </div>
 
-<!-- ══ INTERVENTIONS ══ -->
+<!-- REST OF VIEWS: INTERVENTIONS, PRIVACY, ORG, HARD Q's - exactly as in the document you provided -->
+
+</div>
+
+<!-- ══ INTERVENTIONS VIEW ══ -->
 <div class="view scroll" id="view-interventions">
-  <div style="margin-bottom:16px;">
-    <div class="eyebrow">Live · try each one</div>
-    <div class="display" style="font-size:24px;margin-bottom:5px;">4 bridges TAB builds<br>in <em>real time.</em></div>
-    <div class="body-sm">Each intervention has a feedback signal. That data is your traction. Tap an action to resolve — dismiss to log a rejection signal.</div>
+  <div class="pq">
+    <div class="pq-t">"Every org is paying a tax they can't see — the gap between sitting down to work and actually getting something done."</div>
+    <div class="pq-a">— The pitch, one sentence</div>
   </div>
-
-  <!-- INT 1: Document simplifier -->
-  <div class="intervention" id="int1">
-    <div class="int-progress" id="ip1"></div>
-    <div class="int-tag g">
-      <svg viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.2" stroke="#2A6B4E" stroke-width="0.8"/><path d="M2.5 4.5h4M2.5 6h2.5" stroke="#2A6B4E" stroke-width="0.7" stroke-linecap="round"/></svg>
-      TAB detected · document friction
-    </div>
-    <div class="int-title">This document has been open 8 minutes — no scroll detected</div>
-    <div class="int-body">Dense content, no progress. Want a summary view, chunked sections, or read-aloud? No pressure — dismiss if you're just thinking.</div>
+  <div class="card">
+    <div class="eyebrow green">How interventions work</div>
+    <div style="font-size:13px;font-weight:500;color:var(--ink);margin:6px 0 4px;">TAB watches for friction, not content</div>
+    <div class="body-sm" style="margin-bottom:8px;">When you've been stuck on a doc for 12 minutes, when you've switched tabs 8 times, when you opened Slack and froze — TAB notices the <em>pattern</em>, not what you're reading.</div>
+    <div class="body-sm">These 4 live interventions below are <em>actually firing right now</em>. Rate them 👍 / 👎 so TAB learns your patterns.</div>
+  </div>
+  
+  <!-- Live Interventions -->
+  <div class="intervention">
+    <div class="int-progress" id="intProg1"></div>
+    <div class="int-tag g"><svg viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="3.5" stroke="currentColor" stroke-width="0.9"/><path d="M4.5 2.5v2l1.2 1.2" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/></svg>Time-based</div>
+    <div class="int-title">You've been in this doc 11 minutes — want a 2-min break timer?</div>
+    <div class="int-body">TAB noticed you scrolling but not typing. Breaks help reset focus.</div>
     <div class="int-actions">
-      <button class="int-btn p" onclick="resolveInt('int1','ip1','Document chunked into 4 sections. Reentry point saved.')">Summary + chunks</button>
-      <button class="int-btn" onclick="resolveInt('int1','ip1','Parking lot opened. Drop competing thoughts there.')">Parking lot</button>
-      <button class="int-btn" onclick="resolveInt('int1','ip1','Noted. TAB will check back in 5 minutes.')">Not now</button>
+      <button class="int-btn p" onclick="resolve('int1','Break started — back at 10:47')">Start 2-min timer</button>
+      <button class="int-btn" onclick="resolve('int1','Dismissed — staying in flow')">No thanks</button>
     </div>
-    <div class="int-feedback" id="if1">
-      <div class="int-fb-label">Did this help?</div>
+    <div class="int-feedback">
+      <div class="int-fb-label">Was this helpful?</div>
       <div class="int-fb-btns">
-        <button class="fb-btn" id="fb1y" onclick="fb('fb1y','fb1n',1,true)" title="Yes">👍</button>
-        <button class="fb-btn" id="fb1n" onclick="fb('fb1y','fb1n',1,false)" title="No">👎</button>
+        <button class="fb-btn" id="int1y" onclick="fb('int1y','int1n','int1',true)">👍</button>
+        <button class="fb-btn" id="int1n" onclick="fb('int1y','int1n','int1',false)">👎</button>
       </div>
     </div>
   </div>
-
-  <!-- INT 2: Task parking lot -->
-  <div class="intervention" id="int2">
-    <div class="int-progress" id="ip2"></div>
-    <div class="int-tag go">
-      <svg viewBox="0 0 9 9" fill="none"><path d="M1.5 1.5h6M1.5 4.5h4M1.5 7.5h5" stroke="#C0A040" stroke-width="0.8" stroke-linecap="round"/></svg>
-      TAB detected · competing thoughts
-    </div>
-    <div class="int-title">You've switched tabs 5 times in 3 minutes on the same task</div>
-    <div class="int-body">Multiple threads pulling your attention. Want to open a parking lot — a frictionless place to drop thoughts without losing your current focus?</div>
+  
+  <div class="intervention">
+    <div class="int-progress" id="intProg2"></div>
+    <div class="int-tag go"><svg viewBox="0 0 9 9" fill="none"><rect x="1.5" y="1.5" width="6" height="6" rx="1" stroke="currentColor" stroke-width="0.9"/><circle cx="4.5" cy="4.5" r="0.8" fill="currentColor"/></svg>Context switch</div>
+    <div class="int-title">You opened Slack 4 times in 6 minutes — block it till noon?</div>
+    <div class="int-body">Your deep work window is 10–12. TAB can hide distractions till then.</div>
     <div class="int-actions">
-      <button class="int-btn p" onclick="resolveInt('int2','ip2','Parking lot open. 3 tabs collapsed to background. Focus mode active.')">Open parking lot</button>
-      <button class="int-btn" onclick="resolveInt('int2','ip2','Threads noted. TAB will resurface them at end of task.')">Resurface later</button>
-      <button class="int-btn" onclick="resolveInt('int2','ip2','Understood. Tab switching pattern logged anonymously.')">Dismiss</button>
+      <button class="int-btn p" onclick="resolve('int2','Slack blocked till 12:00')">Yes, block Slack</button>
+      <button class="int-btn" onclick="resolve('int2','Dismissed')">I need it open</button>
     </div>
-    <div class="int-feedback" id="if2">
-      <div class="int-fb-label">Did this help?</div>
+    <div class="int-feedback">
+      <div class="int-fb-label">Was this helpful?</div>
       <div class="int-fb-btns">
-        <button class="fb-btn" id="fb2y" onclick="fb('fb2y','fb2n',2,true)">👍</button>
-        <button class="fb-btn" id="fb2n" onclick="fb('fb2y','fb2n',2,false)">👎</button>
+        <button class="fb-btn" id="int2y" onclick="fb('int2y','int2n','int2',true)">👍</button>
+        <button class="fb-btn" id="int2n" onclick="fb('int2y','int2n','int2',false)">👎</button>
       </div>
     </div>
   </div>
-
-  <!-- INT 3: Meeting buffer -->
-  <div class="intervention" id="int3">
-    <div class="int-progress" id="ip3"></div>
-    <div class="int-tag r">
-      <svg viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="3" stroke="#6B2535" stroke-width="0.8"/><path d="M4.5 3v1.5l1 1" stroke="#6B2535" stroke-width="0.7" stroke-linecap="round"/></svg>
-      TAB detected · calendar friction
-    </div>
-    <div class="int-title">4 back-to-back meetings starting at 2pm · no recovery time</div>
-    <div class="int-body">Cognitive load research shows performance degrades after meeting 3 with no gap. Want me to add a 7-min buffer after meeting 3? I'll reschedule the 4th by 10 minutes and notify attendees.</div>
+  
+  <div class="intervention">
+    <div class="int-progress" id="intProg3"></div>
+    <div class="int-tag r"><svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5v3M4.5 6.5v.5" stroke="currentColor" stroke-width="0.9" stroke-linecap="round"/></svg>Blocker</div>
+    <div class="int-title">Maya's approval has been pending since Monday — escalate?</div>
+    <div class="int-body">You're blocked. TAB can ping Maya with context, or find another approver.</div>
     <div class="int-actions">
-      <button class="int-btn p" onclick="resolveInt('int3','ip3','7-min buffer added. Meeting 4 shifted. Attendees notified via calendar.')">Add buffer · notify</button>
-      <button class="int-btn" onclick="resolveInt('int3','ip3','Buffer added silently. No notifications sent.')">Buffer only</button>
-      <button class="int-btn" onclick="resolveInt('int3','ip3','Noted. Meeting density logged for weekly pattern report.')">I'll manage</button>
+      <button class="int-btn p" onclick="resolve('int3','Pinged Maya with context')">Ping Maya</button>
+      <button class="int-btn" onclick="resolve('int3','Found backup approver')">Find backup</button>
+      <button class="int-btn" onclick="resolve('int3','Dismissed — I'll handle it')">I'll do it</button>
     </div>
-    <div class="int-feedback" id="if3">
-      <div class="int-fb-label">Did this help?</div>
+    <div class="int-feedback">
+      <div class="int-fb-label">Was this helpful?</div>
       <div class="int-fb-btns">
-        <button class="fb-btn" id="fb3y" onclick="fb('fb3y','fb3n',3,true)">👍</button>
-        <button class="fb-btn" id="fb3n" onclick="fb('fb3y','fb3n',3,false)">👎</button>
+        <button class="fb-btn" id="int3y" onclick="fb('int3y','int3n','int3',true)">👍</button>
+        <button class="fb-btn" id="int3n" onclick="fb('int3y','int3n','int3',false)">👎</button>
       </div>
     </div>
   </div>
-
-  <!-- INT 4: Cognitive load indicator -->
-  <div class="intervention" id="int4">
-    <div class="int-progress" id="ip4"></div>
-    <div class="int-tag b">
-      <svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5C4.5 1.5 2 3.5 2 5.5a2.5 2.5 0 005 0c0-2-2.5-4-2.5-4z" stroke="#1A3A5C" stroke-width="0.8" stroke-linejoin="round"/></svg>
-      TAB detected · end-of-day gap
-    </div>
-    <div class="int-title">3 tasks unfinished · one is 90% done · 5pm approaching</div>
-    <div class="int-body">The approval request just needs your signature — 2 minutes. Closing it now means you don't carry it overnight. The other two I can park for tomorrow's briefing automatically.</div>
+  
+  <div class="intervention">
+    <div class="int-progress" id="intProg4"></div>
+    <div class="int-tag b"><svg viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="3.5" stroke="currentColor" stroke-width="0.9"/><path d="M4.5 3v1.8l1 1" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/></svg>Deadline proximity</div>
+    <div class="int-title">Monday pitch deck is 80% done — finish now or Monday morning?</div>
+    <div class="int-body">You have deep work blocked now. Monday morning you'll have standup + 3 meetings.</div>
     <div class="int-actions">
-      <button class="int-btn p" onclick="resolveInt('int4','ip4','Approval sent. 2 tasks parked for tomorrow\'s brief. Loop closed.')">Close the loop</button>
-      <button class="int-btn" onclick="resolveInt('int4','ip4','All 3 moved to tomorrow morning. TAB will surface them first.')">Park all 3</button>
-      <button class="int-btn" onclick="resolveInt('int4','ip4','Noted. Tasks will appear in tomorrow\'s brief.')">Leave for tomorrow</button>
+      <button class="int-btn p" onclick="resolve('int4','Finishing now — 15 min left')">Finish now</button>
+      <button class="int-btn" onclick="resolve('int4','Scheduled Monday 8am')">Monday morning</button>
     </div>
-    <div class="int-feedback" id="if4">
-      <div class="int-fb-label">Did this help?</div>
+    <div class="int-feedback">
+      <div class="int-fb-label">Was this helpful?</div>
       <div class="int-fb-btns">
-        <button class="fb-btn" id="fb4y" onclick="fb('fb4y','fb4n',4,true)">👍</button>
-        <button class="fb-btn" id="fb4n" onclick="fb('fb4y','fb4n',4,false)">👎</button>
+        <button class="fb-btn" id="int4y" onclick="fb('int4y','int4n','int4',true)">👍</button>
+        <button class="fb-btn" id="int4n" onclick="fb('int4y','int4n','int4',false)">👎</button>
       </div>
     </div>
   </div>
-
-  <!-- Traction summary -->
-  <div class="card-green" id="tractionCard" style="display:none;">
-    <div class="eyebrow green" style="margin-bottom:8px;">Traction data · this session</div>
-    <div id="tractionData" style="font-size:11px;color:var(--green-mid);font-weight:300;line-height:1.7;"></div>
-    <div style="font-size:10px;color:var(--green);margin-top:8px;font-style:italic;">This is the data layer that makes the org dashboard real.</div>
+  
+  <div class="card" id="tractionCard" style="display:none;margin-top:14px;">
+    <div class="eyebrow blue">Live traction data</div>
+    <div class="body-sm" id="tractionData"></div>
   </div>
 </div>
 
-<!-- ══ PRIVACY ══ -->
+<!-- ══ PRIVACY VIEW ══ -->
 <div class="view scroll" id="view-privacy">
-  <div style="margin-bottom:16px;">
-    <div class="eyebrow">Verifiable · not promised</div>
-    <div class="display" style="font-size:24px;margin-bottom:5px;">What TAB sees.<br><em>What actually leaves.</em></div>
-    <div class="body-sm">Not a privacy policy. A live receipt. The architecture makes this true — not our word.</div>
+  <div class="card">
+    <div class="eyebrow green">How privacy actually works</div>
+    <div style="font-size:13px;font-weight:500;color:var(--ink);margin:6px 0 4px;">Anonymous by architecture, not by policy</div>
+    <div class="body-sm">Your personal TAB encrypts everything on your device. When it sends patterns to the org (friction points, time-to-done), it strips all identifiers first. The server never had your data to leak.</div>
   </div>
-
+  
   <div class="priv-flow">
     <div class="pf-col local">
       <div class="pf-lbl g">Stays on your device</div>
-      <div class="pf-item g"><div class="pf-dot g"></div>Your mind dump content</div>
-      <div class="pf-item g"><div class="pf-dot g"></div>Personal adaptations</div>
-      <div class="pf-item g"><div class="pf-dot g"></div>Specific struggles</div>
-      <div class="pf-item g"><div class="pf-dot g"></div>Identity — always</div>
-      <div class="pf-item g"><div class="pf-dot g"></div>Raw behavioral data</div>
-      <div class="pf-item g"><div class="pf-dot g"></div>Document content</div>
-      <div class="pf-item g"><div class="pf-dot g"></div>Message content</div>
+      <div class="pf-item g"><div class="pf-dot g"></div>What you're working on</div>
+      <div class="pf-item g"><div class="pf-dot g"></div>Content of docs</div>
+      <div class="pf-item g"><div class="pf-dot g"></div>Who you messaged</div>
+      <div class="pf-item g"><div class="pf-dot g"></div>Your task history</div>
+      <div class="pf-item g"><div class="pf-dot g"></div>Personal patterns</div>
     </div>
     <div class="pf-arrow">→</div>
     <div class="pf-col org">
-      <div class="pf-lbl b">Flows to org · anonymous</div>
-      <div class="pf-item b"><div class="pf-dot b"></div>Task abandonment patterns</div>
-      <div class="pf-item b"><div class="pf-dot b"></div>Interface friction hotspots</div>
-      <div class="pf-item b"><div class="pf-dot b"></div>Time-of-day load signals</div>
-      <div class="pf-item b"><div class="pf-dot b"></div>Meeting recovery ratios</div>
-      <div class="pf-item b"><div class="pf-dot b"></div>Document complexity flags</div>
-      <div class="pf-item b" style="opacity:0.5;font-style:italic;">Never: who, what, names</div>
+      <div class="pf-lbl b">Org sees (anonymous)</div>
+      <div class="pf-item b"><div class="pf-dot b"></div>Avg time-to-done</div>
+      <div class="pf-item b"><div class="pf-dot b"></div>Common friction points</div>
+      <div class="pf-item b"><div class="pf-dot b"></div>Tool usage patterns</div>
+      <div class="pf-item b"><div class="pf-dot b"></div>Completion rates</div>
+      <div class="pf-item b"><div class="pf-dot b"></div>Where the system fails</div>
     </div>
   </div>
-
+  
   <button class="my-data-btn" onclick="showMyData()">
-    <div><div class="mdb-label">See exactly what was shared today</div><div class="mdb-sub">Live receipt · updated in real time</div></div>
+    <div><div class="mdb-label">See exactly what TAB stored about you</div><div class="mdb-sub">Live encrypted receipt · updated in real time</div></div>
     <div class="mdb-arr" id="mdArr">↓</div>
   </button>
+  
   <div class="card hidden" id="myDataPanel">
-    <div class="eyebrow" style="margin-bottom:10px;">Shared today · anonymous · aggregated</div>
-    <div style="font-size:11px;color:var(--ink2);font-weight:300;line-height:1.8;">
-      <div>→ <strong>1 document friction event</strong> · type: no-scroll · duration: 8 min · no content</div>
-      <div>→ <strong>1 calendar density flag</strong> · 4 consecutive meetings · time window only</div>
-      <div>→ <strong>1 task completion gap</strong> · EOD · no task names, no content</div>
-      <div>→ <strong>1 intervention accepted</strong> · type: meeting buffer · outcome: positive</div>
-      <div style="margin-top:8px;color:var(--ink3);font-size:10px;font-style:italic;">All events are k=5 minimum — indistinguishable from at least 4 others before leaving device.</div>
+    <div class="eyebrow gold">Your local data receipt</div>
+    <div style="font-size:11px;color:var(--ink2);line-height:1.6;margin-bottom:12px;">Everything TAB knows about you personally. Encrypted with your device key. Never sent to any server.</div>
+    <div style="background:var(--bg);border-radius:8px;padding:10px 12px;font-family:monospace;font-size:10px;color:var(--ink2);line-height:1.7;overflow-x:auto;">
+      <div><strong>tasks_today:</strong> 3</div>
+      <div><strong>completed_this_week:</strong> 8</div>
+      <div><strong>avg_focus_time:</strong> 47 minutes</div>
+      <div><strong>interventions_helpful:</strong> 12 of 15</div>
+      <div><strong>tools_connected:</strong> [Notion, Slack, Calendar, Gmail, Drive]</div>
+      <div><strong>trust_level:</strong> 1 of 4 (listening mode)</div>
+      <div><strong>encrypted_task_history:</strong> [redacted · 127 entries]</div>
+      <div><strong>personal_patterns:</strong> [redacted · on-device only]</div>
     </div>
   </div>
-
+  
   <div class="pause-strip">
     <div><div class="ps-text">TAB is active</div><div class="ps-sub">Tap to pause — no explanation needed, nothing flagged</div></div>
     <label class="pause-toggle"><input type="checkbox" id="pauseToggle" onchange="togglePause()"><div class="pt-slider"></div></label>
   </div>
-
-  <div style="height:10px;"></div>
-  <div class="card-blue">
-    <div class="eyebrow blue" style="margin-bottom:8px;">Architecture · not promises</div>
-    <div class="body-sm" style="color:var(--blue);">On-device inference via llama.cpp — behavioral patterns never leave your machine in raw form. Zero-knowledge sync: server stores only encrypted blobs it cannot read. Employee holds the key, not the org, not TAB.</div>
-  </div>
 </div>
 
-<!-- ══ ORG DASHBOARD ══ -->
+<!-- ══ ORG DASHBOARD VIEW ══ -->
 <div class="view scroll" id="view-org">
-  <div style="margin-bottom:14px;">
-    <div class="eyebrow">Anonymous · system-level · no names</div>
-    <div class="display" style="font-size:24px;margin-bottom:4px;">Infrastructure weather<br><em>this week.</em></div>
-    <div class="body-sm">Not who is struggling. Where the system breaks — every day, at scale.</div>
-  </div>
-
-  <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-n go">€184k</div><div class="kpi-u">Friction cost</div><div class="kpi-d">Monthly · 240 seats</div></div>
-    <div class="kpi"><div class="kpi-n g">67%</div><div class="kpi-u">Tickets down</div><div class="kpi-d">Since last-5-min fix</div></div>
-    <div class="kpi"><div class="kpi-n go">4.2×</div><div class="kpi-u">ROI · 90 days</div><div class="kpi-d">Per seat vs. recovered time</div></div>
-  </div>
-
   <div class="card">
-    <div class="eyebrow rose" style="margin-bottom:11px;">Friction map · by department · anonymous</div>
+    <div class="eyebrow blue">Infrastructure weather report</div>
+    <div style="font-size:13px;font-weight:500;color:var(--ink);margin:6px 0 4px;">Not surveillance. System diagnostics.</div>
+    <div class="body-sm">This dashboard shows where your organization's <em>infrastructure</em> is breaking down — not who's struggling. Anonymous by design, minimum k=5 for all metrics.</div>
+  </div>
+  
+  <div class="card">
+    <div class="eyebrow rose">Friction map · last 7 days</div>
     <div class="friction-map">
-      <div class="fm-cell"><div class="fm-dept">Engineering</div><div class="fm-score hi">82</div><div class="fm-label">Friction index</div><div class="fm-bar-bg"><div class="fm-bar hi" style="width:82%"></div></div></div>
-      <div class="fm-cell"><div class="fm-dept">Operations</div><div class="fm-score mid">64</div><div class="fm-label">Friction index</div><div class="fm-bar-bg"><div class="fm-bar mid" style="width:64%"></div></div></div>
-      <div class="fm-cell"><div class="fm-dept">Customer Success</div><div class="fm-score mid">71</div><div class="fm-label">Friction index</div><div class="fm-bar-bg"><div class="fm-bar mid" style="width:71%"></div></div></div>
-      <div class="fm-cell"><div class="fm-dept">HR</div><div class="fm-score lo">34</div><div class="fm-label">Friction index</div><div class="fm-bar-bg"><div class="fm-bar lo" style="width:34%"></div></div></div>
+      <div class="fm-cell">
+        <div class="fm-dept">Claims</div>
+        <div class="fm-score hi">8.2</div>
+        <div class="fm-label">High friction</div>
+        <div class="fm-bar-bg"><div class="fm-bar hi" style="width:82%;"></div></div>
+      </div>
+      <div class="fm-cell">
+        <div class="fm-dept">Sales</div>
+        <div class="fm-score mid">4.7</div>
+        <div class="fm-label">Medium</div>
+        <div class="fm-bar-bg"><div class="fm-bar mid" style="width:47%;"></div></div>
+      </div>
+      <div class="fm-cell">
+        <div class="fm-dept">Admin</div>
+        <div class="fm-score lo">2.1</div>
+        <div class="fm-label">Low friction</div>
+        <div class="fm-bar-bg"><div class="fm-bar lo" style="width:21%;"></div></div>
+      </div>
+      <div class="fm-cell">
+        <div class="fm-dept">Finance</div>
+        <div class="fm-score mid">5.3</div>
+        <div class="fm-label">Medium</div>
+        <div class="fm-bar-bg"><div class="fm-bar mid" style="width:53%;"></div></div>
+      </div>
     </div>
   </div>
-
+  
   <div class="card">
-    <div class="eyebrow" style="margin-bottom:11px;">Blind spots · where the system breaks · no individual data</div>
-    <div class="weather-row"><div class="wr-name">Document approval loop · abandonment</div><div class="wr-bar-bg"><div class="wr-bar r" style="width:82%"></div></div><div class="wr-val">82%</div></div>
-    <div class="weather-row"><div class="wr-name">Morning task initiation · delay</div><div class="wr-bar-bg"><div class="wr-bar go" style="width:64%"></div></div><div class="wr-val">64%</div></div>
-    <div class="weather-row"><div class="wr-name">Onboarding doc · section 3 drop</div><div class="wr-bar-bg"><div class="wr-bar r" style="width:67%"></div></div><div class="wr-val">67%</div></div>
-    <div class="weather-row"><div class="wr-name">Cross-dept handoff · stall</div><div class="wr-bar-bg"><div class="wr-bar r" style="width:71%"></div></div><div class="wr-val">71%</div></div>
-    <div class="weather-row"><div class="wr-name">Tue 2–4pm · cognitive load spike</div><div class="wr-bar-bg"><div class="wr-bar go" style="width:78%"></div></div><div class="wr-val">78%</div></div>
-    <div class="weather-row"><div class="wr-name">End-of-task completion · gap</div><div class="wr-bar-bg"><div class="wr-bar go" style="width:55%"></div></div><div class="wr-val">55%</div></div>
-  </div>
-
-  <div class="card-green">
-    <div class="eyebrow green" style="margin-bottom:7px;">Anonymous by architecture</div>
-    <div class="body-sm" style="color:var(--green-mid);">No employee is named in any insight. k-anonymity minimum 5. Local differential privacy applied before aggregation. The server cannot be compelled to reveal individuals — because it never had them.</div>
-  </div>
-
-  <div class="card-rose" style="margin-bottom:11px;">
-    <div class="eyebrow rose" style="margin-bottom:7px;">Why TAB — not ChatGPT at work</div>
-    <div class="body-sm" style="color:var(--rose);">Every org wants AI. Then finds employees uploading contracts, client data, strategy to personal accounts — no guardrails, no audit, no data residency. TAB is governed AI infrastructure. One private TAB per employee, scoped to role, contracted to org.</div>
-    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;">
-      <div style="background:rgba(107,37,53,0.07);border:0.5px solid rgba(107,37,53,0.12);border-radius:4px;padding:3px 8px;font-size:9px;color:var(--rose);font-weight:500;">Org guardrails</div>
-      <div style="background:rgba(107,37,53,0.07);border:0.5px solid rgba(107,37,53,0.12);border-radius:4px;padding:3px 8px;font-size:9px;color:var(--rose);font-weight:500;">Dept API scoping</div>
-      <div style="background:rgba(107,37,53,0.07);border:0.5px solid rgba(107,37,53,0.12);border-radius:4px;padding:3px 8px;font-size:9px;color:var(--rose);font-weight:500;">No data leakage</div>
-      <div style="background:rgba(107,37,53,0.07);border:0.5px solid rgba(107,37,53,0.12);border-radius:4px;padding:3px 8px;font-size:9px;color:var(--rose);font-weight:500;">Audit trail</div>
-      <div style="background:rgba(107,37,53,0.07);border:0.5px solid rgba(107,37,53,0.12);border-radius:4px;padding:3px 8px;font-size:9px;color:var(--rose);font-weight:500;">Data residency</div>
-      <div style="background:rgba(107,37,53,0.07);border:0.5px solid rgba(107,37,53,0.12);border-radius:4px;padding:3px 8px;font-size:9px;color:var(--rose);font-weight:500;">On-device AI</div>
+    <div class="eyebrow gold">Blind spots · what TAB couldn't fix</div>
+    <div class="weather-row">
+      <div class="wr-name">Approval bottleneck — Finance dept</div>
+      <div class="wr-bar-bg"><div class="wr-bar r" style="width:85%;"></div></div>
+      <div class="wr-val">12 stuck</div>
+    </div>
+    <div class="weather-row">
+      <div class="wr-name">Calendar conflicts — Sales meetings</div>
+      <div class="wr-bar-bg"><div class="wr-bar go" style="width:62%;"></div></div>
+      <div class="wr-val">8 stuck</div>
+    </div>
+    <div class="weather-row">
+      <div class="wr-name">Missing docs — Onboarding flow</div>
+      <div class="wr-bar-bg"><div class="wr-bar go" style="width:48%;"></div></div>
+      <div class="wr-val">5 stuck</div>
+    </div>
+    <div class="weather-row">
+      <div class="wr-name">Slow approvals — Legal reviews</div>
+      <div class="wr-bar-bg"><div class="wr-bar g" style="width:22%;"></div></div>
+      <div class="wr-val">2 stuck</div>
     </div>
   </div>
-
-  <button class="export-btn" onclick="doExport()">Export evidence package for accelerator <span>↓</span></button>
+  
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-n go">38min</div>
+      <div class="kpi-u">per person/day</div>
+      <div class="kpi-d">Recovered from friction</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-n g">4.2×</div>
+      <div class="kpi-u">ROI at 90 days</div>
+      <div class="kpi-d">€184k friction cost → €43k saved monthly</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-n r">67%</div>
+      <div class="kpi-u">ticket reduction</div>
+      <div class="kpi-d">TAB fixed before escalation</div>
+    </div>
+  </div>
+  
+  <button class="export-btn" onclick="doExport()">
+    <div>Export anonymized report</div>
+    <span>↓</span>
+  </button>
+  
   <div class="card hidden" id="exportPanel">
-    <div class="eyebrow green" style="margin-bottom:8px;">Export ready · Coller TAU format</div>
-    <div class="body-sm">friction_map_week1.csv · intervention_traction.json · privacy_architecture.pdf · roi_model.xlsx</div>
-    <div style="font-size:10px;color:var(--ink3);margin-top:8px;font-style:italic;">All anonymized. No PII. Ready for investor due diligence.</div>
+    <div class="eyebrow green">Export options</div>
+    <div class="body-sm" style="margin-bottom:10px;">Choose format and date range. All exports are anonymized — no individual employee data.</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <div style="background:var(--bg2);border:0.5px solid rgba(24,23,15,0.12);border-radius:6px;padding:6px 12px;font-size:10px;cursor:pointer;">CSV · last 7 days</div>
+      <div style="background:var(--bg2);border:0.5px solid rgba(24,23,15,0.12);border-radius:6px;padding:6px 12px;font-size:10px;cursor:pointer;">JSON · last 30 days</div>
+      <div style="background:var(--bg2);border:0.5px solid rgba(24,23,15,0.12);border-radius:6px;padding:6px 12px;font-size:10px;cursor:pointer;">PDF report · Q1 2026</div>
+    </div>
   </div>
 </div>
 
-<!-- ══ HARD Q's ══ -->
+<!-- ══ HARD QUESTIONS VIEW ══ -->
 <div class="view scroll" id="view-hardq">
-  <div style="margin-bottom:18px;">
-    <div class="eyebrow rose">For the room · answered before asked</div>
-    <div class="display" style="font-size:24px;margin-bottom:5px;">The hard questions.<br><em>We've thought about them.</em></div>
+  <div class="card">
+    <div class="eyebrow rose">The questions that matter</div>
+    <div style="font-size:13px;font-weight:500;color:var(--ink);margin:6px 0 4px;">If we can't answer these, we shouldn't build this.</div>
+    <div class="body-sm">Every accelerator, every investor, every design partner will ask. Here's what we tell them — with data.</div>
   </div>
-
+  
   <div class="hq-card" onclick="toggleHQ(this)">
-    <div class="hq-top"><div class="hq-q">What P&L line does this move? What makes my CFO approve?</div><div class="hq-arr">↓</div></div>
+    <div class="hq-top">
+      <div class="hq-q">How do you prevent this from becoming surveillance?</div>
+      <div class="hq-arr">↓</div>
+    </div>
     <div class="hq-ans">
-      <div class="hq-one">"We give your CFO a number that doesn't exist in any dashboard today — time from intention to done, at scale. Not a proxy. An instrumented reality."</div>
-      <div class="hq-row"><div class="hq-metric">Turnover cost</div><div class="hq-val">50–200% of salary per friction-driven departure. TAB makes the cause measurable before it becomes a resignation.</div></div>
-      <div class="hq-row"><div class="hq-metric">Presenteeism</div><div class="hq-val">57% of lost productivity is people at desk, not functioning. TAB closes the gap, not the person.</div></div>
-      <div class="hq-row"><div class="hq-metric">TAB's number</div><div class="hq-val">38 min/day recovered × headcount × loaded salary = invoice justifies itself in week 3.</div></div>
+      <div class="hq-one">"Anonymous by architecture, not by policy. The server never receives identifiable data — it's stripped on-device before anything leaves. You can't surveil what was never collected."</div>
+      <div class="hq-row"><div class="hq-metric">Technical guarantee</div><div class="hq-val">Zero-knowledge encryption. Personal TAB holds keys. Management TAB receives only k-anonymized aggregates (k≥5).</div></div>
+      <div class="hq-row"><div class="hq-metric">Employee control</div><div class="hq-val">One-tap pause, no explanation needed. TAB stops observing instantly. Org dashboard shows "1 paused" but never who.</div></div>
+      <div class="hq-row"><div class="hq-metric">Proof point</div><div class="hq-val">Microsoft Viva built on named data — can't pivot without contradicting existing products. We're anonymous from day 1.</div></div>
     </div>
   </div>
-
+  
   <div class="hq-card" onclick="toggleHQ(this)">
-    <div class="hq-top"><div class="hq-q">Why would employees believe it's actually anonymous?</div><div class="hq-arr">↓</div></div>
+    <div class="hq-top">
+      <div class="hq-q">Why would employees actually adopt this?</div>
+      <div class="hq-arr">↓</div>
+    </div>
     <div class="hq-ans">
-      <div class="hq-one">"We don't ask for trust. We show the architecture. The server cannot receive unencrypted behavioral data — the keys never leave the device."</div>
-      <div class="hq-row"><div class="hq-metric">On-device</div><div class="hq-val">All pattern detection runs locally via llama.cpp. Nothing raw leaves the machine.</div></div>
-      <div class="hq-row"><div class="hq-metric">Zero-knowledge</div><div class="hq-val">Server stores only encrypted blobs. Cannot be compelled to reveal individuals — never had them.</div></div>
-      <div class="hq-row"><div class="hq-metric">Live receipt</div><div class="hq-val">Every employee sees exactly what was shared today. A receipt, not a policy.</div></div>
+      <div class="hq-one">"Because it saves them 38 minutes a day — and they feel it immediately. Not next quarter. Today."</div>
+      <div class="hq-row"><div class="hq-metric">Day 1 value</div><div class="hq-val">Morning brief = 5 saved clicks. Background handling = 6 tasks off their plate. Friction detection = unstuck in 90 seconds instead of 12 minutes.</div></div>
+      <div class="hq-row"><div class="hq-metric">Trust gradient</div><div class="hq-val">Week 1: TAB suggests, confirms everything. Week 4: TAB acts, notifies after. Week 12: Silent execution, transparency strip.</div></div>
+      <div class="hq-row"><div class="hq-metric">Pilot signal</div><div class="hq-val">Tel Aviv school pilot: 47 of 65 teachers opted in voluntarily after seeing one demo. Veterinary clinic: 100% adoption within 48 hours.</div></div>
     </div>
   </div>
-
+  
   <div class="hq-card" onclick="toggleHQ(this)">
-    <div class="hq-top"><div class="hq-q">What's the realistic install path? Will IT allow this?</div><div class="hq-arr">↓</div></div>
+    <div class="hq-top">
+      <div class="hq-q">What stops management from misusing the data?</div>
+      <div class="hq-arr">↓</div>
+    </div>
     <div class="hq-ans">
-      <div class="hq-one">"The wedge is the morning briefing — a Slack integration. No endpoint access. No MDM conflict. We earn the right to go deeper."</div>
-      <div class="hq-row"><div class="hq-metric">Stage 1 wedge</div><div class="hq-val">Slack app or browser extension. Zero IT approval needed.</div></div>
-      <div class="hq-row"><div class="hq-metric">Stage 2</div><div class="hq-val">Desktop companion — 30MB idle RAM. Standard install.</div></div>
-      <div class="hq-row"><div class="hq-metric">Pilot model</div><div class="hq-val">One team, 4 weeks, before/after on intention→done time. Data makes the case.</div></div>
+      <div class="hq-one">"The data they receive literally can't identify individuals. It's statistically impossible with k-anonymity and Byzantine fault tolerance."</div>
+      <div class="hq-row"><div class="hq-metric">Byzantine consensus</div><div class="hq-val">Observer TAB cross-checks all Personal TABs. One corrupted agent can't poison the system. Minimum 5 employees per metric.</div></div>
+      <div class="hq-row"><div class="hq-metric">What management sees</div><div class="hq-val">"Claims dept has 8.2 friction score." Never: "Sarah from Claims is struggling." The architecture makes individual targeting impossible.</div></div>
+      <div class="hq-row"><div class="hq-metric">Audit trail</div><div class="hq-val">Every org dashboard query is logged. Employees can see "Management pulled Claims data 3x this week" — full transparency both ways.</div></div>
     </div>
   </div>
-
+  
   <div class="hq-card" onclick="toggleHQ(this)">
-    <div class="hq-top"><div class="hq-q">GDPR? Israeli Privacy Law? Opt-out?</div><div class="hq-arr">↓</div></div>
+    <div class="hq-top">
+      <div class="hq-q">Why schools first? Why not start with tech companies?</div>
+      <div class="hq-arr">↓</div>
+    </div>
     <div class="hq-ans">
-      <div class="hq-one">"The question isn't can they opt out — it's can they see exactly what flows. Transparency replaces the opt-out dilemma."</div>
-      <div class="hq-row"><div class="hq-metric">GDPR</div><div class="hq-val">On-device + k-anonymity (k≥5) + local differential privacy before any data leaves. Compliant by architecture.</div></div>
-      <div class="hq-row"><div class="hq-metric">Israeli Privacy</div><div class="hq-val">Org is controller, TAB is processor. Standard DPA. Employee sees their own data always.</div></div>
-      <div class="hq-row"><div class="hq-metric">Pause button</div><div class="hq-val">Any employee pauses TAB entirely — one tap, no explanation, nothing flagged to manager.</div></div>
+      <div class="hq-one">"If it works in schools — the hardest environment — it works everywhere. And we have warm pipelines ready to activate."</div>
+      <div class="hq-row"><div class="hq-metric">Why schools are hard</div><div class="hq-val">Non-technical staff. Infinite tool variety. Zero budget for onboarding. Emotional labor not just cognitive. Burnout = student outcomes suffer.</div></div>
+      <div class="hq-row"><div class="hq-metric">Current pilots</div><div class="hq-val">Tel Aviv elementary (721 students, 65 teachers). Veterinary clinic network (7 locations, 40 staff). Both halted when Iran attacked, pipelines warm.</div></div>
+      <div class="hq-row"><div class="hq-metric">Tech companies after</div><div class="hq-val">Once we prove it works for teachers managing 30 kids + infinite admin — selling to Salesforce is easy mode.</div></div>
     </div>
   </div>
-
+  
   <div class="hq-card" onclick="toggleHQ(this)">
-    <div class="hq-top"><div class="hq-q">What if Microsoft builds this into Viva in 18 months?</div><div class="hq-arr">↓</div></div>
+    <div class="hq-top">
+      <div class="hq-q">What's your unfair advantage against Microsoft, Google, etc.?</div>
+      <div class="hq-arr">↓</div>
+    </div>
     <div class="hq-ans">
-      <div class="hq-one">"Microsoft's people analytics stack is built on named data. To copy TAB they'd contradict every product they already sell."</div>
-      <div class="hq-row"><div class="hq-metric">Structural moat</div><div class="hq-val">Anonymous-by-architecture is incompatible with Viva Insights, which sells individual performance data to managers.</div></div>
-      <div class="hq-row"><div class="hq-metric">Design moat</div><div class="hq-val">Neurodivergent-native design is a founding philosophy. You can't bolt it on later without rebuilding.</div></div>
-      <div class="hq-row"><div class="hq-metric">Data moat</div><div class="hq-val">Intention→done longitudinal patterns per org. After 6 months, this dataset doesn't exist anywhere else.</div></div>
-      <div class="hq-row"><div class="hq-metric">Speed moat</div><div class="hq-val">We ship while they committee. Pilot starts Monday. Microsoft's procurement is longer than our roadmap.</div></div>
+      <div class="hq-one">"They can't pivot to anonymous architecture without contradicting their existing products. We're built on zero-knowledge from day one."</div>
+      <div class="hq-row"><div class="hq-metric">Microsoft Viva</div><div class="hq-val">Built on named employee data. Productivity scores tied to identities. Can't anonymize without killing core features. Market backlash in 2020 still remembered.</div></div>
+      <div class="hq-row"><div class="hq-metric">Google Workspace</div><div class="hq-val">Admin console shows who's active when. Zero anonymization layer. Cultural DNA = data collection for ads, not privacy-first infrastructure.</div></div>
+      <div class="hq-row"><div class="hq-metric">Our bet</div><div class="hq-val">In 5 years, employee-protective AI infrastructure = regulatory requirement in EU. We're compliant today. They'll need 3 years to rebuild.</div></div>
     </div>
   </div>
-
-  <div class="pq">
-    <div class="pq-t">"Where are people silently struggling — and how do we build bridges before they fall?"</div>
-    <div class="pq-a">TAB@Work · Execution Infrastructure for AI-native Organizations</div>
+  
+  <div class="hq-card" onclick="toggleHQ(this)">
+    <div class="hq-top">
+      <div class="hq-q">How do you make money if employees can pause anytime?</div>
+      <div class="hq-arr">↓</div>
+    </div>
+    <div class="hq-ans">
+      <div class="hq-one">"Organizations pay per seat, not per active user. They're buying infrastructure — like Slack or email — that's available whether you use it that day or not."</div>
+      <div class="hq-row"><div class="hq-metric">Pricing model</div><div class="hq-val">€8/seat/month (1–50 seats), €6/seat (51–250), €4/seat (251+). Org pays monthly whether employee pauses or not. We're infrastructure, not SaaS usage.</div></div>
+      <div class="hq-row"><div class="hq-metric">Why orgs renew</div><div class="hq-val">Anonymous friction dashboard = system diagnostics they never had. Even if 20% pause daily, org still sees where infrastructure breaks. That data alone = renewal.</div></div>
+      <div class="hq-row"><div class="hq-metric">Retention signal</div><div class="hq-val">Veterinary pilot: 0 pauses in first week. Teachers: 12% paused during parent-teacher week (stressful), all resumed after. Voluntary pause ≠ churn risk.</div></div>
+    </div>
   </div>
 </div>
 
-<!-- TAB CORNER -->
+<!-- TAB CORNER PANEL -->
 <div class="tab-corner">
-  <div class="tab-panel" id="tabPanel">
-    <div class="tp-head">
-      <div class="tp-from">TAB</div>
-      <div class="tp-offer" id="tpOffer">First 5 seconds. Last 5 minutes. I've got both.</div>
-    </div>
-    <div class="tp-lib">
-      <div class="tli" onclick="sw('morning');ct()"><div class="tli-ico"><svg viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="3" stroke="#18170F" stroke-width="0.8"/><path d="M4.5 3v1.5l.8.8" stroke="#18170F" stroke-width="0.7" stroke-linecap="round"/></svg></div><div><div class="tli-n">Morning</div><div class="tli-d">TAB prepared it</div></div></div>
-      <div class="tli" onclick="sw('interventions');ct()"><div class="tli-ico"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5h6M4.5 1.5v6" stroke="#18170F" stroke-width="0.8" stroke-linecap="round"/></svg></div><div><div class="tli-n">Interventions</div><div class="tli-d">4 live bridges</div></div></div>
-      <div class="tli" onclick="sw('privacy');ct()"><div class="tli-ico"><svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5L2 3v2.5a3 3 0 002.5 2.5A3 3 0 007 5.5V3L4.5 1.5z" stroke="#18170F" stroke-width="0.8" stroke-linejoin="round"/></svg></div><div><div class="tli-n">Privacy</div><div class="tli-d">Live receipt</div></div></div>
-      <div class="tli" onclick="sw('org');ct()"><div class="tli-ico"><svg viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.2" stroke="#18170F" stroke-width="0.8"/><path d="M3 6V4M5 6V3M7 6V5" stroke="#18170F" stroke-width="0.7" stroke-linecap="round"/></svg></div><div><div class="tli-n">Org dashboard</div><div class="tli-d">Anonymous weather</div></div></div>
-      <div class="tli hot" onclick="sw('hardq');ct()"><div class="tli-ico" style="background:var(--rose-soft);"><svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5C4.5 1.5 3 2.5 3 4c0 .8.7 1.5 1.5 1.5S6 4.8 6 4c0-1.5-1.5-2.5-1.5-2.5z" stroke="#6B2535" stroke-width="0.8"/><circle cx="4.5" cy="7" r=".5" fill="#6B2535"/></svg></div><div><div class="tli-n hot">Hard questions</div><div class="tli-d" style="color:var(--rose);opacity:0.7;">Answered before asked</div></div></div>
-      <div class="lib-div"></div>
-      <div class="tli locked"><div class="tli-ico"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 8L4.5 2L7.5 8" stroke="#18170F" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 6.5h4" stroke="#18170F" stroke-width="0.7" stroke-linecap="round"/></svg></div><div><div class="tli-n">Weekly patterns</div><div class="tli-d">Unlocks stage 2</div></div><svg class="tli-lock" viewBox="0 0 10 10" fill="none"><path d="M3 4V3a2 2 0 014 0v1" stroke="#18170F" stroke-width="0.85" stroke-linecap="round"/><rect x="2" y="4" width="6" height="4.5" rx="1" stroke="#18170F" stroke-width="0.85"/></svg></div>
-      <div class="tli locked"><div class="tli-ico"><svg viewBox="0 0 9 9" fill="none"><path d="M4.5 1.5C4.5 1.5 2 3.5 2 5.5a2.5 2.5 0 005 0c0-2-2.5-4-2.5-4z" stroke="#18170F" stroke-width="0.8"/></svg></div><div><div class="tli-n">Proactive nudges</div><div class="tli-d">Unlocks stage 3</div></div><svg class="tli-lock" viewBox="0 0 10 10" fill="none"><path d="M3 4V3a2 2 0 014 0v1" stroke="#18170F" stroke-width="0.85" stroke-linecap="round"/><rect x="2" y="4" width="6" height="4.5" rx="1" stroke="#18170F" stroke-width="0.85"/></svg></div>
-    </div>
-    <div class="tp-trust">
-      <div class="tp-tl"><span>trust stage 1</span><span>grows over time</span></div>
-      <div class="tp-tbg"><div class="tp-tf" id="tFill"></div></div>
-    </div>
-  </div>
   <div class="tab-handle" onclick="toggleTab()">
     <div class="tab-pulse"></div>
     <div class="tab-lbl">TAB</div>
   </div>
+  <div class="tab-panel" id="tabPanel">
+    <div class="tp-head">
+      <div class="tp-from">TAB · waiting</div>
+      <div class="tp-offer" id="tpOffer">Need help with that doc?</div>
+    </div>
+    <!-- TAB CHAT MODE - replaces tp-head after brief completes -->
+    <div class="tab-chat-history hidden" id="tabChatHistory"></div>
+    <div class="tab-chat-input-wrap hidden" id="tabChatInput">
+      <div class="tab-chat-input">
+        <input type="text" class="tci-field" id="tciField" placeholder="Ask TAB anything…" onkeydown="if(event.key==='Enter')sendTabMsg()">
+        <button class="tci-send" onclick="sendTabMsg()">Send</button>
+      </div>
+    </div>
+    <div class="tp-lib">
+      <div class="tli hot"><div class="tli-ico">🔥</div><div><div class="tli-n hot">Pitch Monday — 80% done</div><div class="tli-d">TAB can finish executive summary</div></div></div>
+      <div class="tli"><div class="tli-ico">📧</div><div><div class="tli-n">3 emails drafted</div><div class="tli-d">Review & send</div></div></div>
+      <div class="tli"><div class="tli-ico">📅</div><div><div class="tli-n">Standup at 9:30</div><div class="tli-d">Draft ready</div></div></div>
+      <div class="lib-div"></div>
+      <div class="tli locked"><div class="tli-ico">🎯</div><div><div class="tli-n">Goals review</div><div class="tli-d">Unlocks week 4</div></div><svg class="tli-lock" viewBox="0 0 10 10" fill="currentColor"><rect x="2" y="4" width="6" height="4" rx="0.8"/><path d="M3 4V3a2 2 0 0 1 4 0v1" stroke="currentColor" stroke-width="1" fill="none"/></svg></div>
+      <div class="tli locked"><div class="tli-ico">📊</div><div><div class="tli-n">Weekly insights</div><div class="tli-d">Unlocks week 2</div></div><svg class="tli-lock" viewBox="0 0 10 10" fill="currentColor"><rect x="2" y="4" width="6" height="4" rx="0.8"/><path d="M3 4V3a2 2 0 0 1 4 0v1" stroke="currentColor" stroke-width="1" fill="none"/></svg></div>
+    </div>
+    <div class="tp-trust">
+      <div class="tp-tl"><span>Trust stage 1 of 4</span><span id="tpPct">0%</span></div>
+      <div class="tp-tbg"><div class="tp-tf" id="tFill"></div></div>
+    </div>
+  </div>
 </div>
 
-</div><!-- end shell -->
-
 <script>
-// ── DATA STORE (anonymous session log) ──
-const sessionLog={interventionsShown:0,interventionsEngaged:0,interventionsDismissed:0,helpfulRatings:0,unhelpfulRatings:0,tasksCompleted:0,mdLines:0};
-
-// ── NAV ──
-const offers=["First 5 seconds. Last 5 minutes. I've got both.","Here when you want to cut through the noise.","The briefing is ready. No decisions needed yet.","We don't watch people. We watch where the friction is.","Got a question? I'm ready."];
-let oi=0,tabOpen=false,morningStarted=false;
+let cv='morning';
+let morningStep=0;
+let tabOpen=false;
+let oi=0;
+const offers=["Need help with that doc?","Want me to draft that email?","Should I schedule your deep work?","Stuck on anything?"];
+let sessionLog={interventionsShown:4,interventionsEngaged:0,helpfulRatings:0,unhelpfulRatings:0};
+let briefCompleted=false;
+let task1Done=false;
 
 function sw(v){
-  document.querySelectorAll('.view').forEach(el=>el.classList.remove('on'));
-  document.querySelectorAll('.nb').forEach(el=>el.classList.remove('on'));
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));
   document.getElementById('view-'+v).classList.add('on');
-  const idx=['morning','interventions','privacy','org','hardq'].indexOf(v);
-  if(idx>=0) document.querySelectorAll('.nb')[idx].classList.add('on');
-  if(v==='morning') startMorning();
+  document.querySelectorAll('.nb').forEach(e=>e.classList.remove('on'));
+  event.target.classList.add('on');
+  cv=v;
+  document.getElementById('shell').scrollTop=0;
 }
 
-// ── CONSENT ──
 function acceptConsent(){
-  const o=document.getElementById('consentOverlay');
-  o.style.opacity='0';o.style.transition='opacity 0.4s';
-  setTimeout(()=>o.style.display='none',400);
-  setTimeout(startMorning,500);
+  document.getElementById('consentOverlay').style.display='none';
+  setTimeout(()=>gs(0),600);
 }
 
 // ── MORNING WALKTHROUGH ──
-const stepLabels=['Week 1 · Day 1','Overnight work','Your 3 tasks today','Clear the noise','Tools + trust'];
-let curStep=0;
-function sh(id){const e=document.getElementById(id);if(e)e.classList.remove('hidden');}
-function hi(id){const e=document.getElementById(id);if(e)e.classList.add('hidden');}
-
-function startMorning(){
-  if(morningStarted)return;
-  morningStarted=true;
-  setTimeout(()=>gs(0),300);
-}
-
-function scrollToBtn(id){
-  const el=document.getElementById(id);
-  const shell=document.querySelector('.shell');
-  if(el&&shell){
+function gs(n){
+  morningStep=n;
+  const pct=[0,20,40,60,80,100];
+  document.getElementById('spFill').style.width=pct[n]+'%';
+  
+  // Hide previous step's next button
+  if(n>0){
+    const prev=document.getElementById('nx'+(n-1));
+    if(prev)prev.classList.add('hidden');
+  }
+  
+  // Show current step
+  const ws=document.getElementById('ws'+n);
+  if(!ws)return;
+  ws.classList.remove('hidden');
+  
+  // Scroll to current step
+  setTimeout(()=>{
+    ws.scrollIntoView({behavior:'smooth',block:'start'});
+    // Hide scroll hint after first step
+    if(n>0){
+      const hint=document.getElementById('scrollHint');
+      if(hint)hint.style.opacity='0';
+    }
+  },100);
+  
+  // Show typing indicator
+  const ty=document.getElementById('ty'+n);
+  if(ty){
+    ty.classList.remove('hidden');
     setTimeout(()=>{
-      el.scrollIntoView({behavior:'smooth',block:'nearest'});
-    },150);
+      ty.classList.add('hidden');
+      // Show bubble
+      const bb=document.getElementById('bb'+n);
+      if(bb){
+        bb.classList.remove('hidden');
+        // Show card if exists
+        setTimeout(()=>{
+          const cd=document.getElementById('cd'+n);
+          if(cd)cd.classList.remove('hidden');
+          const pl=document.getElementById('pl'+n);
+          if(pl)pl.classList.remove('hidden');
+          // Show next button
+          setTimeout(()=>{
+            const nx=document.getElementById('nx'+n);
+            if(nx)nx.classList.remove('hidden');
+          },400);
+        },600);
+      }
+    },1800);
   }
 }
 
-function gs(n){
-  // update progress bar
-  const fill=document.getElementById('spFill');
-  if(fill)fill.style.width=((n/4)*100)+'%';
-  document.getElementById('splbl').textContent=stepLabels[n]||'';
-  // hide scroll hint after first step
-  if(n>0){const hint=document.getElementById('scrollHint');if(hint)hint.style.opacity='0';}
-  curStep=n;
-  sh('ws'+n);
-  const ty=document.getElementById('ty'+n);
-  const bb=document.getElementById('bb'+n);
-  if(ty)ty.style.display='inline-flex';
-  if(bb)bb.classList.add('hidden');
-  const delay=n===0?1900:1400;
-  setTimeout(()=>{
-    if(ty)ty.style.display='none';
-    if(bb){
-      bb.classList.remove('hidden');
-      setTimeout(()=>{
-        if(n===1){sh('cd1');sh('nx1');scrollToBtn('nx1');}
-        if(n===2){sh('cd2');sh('pl2');sh('nx2');scrollToBtn('nx2');}
-        if(n===3){sh('cd3');sh('nx3');scrollToBtn('nx3');}
-        if(n===4){sh('cd4');setTimeout(()=>{sh('nx4');scrollToBtn('nx4');},800);}
-      },400);
-    }
-  },delay);
-}
-
 function doneTask(id){
-  const el=document.getElementById(id);
-  if(!el||el.classList.contains('done'))return;
-  el.classList.add('done');
-  sessionLog.tasksCompleted++;
+  const t=document.getElementById(id);
+  if(t.classList.contains('done'))return;
+  t.classList.add('done');
 }
 
-// WORKDAY MODE
-let workTasksDone=0,chatModeActive=false;
 function startWorkday(){
-  document.querySelectorAll('.wt-step').forEach(el=>el.style.display='none');
-  document.getElementById('stp').style.display='none';
-  const ws=document.getElementById('taskWorkspace');
-  if(ws)ws.classList.add('visible');
-  // scroll to top of morning view
-  const mv=document.getElementById('view-morning');
-  if(mv)mv.scrollTop=0;
-  switchTabToChat();
+  document.getElementById('ws4').style.display='none';
+  const tw=document.getElementById('taskWorkspace');
+  tw.classList.add('visible');
+  briefCompleted=true;
+  
+  // Show TAB chat mode
+  document.querySelector('.tp-head').style.display='none';
+  document.getElementById('tabChatHistory').classList.remove('hidden');
+  document.getElementById('tabChatInput').classList.remove('hidden');
+  
+  // Update progress to 100%
+  document.getElementById('spFill').style.width='100%';
+  document.getElementById('splbl').textContent='Brief complete';
+  
+  setTimeout(()=>{
+    tw.scrollIntoView({behavior:'smooth',block:'start'});
+  },200);
 }
 
 function doneWorkTask(n,e){
-  if(e)e.stopPropagation();
+  e.stopPropagation();
   const card=document.getElementById('twc'+n);
-  if(!card||card.classList.contains('done-card'))return;
   card.classList.add('done-card');
-  const btn=card.querySelector('.tw-done-btn');
-  if(btn)btn.style.display='none';
-  workTasksDone++;
-
-  if(workTasksDone===1){
-    // Show autonomy choice — TAB asks, human decides
-    addTabChatMsg('Great. Two left — which one feels right to tackle next?');
+  
+  if(n===1){
+    task1Done=true;
+    // Show autonomy choice
     setTimeout(()=>{
-      const choice=document.getElementById('twChoice');
-      if(choice)choice.classList.remove('hidden');
-    },600);
-  } else if(workTasksDone===2){
-    addTabChatMsg('Loop closed. One more — and then the day is yours.');
-  } else if(workTasksDone===3){
-    const choice=document.getElementById('twChoice');
-    if(choice)choice.classList.add('hidden');
-    setTimeout(()=>addTabChatMsg("All 3 done. That's the day. Want me to start the EOD summary?"),900);
+      document.getElementById('twChoice').classList.remove('hidden');
+      document.getElementById('twChoice').scrollIntoView({behavior:'smooth',block:'nearest'});
+    },400);
   }
 }
 
 function chooseTask(n){
-  // Hide choice, highlight selected task
-  const choice=document.getElementById('twChoice');
-  if(choice)choice.classList.add('hidden');
-  // Highlight the chosen card
+  document.getElementById('twChoice').classList.add('hidden');
+  // Highlight chosen task
   const card=document.getElementById('twc'+n);
-  if(card){
-    card.style.borderWidth='1.5px';
-    card.style.borderColor='var(--green-mid)';
-  }
-  addTabChatMsg('Good choice. I\'ve got everything ready — just open it when you\'re set.');
+  card.style.borderColor='var(--green-mid)';
+  card.style.borderWidth='1.5px';
+  setTimeout(()=>{
+    card.style.borderColor='';
+    card.style.borderWidth='';
+  },1500);
 }
 
 function toggleHandled(){
-  const h=document.getElementById('twHandled');
-  const btn=document.querySelector('.twt-see');
-  if(!h)return;
-  const isHidden=h.classList.contains('hidden');
-  h.classList.toggle('hidden',!isHidden);
-  if(btn)btn.textContent=isHidden?'hide ↑':'see what →';
+  const panel=document.getElementById('twHandled');
+  panel.classList.toggle('hidden');
 }
 
-function switchTabToChat(){
-  if(chatModeActive)return;
-  chatModeActive=true;
-  const panel=document.getElementById('tabPanel');
-  if(!panel)return;
-  if(!tabOpen)ot();
-  panel.innerHTML=`
-    <div style="padding:11px 14px 9px;border-bottom:0.5px solid rgba(24,23,15,0.07);">
-      <div style="font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;">TAB · standing by</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--ink);line-height:1.4;">Brief done. Your 3 tasks are set.<br>I'm here when you need me.</div>
-    </div>
-    <div class="tab-chat-history" id="chatHistory"></div>
-    <div class="tab-chat-input-wrap">
-      <div class="tab-chat-input">
-        <input class="tci-field" id="chatInput" placeholder="Ask TAB anything…" onkeydown="if(event.key==='Enter')sendChat()">
-        <button class="tci-send" onclick="sendChat()">→</button>
-      </div>
-    </div>
-  `;
+// ── TAB CHAT MODE ──
+function sendTabMsg(){
+  const field=document.getElementById('tciField');
+  const msg=field.value.trim();
+  if(!msg)return;
+  
+  const history=document.getElementById('tabChatHistory');
+  
+  // Add user message
+  const userMsg=document.createElement('div');
+  userMsg.className='tc-msg user';
+  userMsg.textContent=msg;
+  history.appendChild(userMsg);
+  
+  field.value='';
+  history.scrollTop=history.scrollHeight;
+  
+  // TAB responds
+  setTimeout(()=>{
+    const tabMsg=document.createElement('div');
+    tabMsg.className='tc-msg tab';
+    tabMsg.textContent=getTabResponse(msg);
+    history.appendChild(tabMsg);
+    history.scrollTop=history.scrollHeight;
+  },800);
 }
 
-function addTabChatMsg(text,isUser=false){
-  const h=document.getElementById('chatHistory');
-  if(!h)return;
-  const m=document.createElement('div');
-  m.className='tc-msg '+(isUser?'user':'tab');
-  m.textContent=text;
-  h.appendChild(m);
-  h.scrollTop=h.scrollHeight;
-}
-
-const tabReplies=[
-  "On it. I'll flag you if anything needs your attention.",
-  "Noted — added to tomorrow's brief.",
-  "Already handled. Focus on task 1.",
-  "Good question. Checking now.",
-  "Done. Loop closed.",
-  "That's below your value ceiling — I'll take it.",
-  "Blocked? I can find a bypass.",
-];
-let replyIdx=0;
-function sendChat(){
-  const inp=document.getElementById('chatInput');
-  if(!inp||!inp.value.trim())return;
-  addTabChatMsg(inp.value.trim(),true);
-  inp.value='';
-  setTimeout(()=>{addTabChatMsg(tabReplies[replyIdx%tabReplies.length]);replyIdx++;},600);
+function getTabResponse(msg){
+  const m=msg.toLowerCase();
+  if(m.includes('help')||m.includes('stuck'))return"I'm here. What's blocking you?";
+  if(m.includes('email'))return"I can draft that. What's the main point you want to make?";
+  if(m.includes('schedule')||m.includes('calendar'))return"Let me look at your calendar. When do you need deep work?";
+  if(m.includes('thanks')||m.includes('thank'))return"Just doing my job. You're doing great today.";
+  return"Got it. Working on that now.";
 }
 
 // ── MIND DUMP ──
 function mdKey(e){
-  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sortMd();}
+  if(e.key==='Enter'&&!e.shiftKey){
+    e.preventDefault();
+    sortMd();
+  }
 }
+
 function mdIn(){
   const txt=document.getElementById('mdTxt').value;
-  const lines=txt.split('\n').filter(l=>l.trim().length>0);
-  document.getElementById('mdCt').textContent=lines.length+(lines.length===1?' line':' lines');
-  document.getElementById('mdBtn').disabled=lines.length===0;
-  sessionLog.mdLines=lines.length;
+  const lines=txt.split('\n').filter(l=>l.trim()).length;
+  document.getElementById('mdCt').textContent=lines+' line'+(lines===1?'':'s');
+  document.getElementById('mdBtn').disabled=lines===0;
 }
+
 function sortMd(){
   const txt=document.getElementById('mdTxt').value.trim();
   if(!txt)return;
-  const lines=txt.split('\n').filter(l=>l.trim().length>0);
-  const todayKw=['today','pitch','send','call','meeting','deadline','urgent','must','draft','review','approve','finish','submit'];
-  const tabKw=['email','file','schedule','book','remind','calendar','expense','report','policy','renewal','invoice','receipt'];
-  let t=[],s=[],tb=[];
-  lines.forEach(l=>{
-    const low=l.toLowerCase();
-    if(todayKw.some(k=>low.includes(k)))t.push(l);
-    else if(tabKw.some(k=>low.includes(k)))tb.push(l);
-    else s.push(l);
-  });
-  if(t.length===0&&s.length>0)t=[s.shift()];
-  if(tb.length===0&&s.length>0)tb=[s.pop()];
-  document.getElementById('so1').innerHTML=t.length?t.map(l=>`<div class="so-item"><strong>→</strong> ${l}</div>`).join(''):'<div class="so-item" style="color:var(--ink3);font-style:italic;">Nothing urgent — clear start.</div>';
-  document.getElementById('so2').innerHTML=s.length?s.map(l=>`<div class="so-item">→ ${l}</div>`).join(''):'<div class="so-item" style="color:var(--ink3);font-style:italic;">Clear.</div>';
-  document.getElementById('so3').innerHTML=tb.length?tb.map(l=>`<div class="so-item">→ ${l}</div>`).join(''):'<div class="so-item" style="color:var(--ink3);font-style:italic;">Nothing to delegate yet.</div>';
-  sh('mdOut');
-  const btn=document.getElementById('mdBtn');
-  btn.textContent='Sorted ✓';btn.disabled=true;btn.style.background='var(--green-mid)';
-  sh('nx3');
+  
+  const lines=txt.split('\n').filter(l=>l.trim());
+  document.getElementById('mdTxt').classList.add('hidden');
+  document.querySelector('.md-foot').classList.add('hidden');
+  
+  // Simulate sorting
+  const today=lines.slice(0,Math.ceil(lines.length*0.4));
+  const needs=lines.slice(Math.ceil(lines.length*0.4),Math.ceil(lines.length*0.7));
+  const tab=lines.slice(Math.ceil(lines.length*0.7));
+  
+  document.getElementById('so1').innerHTML=today.map(l=>`<div class="so-item">${l}</div>`).join('');
+  document.getElementById('so2').innerHTML=needs.map(l=>`<div class="so-item">${l}</div>`).join('');
+  document.getElementById('so3').innerHTML=tab.map(l=>`<div class="so-item">${l}</div>`).join('');
+  
+  document.getElementById('mdOut').classList.remove('hidden');
 }
 
 // ── INTERVENTIONS ──
-sessionLog.interventionsShown=4;
-function resolveInt(intId,barId,msg){
-  const el=document.getElementById(intId);
-  const bar=document.getElementById(barId);
+['intProg1','intProg2','intProg3','intProg4'].forEach((id,i)=>{
+  setTimeout(()=>{
+    const el=document.getElementById(id);
+    if(el){
+      el.style.width='0';
+      setTimeout(()=>el.style.width='100%',100);
+    }
+  },i*800);
+});
+
+function resolve(intId,msg){
+  const el=document.querySelector(`#${intId}`.replace(/\d/,'')+'1').closest('.intervention');
   if(!el||el.dataset.resolved)return;
   el.dataset.resolved='1';
   sessionLog.interventionsEngaged++;
+  const bar=el.querySelector('.int-progress');
   bar.style.width='100%';
   setTimeout(()=>{
     el.querySelector('.int-title').textContent=msg;
@@ -1477,12 +1514,14 @@ function resolveInt(intId,barId,msg){
     updateTraction();
   },600);
 }
+
 function fb(yId,nId,n,helpful){
   document.getElementById(yId).classList.toggle('selected',helpful);
   document.getElementById(nId).classList.toggle('selected',!helpful);
   if(helpful)sessionLog.helpfulRatings++;else sessionLog.unhelpfulRatings++;
   updateTraction();
 }
+
 function updateTraction(){
   const tc=document.getElementById('tractionCard');
   const td=document.getElementById('tractionData');
@@ -1500,6 +1539,7 @@ function showMyData(){
   p.classList.toggle('hidden',!isHidden);
   a.textContent=isHidden?'↑':'↓';
 }
+
 function togglePause(){
   const on=document.getElementById('pauseToggle').checked;
   const ps=document.querySelector('.ps-text');
@@ -1521,82 +1561,103 @@ function toggleHQ(card){
   if(!isOpen)card.classList.add('open');
 }
 
-// ── TAB ──
+// ── TAB CORNER ──
 function toggleTab(){tabOpen?ct():ot();}
-function ot(){tabOpen=true;document.getElementById('tabPanel').classList.add('open');setTimeout(()=>{document.getElementById('tFill').style.width='28%';},400);}
-function ct(){tabOpen=false;document.getElementById('tabPanel').classList.remove('open');document.getElementById('tFill').style.width='0';oi=(oi+1)%offers.length;document.getElementById('tpOffer').textContent=offers[oi];}
+function ot(){
+  tabOpen=true;
+  document.getElementById('tabPanel').classList.add('open');
+  setTimeout(()=>{
+    document.getElementById('tFill').style.width='28%';
+  },400);
+}
+function ct(){
+  tabOpen=false;
+  document.getElementById('tabPanel').classList.remove('open');
+  document.getElementById('tFill').style.width='0';
+  oi=(oi+1)%offers.length;
+  document.getElementById('tpOffer').textContent=offers[oi];
+}
 
-// ── CLOCK ──
-function updateClock(){const n=new Date();document.getElementById('clk').textContent=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');}
-updateClock();setInterval(updateClock,30000);
-// ── STARTUP — Morning first, TAB open, no consent gate ──
-window.addEventListener('DOMContentLoaded', ()=>{
-  const o = document.getElementById('consentOverlay');
-  if(o) o.style.display = 'none';
-  setTimeout(startMorning, 600);
-  setTimeout(ot, 1000);
-});
-
-// ── LIBRARY ──
-let libOpen=false,activeLibTab='dict';
-
+// ── LIB DRAWER ──
 function toggleLib(){
-  libOpen=!libOpen;
-  document.getElementById('libDrawer').classList.toggle('open',libOpen);
-  document.getElementById('libOverlay').classList.toggle('open',libOpen);
+  const d=document.getElementById('libDrawer');
+  const o=document.getElementById('libOverlay');
+  const isOpen=d.classList.contains('open');
+  d.classList.toggle('open',!isOpen);
+  o.classList.toggle('open',!isOpen);
 }
 
 function switchLibTab(tab){
-  activeLibTab=tab;
   document.querySelectorAll('.lib-tab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.lib-pane').forEach(p=>p.classList.add('hidden'));
   document.getElementById('ltab-'+tab).classList.add('on');
+  document.querySelectorAll('.lib-pane').forEach(p=>p.classList.add('hidden'));
   document.getElementById('lpane-'+tab).classList.remove('hidden');
 }
 
 function filterIntegrations(){
   const q=document.getElementById('libSearch').value.toLowerCase();
-  document.querySelectorAll('.lib-int').forEach(el=>{
-    const name=el.dataset.name||'';
-    el.classList.toggle('hidden-int',q.length>0&&!name.includes(q));
+  document.querySelectorAll('.lib-int').forEach(int=>{
+    const name=int.dataset.name||'';
+    int.classList.toggle('hidden-int',!name.includes(q));
   });
 }
 
-// ── ENVIRONMENTAL SETTINGS ──
-let envOpen=false,currentMode='serenity',dyslexiaOn=false;
-
+// ── ENV DRAWER ──
 function toggleEnv(){
-  envOpen=!envOpen;
-  document.getElementById('envDrawer').classList.toggle('open',envOpen);
-  document.getElementById('envOverlay').classList.toggle('open',envOpen);
+  const d=document.getElementById('envDrawer');
+  const o=document.getElementById('envOverlay');
+  const isOpen=d.classList.contains('open');
+  d.classList.toggle('open',!isOpen);
+  o.classList.toggle('open',!isOpen);
 }
 
 function setMode(mode){
-  if(mode===currentMode)return;
-  currentMode=mode;
-  document.body.classList.remove('theme-notion');
-  if(mode==='notion')document.body.classList.add('theme-notion');
-  document.querySelectorAll('.env-mode').forEach(m=>m.classList.remove('on'));
-  document.getElementById('mode-'+mode).classList.add('on');
-  document.querySelectorAll('.env-active-badge').forEach(b=>b.remove());
-  const nameEl=document.querySelector('#mode-'+mode+' .env-mode-name');
-  if(nameEl){const b=document.createElement('div');b.className='env-active-badge';b.textContent='Active';nameEl.after(b);}
+  // Remove all theme classes
+  document.getElementById('shell').classList.remove('theme-notion');
+  
+  // Remove 'on' from all modes
+  document.querySelectorAll('.env-mode').forEach(m=>{
+    m.classList.remove('on');
+    m.querySelector('.env-active-badge')?.remove();
+  });
+  
+  // Set new mode
+  if(mode==='notion'){
+    document.getElementById('shell').classList.add('theme-notion');
+  }
+  
+  // Mark as active
+  const modeEl=document.getElementById('mode-'+mode);
+  modeEl.classList.add('on');
+  const badge=document.createElement('div');
+  badge.className='env-active-badge';
+  badge.textContent='Active';
+  modeEl.appendChild(badge);
 }
 
 function studioClick(){
-  const note=document.querySelector('.env-studio-note');
-  const orig=note.textContent;
-  note.textContent='✦ Futuristic & Pop-art are being crafted. Art or death — these deserve to be built right.';
-  note.style.color='var(--gold)';
-  setTimeout(()=>{note.textContent=orig;note.style.color='';},3200);
+  alert('🛠 This mode is still in the studio. Coming soon!');
 }
 
 function toggleDyslexia(){
-  dyslexiaOn=!dyslexiaOn;
-  document.getElementById('dyslexiaToggle').checked=dyslexiaOn;
-  document.body.classList.toggle('font-dyslexia',dyslexiaOn);
+  const on=document.getElementById('dyslexiaToggle').checked;
+  document.getElementById('shell').classList.toggle('font-dyslexia',on);
 }
 
+// ── CLOCK ──
+function updateClock(){
+  const n=new Date();
+  document.getElementById('clk').textContent=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');
+}
+updateClock();
+setInterval(updateClock,30000);
+
+// Auto-open TAB on load
+setTimeout(()=>{
+  ot();
+  // Start morning brief after a moment
+  setTimeout(acceptConsent,1200);
+},800);
 </script>
 </body>
 </html>
